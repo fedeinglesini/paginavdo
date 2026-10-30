@@ -14,15 +14,15 @@
 
         body {
             font-family: system-ui, -apple-system, sans-serif;
-            background-color: #f8fafc;
+            background-color: #0f172a; /* Fondo general oscuro y limpio */
             color: #0f172a;
             margin: 0;
             padding: 0;
         }
 
-        /* --- 1. BANNER SUPERIOR (Marrón tierra más oscuro con bordes inferiores suavizados) --- */
+        /* --- 1. BANNER SUPERIOR (Marrón tierra arqueológico sin espacios raros) --- */
         header {
-            background: linear-gradient(rgba(78, 53, 34, 0.85), rgba(78, 53, 34, 0.85)), url('fondosuperior.jpg');
+            background: linear-gradient(rgba(78, 53, 34, 0.92), rgba(78, 53, 34, 0.92)), url('fondosuperior.jpg');
             background-size: 80% auto;
             background-position: 50% 55%;
             padding: 1.8rem 2rem;
@@ -32,9 +32,7 @@
             color: #ffffff;
             position: relative;
             z-index: 2;
-            border-bottom: 3px solid rgba(30, 64, 175, 0.3);
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
+            border-bottom: 3px solid rgba(30, 64, 175, 0.4);
         }
 
         .header-logo-left, .header-logo-right {
@@ -49,7 +47,7 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
         }
 
         .header-title {
@@ -60,71 +58,65 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
         }
 
-        /* --- 2. BARRA DE NAVEGACIÓN MODERNA (Menos alta, alineada a la izquierda, opciones rectangulares) --- */
+        /* --- 2. BARRA DE NAVEGACIÓN LIMPIA (Alineada a la izquierda, sin huecos) --- */
         nav {
-            background-color: #1e40af;
+            background-color: #1e40af; /* Azul base */
             display: flex;
             justify-content: flex-start; /* Alineado a la izquierda */
-            align-items: stretch; /* Hace que los botones ocupen todo el alto de la barra */
-            gap: 0; /* Sin espacio flotante, pegadas o con sutil separación */
-            padding: 0 1.5rem;
+            align-items: stretch; /* Ocupa todo el alto de la barra */
+            padding: 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Opciones rectangulares ocupando el alto de la barra */
+        /* Opciones rectangulares de la barra */
         nav a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
-            padding: 0.5rem 1.5rem; /* Menos alta */
-            border-radius: 0; /* Rectangulares */
-            transition: all 0.25s ease;
+            font-size: 0.95rem;
+            padding: 0.8rem 1.6rem;
             background-color: transparent;
-            border: none;
             display: flex;
             align-items: center;
-            border-bottom: 4px solid transparent;
+            transition: background-color 0.2s ease;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Efecto al pasar el cursor o seleccionar: Rojo Punzó cubriendo la pestaña rectangular */
-        nav a:hover, nav a:active {
-            background-color: rgba(200, 16, 46, 0.95); /* Rojo punzó */
+        /* Efecto al pasar el cursor o la opción activa: Rojo Punzó sólido */
+        nav a:hover, nav a.active {
+            background-color: #c8102e; /* Rojo Punzó institucional */
             color: #ffffff;
-            border-bottom-color: #ffffff; /* Detalle moderno superior */
-            box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.2);
-            transform: none; /* Sin saltos extraños para mantener solidez */
         }
 
-        /* --- 3. SECCIÓN CENTRAL (Gris oscuro con bordes muy suavizados) --- */
+        /* --- 3. SECCIÓN CENTRAL (Ocupa todo el ancho, sin márgenes flotantes blancos) --- */
         section {
-            background: linear-gradient(rgba(100, 116, 139, 0.85), rgba(100, 116, 139, 0.85)), url('fondocentral.jpg');
+            background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral.jpg');
             background-size: 125% auto;
             background-position: 50% 50%;
-            padding: 5rem 2rem 4rem 2rem;
-            min-height: 60vh;
+            padding: 4rem 2rem;
+            min-height: 65vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             box-sizing: border-box;
             position: relative;
-            box-shadow: inset 0 10px 15px -10px rgba(0, 0, 0, 0.25);
-            border-radius: 24px; /* Bordes muy suavizados en el sector */
-            margin: 1.5rem; /* Margen para que luzca flotante y moderna */
+            box-shadow: inset 0 10px 15px -10px rgba(0, 0, 0, 0.3);
+            margin: 0; /* Sin márgenes para evitar espacios blancos */
+            border-radius: 0; /* Sin bordes redondeados forzados en el bloque */
         }
 
-        /* --- RECUADRO BLANCO CENTRADO Y SUAVIZADO --- */
+        /* --- RECUADRO BLANCO CENTRADO (El que sí lleva sus bordes prolijos) --- */
         .content-box {
             background-color: #ffffff;
-            color: #000000;
+            color: #0f172a;
             width: 100%;
             max-width: 850px;
             padding: 3rem 2.5rem;
-            border-radius: 24px; /* Bordes extra suaves y modernos */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-radius: 12px; /* Bordes suaves solo en el recuadro de contenido */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             box-sizing: border-box;
         }
 
@@ -133,17 +125,13 @@
             margin-top: 0;
             margin-bottom: 0.75rem;
             color: #0f172a;
-            text-shadow: none;
-            text-align: left;
         }
 
         .content-box p.subtitle {
             color: #475569;
             margin-bottom: 1.5rem;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 1.05rem;
-            text-shadow: none;
-            text-align: left;
         }
 
         .content-box p {
@@ -151,9 +139,9 @@
             line-height: 1.6;
         }
 
-        /* --- 4. PIE DE PÁGINA (Azul con bordes superiores suavizados) --- */
+        /* --- 4. PIE DE PÁGINA (Integrado sin espacios blancos) --- */
         footer {
-            background: linear-gradient(rgba(30, 64, 175, 0.75), rgba(30, 64, 175, 0.75)), url('fondopie.jpg');
+            background: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 64, 175, 0.85)), url('fondopie.jpg');
             background-size: 94% auto;
             background-position: 40% 43%;
             color: #ffffff;
@@ -163,9 +151,8 @@
             line-height: 1.6;
             position: relative;
             box-shadow: inset 0 12px 15px -8px rgba(0, 0, 0, 0.4);
-            border-top-left-radius: 24px;
-            border-top-right-radius: 24px;
-            margin-top: 1rem;
+            margin: 0;
+            border-radius: 0;
         }
 
         footer p {
@@ -187,9 +174,9 @@
         </div>
     </header>
 
-    <!-- BARRA DE NAVEGACIÓN RECTANGULAR ALINEADA A LA IZQUIERDA -->
+    <!-- BARRA DE NAVEGACIÓN -->
     <nav>
-        <a href="#inicio">Inicio</a>
+        <a href="#inicio" class="active">Inicio</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#historia">Historia</a>
         <a href="#modelos">Modelos 3D</a>
@@ -201,7 +188,7 @@
         <div class="content-box">
             <h2>Inicio</h2>
             <p class="subtitle">Bienvenido al portal del proyecto.</p>
-            <p>Todo lo que escribas aquí adentro aparecerá ordenado dentro del recuadro blanco, con bordes perfectamente suavizados y un aspecto moderno.</p>
+            <p>Aquí tienes el recuadro blanco prolijo, y los bloques de la página ocupan todo el ancho correctamente sin dejar espacios blancos raros en los bordes.</p>
         </div>
     </section>
 
@@ -214,5 +201,4 @@
 
 </body>
 </html>
-
 
