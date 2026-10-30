@@ -58,37 +58,37 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
         }
 
-        /* --- 2. BARRA DE NAVEGACIÓN PERFECTA (Transición fluida) --- */
+        /* --- 2. BARRA DE NAVEGACIÓN (Ocupa todo el alto de forma absoluta) --- */
         nav {
             background-color: #1e40af; /* Azul base */
             display: flex;
             justify-content: flex-start;
-            height: 48px; /* Altura fija para la barra */
+            align-items: stretch; /* Estira los elementos para que llenen todo el alto de la barra */
+            height: 46px; /* Altura de la barra */
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Opciones rectangulares que llenan exactamente el 100% del alto */
+        /* Opciones rectangulares que llenan exactamente el 100% del alto y ancho disponible */
         nav a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
             padding: 0 1.8rem;
-            height: 100%; /* Llena todo el alto de la barra */
             background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* TRANSICIÓN FLUIDA: 0.3s de desvanecimiento suave */
+            /* TRANSICIÓN FLUIDA */
             transition: background-color 0.3s ease, color 0.3s ease;
             border-right: 1px solid rgba(255, 255, 255, 0.1);
             box-sizing: border-box;
         }
 
-        /* Al pasar el cursor: Transición suave hacia el Rojo Punzó */
+        /* Al pasar el cursor: Rojo Punzó cubriendo de forma limpia y total el espacio vertical y horizontal */
         nav a:hover {
             background-color: #c8102e; /* Rojo Punzó institucional */
             color: #ffffff;
@@ -191,7 +191,7 @@
         <div class="content-box">
             <h2>Inicio</h2>
             <p class="subtitle">Bienvenido al portal del proyecto.</p>
-            <p>Pasa el cursor por las pestañas de la barra y verás cómo el color rojo se transiciona suavemente.</p>
+            <p>Ahora al pasar el cursor, el bloque rojo se expande cubriendo absolutamente todo el espacio vertical de la barra de forma fluida.</p>
         </div>
     </section>
 
@@ -204,5 +204,4 @@
 
 </body>
 </html>
-
 
