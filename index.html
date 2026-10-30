@@ -7,33 +7,38 @@
     <!-- Logo en la pestaña del navegador -->
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        /* Estilos generales: Fondo base blanco */
+        /* Estilos generales con scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background-color: #ffffff;
             color: #000000;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth; 
         }
 
-        /* --- BANNER SUPERIOR (Celeste con transparencia sobre foto) --- */
+        /* --- 1. BANNER SUPERIOR (Celeste sobre fondosuperior.jpg) --- */
         header {
-            /* Superponemos un celeste transparente (rgba) sobre la foto de fondo */
-            background: linear-gradient(rgba(56, 189, 248, 0.45), rgba(56, 189, 248, 0.45)), url('fondosuperior.jpg');
+            /* Capa celeste semitransparente (0.80) sobre tu imagen de banner */
+            background: linear-gradient(rgba(56, 189, 248, 0.66), rgba(56, 189, 248, 0.65)), url('fondosuperior.jpg');
             background-size: cover;
-            background-position: center;
-            border-bottom: 1px solid #0284c7;
-            padding: 1rem 2rem;
+            background-position: 50% 50%; /* Modifica los porcentajes aquí para encuadrar tu foto */
+            padding: 1.8rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: #0f172a;
+            position: relative;
+            z-index: 2;
+            border-bottom: 3px solid rgba(30, 64, 175, 0.3); /* Transición suave hacia la barra */
         }
 
         .header-logo-left, .header-logo-right {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -43,59 +48,69 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
         }
 
         .header-title {
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.65rem;
             font-weight: 700;
             margin: 0;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
         }
 
-        /* --- BARRA DE NAVEGACIÓN MODERNA (Azul) --- */
+        /* --- 2. BARRA DE NAVEGACIÓN MODERNA (Azul base con hover Rojo Punzó) --- */
         nav {
-            background-color: #1e40af; /* Azul sólido */
+            background-color: #1e40af; /* Azul base */
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.25rem;
             padding: 0.85rem 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            /* Sombras profundas para darle un efecto flotante y separar los bloques con fluidez */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
         }
 
+        /* Botones de navegación estilo píldora moderna */
         nav a {
             color: #ffffff;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.95rem;
-            padding: 0.5rem 1.25rem;
+            padding: 0.6rem 1.4rem;
             border-radius: 9999px;
-            transition: all 0.25s ease;
-            background-color: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
         }
 
-        nav a:hover {
-            background-color: #3b82f6;
+        /* Efecto al pasar el cursor o seleccionar: Rojo Punzó transparente con brillo */
+        nav a:hover, nav a:active {
+            background-color: rgba(200, 16, 46, 0.85); /* Rojo punzó transparente */
+            border-color: rgba(255, 255, 255, 0.4);
             color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.5); /* Resplandor rojo punzó */
         }
 
-        /* --- SECCIÓN CENTRAL (Blanco transparente sobre foto) --- */
+        /* --- 3. SECCIÓN CENTRAL (Blanco sobre fondocentral.jpg) --- */
         section {
-            /* Superponemos un blanco translúcido (0.90) para que la foto de fondo se note sutilmente */
-            background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('fondocentral.jpg');
+            /* Capa blanca semitransparente (0.88) para lectura clara */
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('fondocentral.jpg');
             background-size: cover;
-            background-position: center;
-            padding: 5rem 2rem 3rem 2rem;
+            background-position: 50% 50%; /* Modifica los porcentajes aquí para encuadrar tu foto */
+            padding: 5rem 2rem 4rem 2rem;
             min-height: 60vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             box-sizing: border-box;
-            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            /* Sombra interna superior para difuminar la unión visual con la barra */
+            box-shadow: inset 0 10px 15px -10px rgba(0, 0, 0, 0.25);
         }
 
         h2 {
@@ -103,30 +118,36 @@
             margin-bottom: 0.5rem;
             text-align: center;
             color: #000000;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
         }
 
         p.subtitle {
-            color: #334155;
+            color: #1e293b;
             margin-bottom: 2.5rem;
             text-align: center;
-            font-weight: 500;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
         }
 
-        /* --- PIE DE PÁGINA (Azul transparente sobre foto) --- */
+        /* --- 4. PIE DE PÁGINA (Azul sobre fondopie.jpg) --- */
         footer {
-            /* Superponemos un azul oscuro semitransparente sobre su propia foto de fondo */
-            background: linear-gradient(rgba(30, 64, 175, 0.45), rgba(30, 64, 175, 0.45)), url('fondopie.jpg');
+            /* Capa azul oscuro semitransparente (0.90) sobre tu imagen de footer */
+            background: linear-gradient(rgba(30, 64, 175, 0.75), rgba(30, 64, 175, 0.75)), url('fondopie.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: 50% 50%; /* Modifica los porcentajes aquí para encuadrar tu foto */
             color: #ffffff;
             text-align: center;
-            padding: 2.5rem 1rem;
+            padding: 3rem 1rem;
             font-size: 0.95rem;
             line-height: 1.6;
+            position: relative;
+            /* Sombra superior interna profunda para fundir suavemente con la zona anterior */
+            box-shadow: inset 0 12px 15px -8px rgba(0, 0, 0, 0.4);
         }
 
         footer p {
             margin: 0.4rem 0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
@@ -143,7 +164,7 @@
         </div>
     </header>
 
-    <!-- BARRA DE NAVEGACIÓN -->
+    <!-- BARRA DE NAVEGACIÓN LLAMATIVA -->
     <nav>
         <a href="#inicio">Inicio</a>
         <a href="#nosotros">Nosotros</a>
@@ -166,4 +187,5 @@
 
 </body>
 </html>
+
 
