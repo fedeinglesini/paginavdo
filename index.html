@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos 3D sitio: Vuelta de Obligado</title>
+    <!-- Logo en la pestaña del navegador -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        /* Estilos generales: Fondo blanco y texto negro */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth; 
+        }
+
+        /* --- BANNER SUPERIOR (Celeste) --- */
+        header {
+            background-color: #38bdf8; /* Celeste */
+            border-bottom: 1px solid #0284c7;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #0f172a;
+        }
+
+        .header-logo-left, .header-logo-right {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-logo-left img, .header-logo-right img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .header-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* --- BARRA DE NAVEGACIÓN (Azul) --- */
+        nav {
+            background-color: #1e40af; /* Azul */
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0.75rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #93c5fd;
+        }
+
+        /* --- SECCIONES BASE --- */
+        section {
+            padding: 5rem 2rem 3rem 2rem;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            color: #000000;
+        }
+
+        p.subtitle {
+            color: #475569;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        /* --- PIE DE PÁGINA (Azul) --- */
+        footer {
+            background-color: #1e40af; /* Azul */
+            color: #ffffff;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        footer p {
+            margin: 0.4rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BANNER SUPERIOR (Celeste) -->
+    <header>
+        <div class="header-logo-left">
+            <img src="logo.png" alt="Logo Izquierda">
+        </div>
+        <h1 class="header-title">Modelos 3D sitio: Vuelta de Obligado</h1>
+        <div class="header-logo-right">
+            <img src="logo-derecha.png" alt="Logo Derecha" onerror="this.style.display='none'">
+        </div>
+    </header>
+
+    <!-- BARRA DE NAVEGACIÓN (Azul) -->
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#modelos">Modelos 3D</a>
+        <a href="#ubicacion">Ubicación</a>
+    </nav>
+
+    <!-- SECCIÓN: INICIO (Completamente limpia para armar) -->
+    <section id="inicio">
+        <h2>Inicio</h2>
+        <p class="subtitle">Bienvenido al portal del proyecto.</p>
+    </section>
+
+    <!-- PIE DE PÁGINA (Azul) -->
+    <footer>
+        <p><strong>Página desarrollada y administrada por [Tu Nombre / Organización]</strong></p>
+        <p>Agradecimientos especiales al equipo de investigación y colaboradores del proyecto.</p>
+        <p>© 2026 - Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>
 
