@@ -14,17 +14,17 @@
 
         body {
             font-family: system-ui, -apple-system, sans-serif;
-            background-color: #ffffff;
+            background-color: #0f172a;
             color: #0f172a;
             margin: 0;
             padding: 0;
         }
 
-        /* --- 1. BANNER SUPERIOR (Con tus medidas originales intactas) --- */
+        /* --- 1. BANNER SUPERIOR --- */
         header {
-            background: linear-gradient(rgba(78, 53, 34, 0.90), rgba(78, 53, 34, 0.90)), url('fondosuperior.jpg');
-            background-size: 80% auto; /* Tu tamaño original exacto */
-            background-position: 50% 55%; /* Tu posición original exacta */
+            background: linear-gradient(rgba(78, 53, 34, 0.4), rgba(78, 53, 34, 0.4)), url('fondosuperior.jpg');
+            background-size: cover; /* Soluciona el espacio libre y el recuadro gris */
+            background-position: center;
             padding: 1.8rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -80,6 +80,7 @@
             display: inline-block;
             transition: background-color 0.3s ease, color 0.3s ease;
             border: none;
+            outline: none;
         }
 
         /* Al pasar el cursor: Rojo Punzó fluido */
@@ -88,7 +89,7 @@
             color: #ffffff;
         }
 
-        /* --- 3. SECCIÓN CENTRAL (Con sus proporciones originales) --- */
+        /* --- 3. SECCIÓN CENTRAL --- */
         section {
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral.jpg');
             background-size: 125% auto;
