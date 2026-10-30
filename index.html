@@ -58,40 +58,39 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
         }
 
-        /* --- 2. BARRA DE NAVEGACIÓN (Ocupa todo el alto de forma absoluta) --- */
+               /* --- 2. BARRA DE NAVEGACIÓN CORREGIDA --- */
         nav {
-            background-color: #1e40af; /* Azul base */
+            background-color: #1e40af;
             display: flex;
             justify-content: flex-start;
-            align-items: stretch; /* Estira los elementos para que llenen todo el alto de la barra */
-            height: 46px; /* Altura de la barra */
+            height: 48px;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Opciones rectangulares que llenan exactamente el 100% del alto y ancho disponible */
         nav a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
             padding: 0 1.8rem;
-            background-color: transparent;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* TRANSICIÓN FLUIDA */
+            background-color: transparent;
             transition: background-color 0.3s ease, color 0.3s ease;
             border-right: 1px solid rgba(255, 255, 255, 0.1);
             box-sizing: border-box;
         }
 
-        /* Al pasar el cursor: Rojo Punzó cubriendo de forma limpia y total el espacio vertical y horizontal */
         nav a:hover {
-            background-color: #c8102e; /* Rojo Punzó institucional */
+            background-color: #c8102e;
             color: #ffffff;
+        }
+
         }
 
         /* --- 3. SECCIÓN CENTRAL --- */
