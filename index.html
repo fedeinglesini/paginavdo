@@ -26,10 +26,9 @@
 
         /* --- 1. BANNER SUPERIOR --- */
         header {
-            /* Capa translúcida basada en el azul histórico confederado */
             background: linear-gradient(rgba(27, 42, 74, 0.70), rgba(27, 42, 74, 0.70)), url('fondosuperior.jpg');
-            background-size: 105% auto; /* Control de zoom con porcentaje */
-            background-position: 50% 40%; /* Control de posición horizontal y vertical con porcentajes */
+            background-size: cover;
+            background-position: center;
             background-repeat: no-repeat;
             padding: 2.2rem 2rem;
             margin: 0;
@@ -41,8 +40,8 @@
         }
 
         .header-logo-left, .header-logo-right {
-            width: 65px;
-            height: 65px;
+            width: 55px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -57,15 +56,15 @@
 
         .header-title {
             text-align: center;
-            font-size: 1.65rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin: 0;
+            margin: 0 0.5rem;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
         }
 
-        /* --- 2. BARRA DE NAVEGACIÓN (Azul Histórico de la Confederación) --- */
+        /* --- 2. BARRA DE NAVEGACIÓN --- */
         nav {
-            background-color: #1b2a4a; /* Azul índigo / confederado histórico */
+            background-color: #1b2a4a; /* Azul histórico de la Confederación */
             display: flex;
             justify-content: flex-start;
             position: sticky;
@@ -73,6 +72,8 @@
             z-index: 1000;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             margin: 0;
+            overflow-x: auto; /* Permite deslizar con el dedo en celulares si es necesario sin romper la pantalla */
+            white-space: nowrap;
         }
 
         /* Opciones de la barra */
@@ -81,7 +82,7 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
-            padding: 0.7rem 1.5rem;
+            padding: 0.7rem 1.2rem;
             background-color: transparent;
             display: inline-block;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -89,9 +90,9 @@
             outline: none;
         }
 
-        /* Al pasar el cursor: Rojo Punzó histórico */
+        /* Al pasar el cursor / presionar: Rojo Punzó histórico */
         nav a:hover {
-            background-color: #d31d1d; /* Rojo Punzó institucional */
+            background-color: #d31d1d; 
             color: #ffffff;
         }
 
@@ -100,7 +101,7 @@
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral.jpg');
             background-size: 125% auto;
             background-position: 50% 50%;
-            padding: 4rem 2rem;
+            padding: 3rem 1rem;
             min-height: 65vh;
             display: flex;
             flex-direction: column;
@@ -118,14 +119,14 @@
             color: #0f172a;
             width: 100%;
             max-width: 850px;
-            padding: 3rem 2.5rem;
+            padding: 2rem 1.5rem;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             box-sizing: border-box;
         }
 
         .content-box h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-top: 0;
             margin-bottom: 0.75rem;
             color: #0f172a;
@@ -135,7 +136,7 @@
             color: #475569;
             margin-bottom: 1.5rem;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
 
         .content-box p {
@@ -146,12 +147,12 @@
         /* --- 4. PIE DE PÁGINA --- */
         footer {
             background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('fondopie.jpg');
-            background-size: 100% auto;
+            background-size: 94% auto;
             background-position: 40% 43%;
             color: #ffffff;
             text-align: center;
-            padding: 3rem 1rem;
-            font-size: 0.95rem;
+            padding: 2.5rem 1rem;
+            font-size: 0.9rem;
             line-height: 1.6;
             position: relative;
             box-shadow: inset 0 12px 15px -8px rgba(0, 0, 0, 0.4);
@@ -162,6 +163,22 @@
         footer p {
             margin: 0.4rem 0;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- ADAPTABILIDAD PARA CELULARES (RESPONSIVE) --- */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.2rem 1rem;
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .header-title {
+                font-size: 1.2rem;
+            }
+            .header-logo-left, .header-logo-right {
+                width: 45px;
+                height: 45px;
+            }
         }
     </style>
 </head>
@@ -205,4 +222,5 @@
 
 </body>
 </html>
+
 
