@@ -23,7 +23,7 @@
         /* --- 1. BANNER SUPERIOR (Celeste sobre fondosuperior.jpg) --- */
         header {
             /* Capa celeste semitransparente (0.80) sobre tu imagen de banner */
-            background: linear-gradient(rgba(133, 88, 59, 0.67), rgba(133, 88, 59, 0.67)), url('fondosuperior.jpg');
+            background: linear-gradient(rgba(78, 53, 34 0.7), rgba(78, 53, 34 0.7)), url('fondosuperior.jpg');
             background-size: 80% auto;
             background-position: 50% 55%; /* Modifica los porcentajes aquí para encuadrar tu foto */
             padding: 1.8rem 2rem;
@@ -132,8 +132,8 @@
         /* --- 4. PIE DE PÁGINA (Azul sobre fondopie.jpg) --- */
         footer {
             /* Capa azul oscuro semitransparente (0.90) sobre tu imagen de footer */
-            background: linear-gradient(rgba(30, 64, 175, 0.67), rgba(30, 64, 175, 0.67)), url('fondopie.jpg');
-            background-size: 90% auto;
+            background: linear-gradient(rgba(30, 64, 175, 0.65), rgba(30, 64, 175, 0.65)), url('fondopie.jpg');
+            background-size: 94% auto;
             background-position: 40% 43%; /* Modifica los porcentajes aquí para encuadrar tu foto */
             color: #ffffff;
             text-align: center;
@@ -148,7 +148,32 @@
         footer p {
             margin: 0.4rem 0;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-        }
+            
+/* RECUADRO BLANCO CENTRADO */
+.content-box {
+    background-color: #ffffff;
+    color: #000000;
+    width: 100%;
+    max-width: 850px;
+    padding: 3rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+}
+
+.content-box h2 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #0f172a;
+}
+
+.content-box p.subtitle {
+    color: #475569;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
     </style>
 </head>
 <body>
@@ -174,9 +199,13 @@
 
     <!-- SECCIÓN: INICIO -->
     <section id="inicio">
+    <!-- Aquí metes el recuadro -->
+    <div class="content-box">
         <h2>Inicio</h2>
         <p class="subtitle">Bienvenido al portal del proyecto.</p>
-    </section>
+        <p>Todo lo que escribas aquí adentro aparecerá ordenado dentro del recuadro blanco.</p>
+    </div>
+</section>
 
     <!-- PIE DE PÁGINA -->
     <footer>
