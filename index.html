@@ -15,25 +15,25 @@
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background-color: #f8fafc;
-            color: #f8fafc;
+            color: #0f172a;
             margin: 0;
             padding: 0;
         }
 
-        /* --- 1. BANNER SUPERIOR (Celeste sobre fondosuperior.jpg) --- */
+        /* --- 1. BANNER SUPERIOR (Marrón tierra más oscuro sobre fondosuperior.jpg) --- */
         header {
-            /* Capa celeste semitransparente (0.80) sobre tu imagen de banner */
-            background: linear-gradient(rgba(78, 53, 34 0.7), rgba(78, 53, 34 0.7)), url('fondosuperior.jpg');
+            /* Marrón tierra más profundo y sólido con su opacidad */
+            background: linear-gradient(rgba(78, 53, 34, 0.75), rgba(78, 53, 34, 0.75)), url('fondosuperior.jpg');
             background-size: 80% auto;
-            background-position: 50% 55%; /* Modifica los porcentajes aquí para encuadrar tu foto */
+            background-position: 50% 55%;
             padding: 1.8rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #0f172a;
+            color: #ffffff;
             position: relative;
             z-index: 2;
-            border-bottom: 3px solid rgba(30, 64, 175, 0.3); /* Transición suave hacia la barra */
+            border-bottom: 3px solid rgba(30, 64, 175, 0.3);
         }
 
         .header-logo-left, .header-logo-right {
@@ -56,12 +56,12 @@
             font-size: 1.65rem;
             font-weight: 700;
             margin: 0;
-            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
         }
 
         /* --- 2. BARRA DE NAVEGACIÓN MODERNA (Azul base con hover Rojo Punzó) --- */
         nav {
-            background-color: #1e40af; /* Azul base */
+            background-color: #1e40af;
             display: flex;
             justify-content: center;
             gap: 1.25rem;
@@ -69,7 +69,6 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            /* Sombras profundas para darle un efecto flotante y separar los bloques con fluidez */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
         }
 
@@ -89,19 +88,18 @@
 
         /* Efecto al pasar el cursor o seleccionar: Rojo Punzó transparente con brillo */
         nav a:hover, nav a:active {
-            background-color: rgba(200, 16, 46, 0.85); /* Rojo punzó transparente */
+            background-color: rgba(200, 16, 46, 0.85);
             border-color: rgba(255, 255, 255, 0.4);
             color: #ffffff;
             transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.5); /* Resplandor rojo punzó */
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.5);
         }
 
-        /* --- 3. SECCIÓN CENTRAL (Blanco sobre fondocentral.jpg) --- */
+        /* --- 3. SECCIÓN CENTRAL (Gris oscuro sobre fondocentral.jpg) --- */
         section {
-            /* Capa blanca semitransparente (0.88) para lectura clara */
             background: linear-gradient(rgba(100, 116, 139, 0.85), rgba(100, 116, 139, 0.85)), url('fondocentral.jpg');
-            background-size: 125%;
-            background-position: 50% 50%; /* Modifica los porcentajes aquí para encuadrar tu foto */
+            background-size: 125% auto;
+            background-position: 50% 50%;
             padding: 5rem 2rem 4rem 2rem;
             min-height: 60vh;
             display: flex;
@@ -109,71 +107,62 @@
             align-items: center;
             box-sizing: border-box;
             position: relative;
-            /* Sombra interna superior para difuminar la unión visual con la barra */
             box-shadow: inset 0 10px 15px -10px rgba(0, 0, 0, 0.25);
         }
 
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            text-align: center;
+        /* --- RECUADRO BLANCO CENTRADO --- */
+        .content-box {
+            background-color: #ffffff;
             color: #000000;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            width: 100%;
+            max-width: 850px;
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            box-sizing: border-box;
         }
 
-        p.subtitle {
-            color: #1e293b;
-            margin-bottom: 2.5rem;
-            text-align: center;
-            font-weight: 600;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        .content-box h2 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            color: #0f172a;
+            text-shadow: none;
+            text-align: left;
+        }
+
+        .content-box p.subtitle {
+            color: #475569;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            font-size: 1.05rem;
+            text-shadow: none;
+            text-align: left;
+        }
+
+        .content-box p {
+            color: #334155;
+            line-height: 1.6;
         }
 
         /* --- 4. PIE DE PÁGINA (Azul sobre fondopie.jpg) --- */
         footer {
-            /* Capa azul oscuro semitransparente (0.90) sobre tu imagen de footer */
             background: linear-gradient(rgba(30, 64, 175, 0.65), rgba(30, 64, 175, 0.65)), url('fondopie.jpg');
             background-size: 94% auto;
-            background-position: 40% 43%; /* Modifica los porcentajes aquí para encuadrar tu foto */
+            background-position: 40% 43%;
             color: #ffffff;
             text-align: center;
             padding: 3rem 1rem;
             font-size: 0.95rem;
             line-height: 1.6;
             position: relative;
-            /* Sombra superior interna profunda para fundir suavemente con la zona anterior */
             box-shadow: inset 0 12px 15px -8px rgba(0, 0, 0, 0.4);
         }
 
         footer p {
             margin: 0.4rem 0;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-            
-/* RECUADRO BLANCO CENTRADO */
-.content-box {
-    background-color: #ffffff;
-    color: #000000;
-    width: 100%;
-    max-width: 850px;
-    padding: 3rem 2.5rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    box-sizing: border-box;
-}
-
-.content-box h2 {
-    font-size: 2rem;
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    color: #0f172a;
-}
-
-.content-box p.subtitle {
-    color: #475569;
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-    font-size: 1.05rem;
-}
+        }
     </style>
 </head>
 <body>
@@ -199,13 +188,12 @@
 
     <!-- SECCIÓN: INICIO -->
     <section id="inicio">
-    <!-- Aquí metes el recuadro -->
-    <div class="content-box">
-        <h2>Inicio</h2>
-        <p class="subtitle">Bienvenido al portal del proyecto.</p>
-        <p>Todo lo que escribas aquí adentro aparecerá ordenado dentro del recuadro blanco.</p>
-    </div>
-</section>
+        <div class="content-box">
+            <h2>Inicio</h2>
+            <p class="subtitle">Bienvenido al portal del proyecto.</p>
+            <p>Todo lo que escribas aquí adentro aparecerá ordenado dentro del recuadro blanco.</p>
+        </div>
+    </section>
 
     <!-- PIE DE PÁGINA -->
     <footer>
