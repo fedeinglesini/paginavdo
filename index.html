@@ -29,8 +29,8 @@
         }
 
         .header-logo-left, .header-logo-right {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -49,29 +49,37 @@
             margin: 0;
         }
 
-        /* --- BARRA DE NAVEGACIÓN (Azul) --- */
+        /* --- BARRA DE NAVEGACIÓN MODERNA (Azul) --- */
         nav {
             background-color: #1e40af; /* Azul */
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            padding: 0.75rem 1rem;
+            gap: 1rem;
+            padding: 0.85rem 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
+        /* Botones de navegación estilo moderno (píldoras) */
         nav a {
             color: #ffffff;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: color 0.2s;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px; /* Bordes totalmente redondeados */
+            transition: all 0.25s ease;
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
+        /* Efecto de iluminación y movimiento al pasar el mouse */
         nav a:hover {
-            color: #93c5fd;
+            background-color: #3b82f6; /* Se ilumina con un azul más brillante */
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
         }
 
         /* --- SECCIONES BASE --- */
@@ -114,18 +122,23 @@
 </head>
 <body>
 
-    <!-- BANNER SUPERIOR (Celeste) -->
+    <!-- BANNER SUPERIOR (Celeste con dos espacios para logos y título centrado) -->
     <header>
+        <!-- Logo Izquierda -->
         <div class="header-logo-left">
-            <img src="logo.png" alt="Logo Izquierda">
+            <img src="logo.png" alt="Logo Izquierda" onerror="this.style.display='none'">
         </div>
+
+        <!-- Título Central -->
         <h1 class="header-title">Modelos 3D sitio: Vuelta de Obligado</h1>
+
+        <!-- Logo Derecha -->
         <div class="header-logo-right">
             <img src="logo-derecha.png" alt="Logo Derecha" onerror="this.style.display='none'">
         </div>
     </header>
 
-    <!-- BARRA DE NAVEGACIÓN (Azul) -->
+    <!-- BARRA DE NAVEGACIÓN MODERNA (Azul) -->
     <nav>
         <a href="#inicio">Inicio</a>
         <a href="#nosotros">Nosotros</a>
@@ -133,7 +146,7 @@
         <a href="#ubicacion">Ubicación</a>
     </nav>
 
-    <!-- SECCIÓN: INICIO (Completamente limpia para armar) -->
+    <!-- SECCIÓN: INICIO (Limpia por ahora) -->
     <section id="inicio">
         <h2>Inicio</h2>
         <p class="subtitle">Bienvenido al portal del proyecto.</p>
