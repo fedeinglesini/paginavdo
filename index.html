@@ -20,19 +20,23 @@
             padding: 0;
         }
 
+        * {
+            box-sizing: border-box; /* Evita que los bordes y márgenes generen cajas extrañas */
+        }
+
         /* --- 1. BANNER SUPERIOR --- */
         header {
-            background: url('fondosuperior.jpg');
-            background-size: cover; /* Cubre todo el espacio limpiamente sin dejar franjas */
+            background-image: url('fondosuperior.jpg');
+            background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             padding: 2.2rem 2rem;
+            margin: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: #ffffff;
-            position: relative;
-            z-index: 2;
-            border-bottom: 3px solid rgba(30, 64, 175, 0.4);
+            border: none; /* Asegura que no tenga ningún borde nativo */
         }
 
         .header-logo-left, .header-logo-right {
@@ -66,7 +70,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 0;
         }
 
         /* Opciones de la barra */
@@ -199,6 +204,3 @@
 
 </body>
 </html>
-
-
-
