@@ -58,39 +58,39 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
         }
 
-               /* --- 2. BARRA DE NAVEGACIÓN CORREGIDA --- */
+        /* --- 2. BARRA DE NAVEGACIÓN --- */
         nav {
-            background-color: #1e40af;
+            background-color: #1e40af; /* Azul base */
             display: flex;
             justify-content: flex-start;
-            height: 48px;
+            height: 48px; /* Altura total de la barra */
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
+        /* Opciones rectangulares forzadas al 100% de la altura de la barra */
         nav a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
             padding: 0 1.8rem;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 48px; /* Fuerza exacta a ocupar todo el alto de la barra */
+            line-height: 48px; /* Centra el texto verticalmente de forma perfecta */
             background-color: transparent;
+            display: block; /* Bloque completo */
+            text-align: center;
             transition: background-color 0.3s ease, color 0.3s ease;
             border-right: 1px solid rgba(255, 255, 255, 0.1);
             box-sizing: border-box;
         }
 
+        /* Al pasar el cursor: Rojo Punzó cubriendo absolutamente todo el espacio */
         nav a:hover {
-            background-color: #c8102e;
+            background-color: #c8102e; /* Rojo Punzó institucional */
             color: #ffffff;
-        }
-
         }
 
         /* --- 3. SECCIÓN CENTRAL --- */
@@ -190,7 +190,7 @@
         <div class="content-box">
             <h2>Inicio</h2>
             <p class="subtitle">Bienvenido al portal del proyecto.</p>
-            <p>Ahora al pasar el cursor, el bloque rojo se expande cubriendo absolutamente todo el espacio vertical de la barra de forma fluida.</p>
+            <p>Con esta nueva propiedad de altura fija y de bloque, al pasar el cursor el rojo cubre exactamente el 100% de la barra verticalmente.</p>
         </div>
     </section>
 
@@ -203,4 +203,5 @@
 
 </body>
 </html>
+
 
