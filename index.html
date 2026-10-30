@@ -21,22 +21,23 @@
         }
 
         * {
-            box-sizing: border-box; /* Evita que los bordes y márgenes generen cajas extrañas */
+            box-sizing: border-box;
         }
 
         /* --- 1. BANNER SUPERIOR --- */
         header {
+            background-color: #0f172a; /* Mismo color de fondo para evitar líneas extrañas arriba */
             background-image: url('fondosuperior.jpg');
-            background-size: 100% 102%; /* Soluciona el recuadro superior estirando apenas el alto */
+            background-size: cover; /* Proporción natural perfecta, sin deformar la foto */
             background-position: center;
             background-repeat: no-repeat;
-            padding: 2.2rem 2rem;
+            padding: 2.4rem 2rem; /* Un toque más de espacio para lucir la foto bien */
             margin: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: #ffffff;
-            border: none; /* Asegura que no tenga ningún borde nativo */
+            border: none;
         }
 
         .header-logo-left, .header-logo-right {
