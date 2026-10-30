@@ -7,7 +7,7 @@
     <!-- Logo en la pestaña del navegador -->
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        /* Estilos generales: Fondo blanco y texto negro */
+        /* Estilos generales: Fondo base blanco */
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background-color: #ffffff;
@@ -17,9 +17,12 @@
             scroll-behavior: smooth; 
         }
 
-        /* --- BANNER SUPERIOR (Celeste) --- */
+        /* --- BANNER SUPERIOR (Celeste con transparencia sobre foto) --- */
         header {
-            background-color: #38bdf8; /* Celeste */
+            /* Superponemos un celeste transparente (rgba) sobre la foto de fondo */
+            background: linear-gradient(rgba(56, 189, 248, 0.85), rgba(56, 189, 248, 0.85)), url('foto-banner.jpg');
+            background-size: cover;
+            background-position: center;
             border-bottom: 1px solid #0284c7;
             padding: 1rem 2rem;
             display: flex;
@@ -51,7 +54,7 @@
 
         /* --- BARRA DE NAVEGACIÓN MODERNA (Azul) --- */
         nav {
-            background-color: #1e40af; /* Azul */
+            background-color: #1e40af; /* Azul sólido */
             display: flex;
             justify-content: center;
             gap: 1rem;
@@ -62,34 +65,37 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        /* Botones de navegación estilo moderno (píldoras) */
         nav a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
             padding: 0.5rem 1.25rem;
-            border-radius: 9999px; /* Bordes totalmente redondeados */
+            border-radius: 9999px;
             transition: all 0.25s ease;
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Efecto de iluminación y movimiento al pasar el mouse */
         nav a:hover {
-            background-color: #3b82f6; /* Se ilumina con un azul más brillante */
+            background-color: #3b82f6;
             color: #ffffff;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
         }
 
-        /* --- SECCIONES BASE --- */
+        /* --- SECCIÓN CENTRAL (Blanco transparente sobre foto) --- */
         section {
+            /* Superponemos un blanco translúcido (0.90) para que la foto de fondo se note sutilmente */
+            background: linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)), url('foto-fondo-central.jpg');
+            background-size: cover;
+            background-position: center;
             padding: 5rem 2rem 3rem 2rem;
             min-height: 60vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             box-sizing: border-box;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         h2 {
@@ -100,14 +106,18 @@
         }
 
         p.subtitle {
-            color: #475569;
+            color: #334155;
             margin-bottom: 2.5rem;
             text-align: center;
+            font-weight: 500;
         }
 
-        /* --- PIE DE PÁGINA (Azul) --- */
+        /* --- PIE DE PÁGINA (Azul transparente sobre foto) --- */
         footer {
-            background-color: #1e40af; /* Azul */
+            /* Superponemos un azul oscuro semitransparente sobre su propia foto de fondo */
+            background: linear-gradient(rgba(30, 64, 175, 0.92), rgba(30, 64, 175, 0.92)), url('foto-footer.jpg');
+            background-size: cover;
+            background-position: center;
             color: #ffffff;
             text-align: center;
             padding: 2.5rem 1rem;
@@ -122,23 +132,18 @@
 </head>
 <body>
 
-    <!-- BANNER SUPERIOR (Celeste con dos espacios para logos y título centrado) -->
+    <!-- BANNER SUPERIOR -->
     <header>
-        <!-- Logo Izquierda -->
         <div class="header-logo-left">
             <img src="logo.png" alt="Logo Izquierda" onerror="this.style.display='none'">
         </div>
-
-        <!-- Título Central -->
         <h1 class="header-title">Modelos 3D sitio: Vuelta de Obligado</h1>
-
-        <!-- Logo Derecha -->
         <div class="header-logo-right">
             <img src="logo-derecha.png" alt="Logo Derecha" onerror="this.style.display='none'">
         </div>
     </header>
 
-    <!-- BARRA DE NAVEGACIÓN MODERNA (Azul) -->
+    <!-- BARRA DE NAVEGACIÓN -->
     <nav>
         <a href="#inicio">Inicio</a>
         <a href="#nosotros">Nosotros</a>
@@ -146,13 +151,13 @@
         <a href="#ubicacion">Ubicación</a>
     </nav>
 
-    <!-- SECCIÓN: INICIO (Limpia por ahora) -->
+    <!-- SECCIÓN: INICIO -->
     <section id="inicio">
         <h2>Inicio</h2>
         <p class="subtitle">Bienvenido al portal del proyecto.</p>
     </section>
 
-    <!-- PIE DE PÁGINA (Azul) -->
+    <!-- PIE DE PÁGINA -->
     <footer>
         <p><strong>Página desarrollada y administrada por [Tu Nombre / Organización]</strong></p>
         <p>Agradecimientos especiales al equipo de investigación y colaboradores del proyecto.</p>
