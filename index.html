@@ -24,14 +24,22 @@
             box-sizing: border-box;
         }
 
-        /* --- 1. BANNER SUPERIOR --- */
+        /* --- 1. BANNER SUPERIOR (Con capa translúcida y control de porcentajes) --- */
         header {
-            background-color: #0f172a; /* Mismo color de fondo para evitar líneas extrañas arriba */
-            background-image: url('fondosuperior.jpg');
-            background-size: cover; /* Proporción natural perfecta, sin deformar la foto */
-            background-position: center;
+            /* Aquí combinamos la capa translúcida con la foto. 
+               Podés cambiar 'rgba(15, 23, 42, 0.65)' por un tono marrón si preferís: 'rgba(78, 53, 34, 0.65)' */
+            background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('fondosuperior.jpg');
+            
+            /* Control de tamaño/zoom con porcentajes (igual que tus otras secciones) */
+            background-size: 105% auto; 
+            
+            /* Control de posición con porcentajes: 
+               Primer valor = horizontal (50% es centro)
+               Segundo valor = vertical (puedes cambiarlo a 30%, 40%, etc. para subir o bajar la foto) */
+            background-position: 50% 40%; 
+            
             background-repeat: no-repeat;
-            padding: 2.4rem 2rem; /* Un toque más de espacio para lucir la foto bien */
+            padding: 2.2rem 2rem;
             margin: 0;
             display: flex;
             justify-content: space-between;
@@ -145,8 +153,8 @@
 
         /* --- 4. PIE DE PÁGINA --- */
         footer {
-            background: linear-gradient(rgba(30, 64, 175, 0.75), rgba(30, 64, 175, 0.75)), url('fondopie.jpg');
-            background-size: 97% auto;
+            background: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 64, 175, 0.85)), url('fondopie.jpg');
+            background-size: 98% auto;
             background-position: 40% 43%;
             color: #ffffff;
             text-align: center;
@@ -205,4 +213,3 @@
 
 </body>
 </html>
-
