@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vuelta de Obligado - Ubicación</title>
+    <title>Ubicación - Sitio Vuelta de Obligado</title>
     <!-- Logo en la pestaña del navegador (sube un nivel con ../) -->
     <link rel="icon" type="image/png" href="../logoizq.png">
     <style>
@@ -119,29 +119,59 @@
             color: #0f172a;
             width: 100%;
             max-width: 950px; 
-            padding: 4.5rem 2rem; 
+            padding: 3rem 2rem; 
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             box-sizing: border-box;
         }
 
-        .content-box h2 {
-            font-size: 1.8rem;
+        /* --- DISEÑO DE DOS COLUMNAS --- */
+        .ubicacion-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .ubicacion-col h2 {
+            font-size: 1.5rem;
             margin-top: 0;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             color: #0f172a;
+            border-bottom: 2px solid #94a3b8;
+            padding-bottom: 0.4rem;
         }
 
-        .content-box p.subtitle {
-            color: #475569;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .content-box p {
+        .ubicacion-col p {
             color: #334155;
             line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Contenedor del mapa dentro de la columna derecha */
+        .map-container {
+            width: 100%;
+            height: 240px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #94a3b8;
+            background-color: #cbd5e1;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .map-description {
+            font-size: 0.85rem;
+            color: #475569;
+            font-style: italic;
+            text-align: center;
+            margin: 0;
         }
 
         /* --- 4. PIE DE PÁGINA --- */
@@ -186,6 +216,10 @@
                 background-size: cover;
                 background-position: center;
             }
+            .ubicacion-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
     </style>
 </head>
@@ -202,7 +236,7 @@
         </div>
     </header>
 
-    <!-- BARRA DE NAVEGACIÓN (SALIR A LA RAIZ CON ../) -->
+    <!-- BARRA DE NAVEGACIÓN -->
     <nav>
         <a href="../index.html">Inicio</a>
         <a href="../nosotros/index.html">Nosotros</a>
@@ -211,12 +245,40 @@
         <a href="../ubicacion/index.html">Ubicación</a>
     </nav>
 
-    <!-- SECCIÓN: CAMBIAR ACÁ EL TÍTULO SEGÚN LA PÁGINA (EJ: NOSOTROS) -->
-    <section id="nosotros">
+    <!-- SECCIÓN DE UBICACIÓN -->
+    <section id="ubicacion">
         <div class="content-box">
-            <h2>Ubicación</h2>
-            <p class="subtitle">.</p>
-            <p>Página en construcción</p>
+            <div class="ubicacion-grid">
+                
+                <!-- COLUMNA IZQUIERDA: UBICACIÓN -->
+                <div class="ubicacion-col">
+                    <h2>Ubicación</h2>
+                    <p>
+                        El sitio histórico de la Batalla de Vuelta de Obligado se encuentra emplazado sobre la margen derecha del río Paraná, en el partido de San Pedro, provincia de Buenos Aires.
+                    </p>
+                    <p>
+                        Este paraje histórico es reconocido por su profundo valor patrimonial, paisajístico y arqueológico, resguardando los vestigios de la defensa de la soberanía nacional de 1845.
+                    </p>
+                    <p>
+                        El predio cuenta con senderos interpretativos, monumentos conmemorativos y áreas de investigación arqueológica permanente gestionadas junto al equipo de Proarhep.
+                    </p>
+                </div>
+
+                <!-- COLUMNA DERECHA: ¿CÓMO LLEGAR? + MAPA -->
+                <div class="ubicacion-col">
+                    <h2>¿Cómo llegar?</h2>
+                    <p>
+                        Se accede principalmente desde la Ruta Nacional N° 9, tomando el desvío señalizado hacia la ciudad de San Pedro y desde allí recorriendo el camino pavimentado hacia el norte en dirección al paraje.
+                    </p>
+                    
+                    <!-- Recuadro del Mapa -->
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1467.3006802889317!2d-59.81090285660789!3d-33.59680842053154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ba1dda51f097bd%3A0xdc50e50f40a5d653!2sMonumento%20Batalla%20Vuelta%20de%20Obligado!5e0!3m2!1ses!2sar!4v1793445030467!5m2!1ses!2sar" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                    <p class="map-description">Mapa interactivo de la zona de acceso al paraje.</p>
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -229,4 +291,5 @@
 
 </body>
 </html>
+
 
