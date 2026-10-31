@@ -98,7 +98,7 @@
             color: #ffffff;
         }
 
-        /* --- 3. SECCIÓN CENTRAL --- */
+        /* --- 3. SECCIÓN CENTRAL (PC / Valor por defecto) --- */
         section {
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral.jpg');
             background-size: 100% auto;
@@ -171,17 +171,23 @@
         @media (max-width: 768px) {
             header {
                 padding: 1rem 0.8rem;
-                flex-direction: row; /* Mantiene los logos y el título en la misma línea horizontal */
+                flex-direction: row; 
                 justify-content: space-between;
                 align-items: center;
             }
             .header-title {
-                font-size: 1rem; /* Reduce un poquito el texto para que entre cómodo en el medio */
+                font-size: 1rem; 
                 margin: 0 0.2rem;
             }
             .header-logo-left, .header-logo-right {
-                width: 45px; /* Tamaño ideal para celulares */
+                width: 45px; 
                 height: 45px;
+            }
+            /* FOTO CENTRAL DIFERENTE PARA CELULAR */
+            section {
+                background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral.jpg');
+                background-size: cover;
+                background-position: center;
             }
         }
     </style>
@@ -226,5 +232,6 @@
 
 </body>
 </html>
+
 
 
