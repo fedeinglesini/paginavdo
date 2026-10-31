@@ -164,13 +164,24 @@
             margin: 0.4rem 0;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
-
-        /* --- ADAPTABILIDAD PARA CELULARES (RESPONSIVE) --- */
+                /* --- ADAPTABILIDAD PARA CELULARES (RESPONSIVE) --- */
         @media (max-width: 768px) {
             header {
-                padding: 1.2rem 1rem;
-                flex-direction: column;
-                gap: 0.8rem;
+                padding: 1rem 0.8rem;
+                flex-direction: row; /* Mantiene los logos y el título en la misma línea horizontal */
+                justify-content: space-between;
+                align-items: center;
+            }
+            .header-title {
+                font-size: 1rem; /* Reduce un poquito el texto para que entre cómodo en el medio */
+                margin: 0 0.2rem;
+            }
+            .header-logo-left, .header-logo-right {
+                width: 45px; /* Tamaño ideal para que luzcan bien en el celu sin desbordar */
+                height: 45px;
+            }
+        }
+
             }
             .header-title {
                 font-size: 1.2rem;
