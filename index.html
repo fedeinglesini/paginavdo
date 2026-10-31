@@ -45,6 +45,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .header-logo-left img, .header-logo-right img {
@@ -60,6 +61,7 @@
             font-weight: 700;
             margin: 0 0.5rem;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            flex-grow: 1;
         }
 
         /* --- 2. BARRA DE NAVEGACIÓN --- */
@@ -72,7 +74,7 @@
             z-index: 1000;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             margin: 0;
-            overflow-x: auto; /* Permite deslizar con el dedo en celulares si es necesario sin romper la pantalla */
+            overflow-x: auto; /* Permite deslizar con el dedo en celulares sin romper la pantalla */
             white-space: nowrap;
         }
 
@@ -164,7 +166,8 @@
             margin: 0.4rem 0;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
-                /* --- ADAPTABILIDAD PARA CELULARES (RESPONSIVE) --- */
+
+        /* --- ADAPTABILIDAD PARA CELULARES (RESPONSIVE) --- */
         @media (max-width: 768px) {
             header {
                 padding: 1rem 0.8rem;
@@ -177,17 +180,7 @@
                 margin: 0 0.2rem;
             }
             .header-logo-left, .header-logo-right {
-                width: 45px; /* Tamaño ideal para que luzcan bien en el celu sin desbordar */
-                height: 45px;
-            }
-        }
-
-            }
-            .header-title {
-                font-size: 1.2rem;
-            }
-            .header-logo-left, .header-logo-right {
-                width: 45px;
+                width: 45px; /* Tamaño ideal para celulares */
                 height: 45px;
             }
         }
@@ -233,4 +226,5 @@
 
 </body>
 </html>
+
 
