@@ -333,6 +333,17 @@
         <p>Agradecimientos al equipo de investigación. Autores de logos: Juan Ramos y Daniel Gomez</p>
         <p>© 2026 - Todos los derechos reservados</p>
     </footer>
+    
+    <!-- SCRIPT DE PRECARGA EN CACHÉ -->
+    <script>
+        // Precarga todos los videos en segundo plano apenas abre la página
+        window.addEventListener('DOMContentLoaded', () => {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.load();
+            });
+        });
+    </script>
 
 </body>
 </html>
