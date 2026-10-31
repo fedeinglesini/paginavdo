@@ -156,11 +156,11 @@
             font-size: 0.95rem;
         }
 
-        /* Estilo para la imagen de la tabla climática con el mismo filtro aplicado */
+        /* Estilo para la imagen de la tabla climática con bordes casi rectos (4px) */
         .climate-table-img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
+            border-radius: 4px;
             margin-top: 1rem;
             border: 1px solid #94a3b8;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -190,133 +190,7 @@
         .map-description {
             font-size: 0.85rem;
             color: #475569;
-            font-style: italic;
-            text-align: center;
-            margin: 0;
-        }
+            font-style:
 
-        /* --- 4. PIE DE PÁGINA --- */
-        footer {
-            background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('../fondopie.jpg');
-            background-size: 94% auto;
-            background-position: 40% 43%;
-            color: #ffffff;
-            text-align: center;
-            padding: 2.5rem 1rem;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            position: relative;
-            box-shadow: inset 0 12px 15px -8px rgba(0, 0, 0, 0.4);
-            margin: 0;
-            border-radius: 0;
-        }
-
-        footer p {
-            margin: 0.4rem 0;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        /* --- ADAPTABILIDAD PARA CELULARES --- */
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem 0.8rem;
-                flex-direction: row; 
-                justify-content: space-between;
-                align-items: center;
-            }
-            .header-title {
-                font-size: 1rem; 
-                margin: 0 0.2rem;
-            }
-            .header-logo-left, .header-logo-right {
-                width: 65px; 
-                height: 65px;
-            }
-            section {
-                background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg');
-                background-size: cover;
-                background-position: center;
-            }
-            .ubicacion-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- BANNER SUPERIOR CON LOGOS -->
-    <header>
-        <div class="header-logo-left">
-            <img src="../logoizq.png" alt="Logo Izquierda" onerror="this.style.display='none'">
-        </div>
-        <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
-        <div class="header-logo-right">
-            <img src="../logoder.png" alt="Logo Derecha" onerror="this.style.display='none'">
-        </div>
-    </header>
-
-    <!-- BARRA DE NAVEGACIÓN -->
-    <nav>
-        <a href="../index.html">Inicio</a>
-        <a href="../nosotros/index.html">Nosotros</a>
-        <a href="../historia/index.html">Historia</a>
-        <a href="../modelos3d/index.html">Modelos 3D</a>
-        <a href="../ubicacion/index.html">Ubicación</a>
-    </nav>
-
-    <!-- SECCIÓN DE UBICACIÓN -->
-    <section id="ubicacion">
-        <div class="content-box">
-            <div class="ubicacion-grid">
-                
-                <!-- COLUMNA IZQUIERDA: UBICACIÓN + GEOGRAFÍA Y CLIMA + TABLA -->
-                <div class="ubicacion-col">
-                    <h2>Ubicación</h2>
-                    <p>
-                        El sitio histórico de la Batalla de Vuelta de Obligado se encuentra emplazado sobre la margen derecha del río Paraná, en el partido de San Pedro, provincia de Buenos Aires.
-                    </p>
-                    <p>
-                        Este paraje histórico es reconocido por su profundo valor patrimonial, paisajístico y arqueológico, resguardando los vestigios de la defensa de la soberanía nacional de 1845.
-                    </p>
-                    
-                    <!-- Geografía y clima -->
-                    <h3>Geografía y clima</h3>
-                    <p>
-                        El área se caracteriza por sus altas barrancas naturales que dominan el cauce del río Paraná, rodeadas de humedales y vegetación autóctona típica del noreste bonaerense. Las condiciones climáticas presentan variaciones estacionales marcadas:
-                    </p>
-
-                    <!-- Imagen de la tabla climática con filtro unificado -->
-                    <img src="tablaclimavdo.png" alt="Tabla climática de Vuelta de Obligado" class="climate-table-img" onerror="this.style.display='none'">
-                </div>
-
-                <!-- COLUMNA DERECHA: ¿CÓMO LLEGAR? + MAPA -->
-                <div class="ubicacion-col">
-                    <h2>¿Cómo llegar?</h2>
-                    <p>
-                        Se accede principalmente desde la Ruta Nacional N° 9, tomando el desvío señalizado hacia la ciudad de San Pedro y desde allí recorriendo el camino pavimentado hacia el norte en dirección al paraje.
-                    </p>
-                    
-                    <!-- Recuadro del Mapa con integración visual de color -->
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1467.3006802889317!2d-59.81090285660789!3d-33.59680842053154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ba1dda51f097bd%3A0xdc50e50f40a5d653!2sMonumento%20Batalla%20Vuelta%20de%20Obligado!5e0!3m2!1ses!2sar!4v1793445030467!5m2!1ses!2sar" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                    <p class="map-description">Mapa interactivo de la zona de acceso al paraje.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- PIE DE PÁGINA -->
-    <footer>
-        <p><strong>Página desarrollada y administrada por Proarhep / Federico Inglesini</strong></p>
-        <p>Agradecimientos al equipo de investigación. Autores de logos: Juan Ramos y Daniel Gomez</p>
-        <p>© 2026 - Todos los derechos reservados</p>
-    </footer>
-
-</body>
-</html>
 
 
