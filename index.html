@@ -98,7 +98,7 @@
             color: #ffffff;
         }
 
-        /* --- 3. SECCIÓN CENTRAL (PC / Valor por defecto) --- */
+        /* --- 3. SECCIÓN CENTRAL (PC) --- */
         section {
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral.jpg');
             background-size: 100% auto;
@@ -115,13 +115,13 @@
             border-radius: 0;
         }
 
-        /* --- RECUADRO BLANCO CENTRADO --- */
+        /* --- RECUADRO BLANCO / GRIS CLARO CENTRADO (AGRANDADO) --- */
         .content-box {
             background-color: #D3D3D3; /* Gris claro seleccionado */
             color: #0f172a;
             width: 100%;
-            max-width: 850px;
-            padding: 3.5rem 1.5rem;
+            max-width: 950px; /* Ancho máximo aumentado */
+            padding: 4.5rem 2rem; /* Espacio interno aumentado para que sea más largo y alto */
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             box-sizing: border-box;
@@ -185,7 +185,7 @@
             }
             /* FOTO CENTRAL DIFERENTE PARA CELULAR */
             section {
-                background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral.jpg');
+                background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral-celu.jpg');
                 background-size: cover;
                 background-position: center;
             }
@@ -205,13 +205,13 @@
         </div>
     </header>
 
-    <!-- BARRA DE NAVEGACIÓN -->
+    <!-- BARRA DE NAVEGACIÓN (APUNTANDO A LAS CARPETAS) -->
     <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#historia">Historia</a>
-        <a href="#modelos">Modelos 3D</a>
-        <a href="#ubicacion">Ubicación</a>
+        <a href="index.html">Inicio</a>
+        <a href="nosotros/index.html">Nosotros</a>
+        <a href="historia/index.html">Historia</a>
+        <a href="modelos3d/index.html">Modelos 3D</a>
+        <a href="ubicacion/index.html">Ubicación</a>
     </nav>
 
     <!-- SECCIÓN: INICIO -->
@@ -232,6 +232,8 @@
 
 </body>
 </html>
+
+
 
 
 
