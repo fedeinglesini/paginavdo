@@ -1,1 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuelta de Obligado - 3D</title>
+    <!-- Logo en la pestaña del navegador (sale a la raíz) -->
+    <link rel="icon" type="image/png" href="../logoizq.png">
+    <style>
+        /* Estilos generales con scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
 
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* --- 1. BANNER SUPERIOR --- */
+        header {
+            background: linear-gradient(rgba(27, 42, 74, 0.70), rgba(27, 42, 74, 0.70)), url('../fondosuperior.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 2.2rem 2rem;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+            border: none;
+        }
+
+        .header-logo-left, .header-logo-right {
+            width: 125px;
+            height: 125px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .header-logo-left img, .header-logo-right img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+        }
+
+        .header-title {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0 0.5rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            flex-grow: 1;
+        }
+
+        /* --- 2. BARRA DE NAVEGACIÓN --- */
+        nav {
+            background-color: #1b2a4a; /* Azul histórico de la Confederación */
+            display: flex;
+            justify-content: flex-start;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            overflow-x: auto; 
+            white-space: nowrap;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.7rem 1.2rem;
+            background-color: transparent;
+            display: inline-block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: none;
+            outline: none;
+        }
+
+        nav a:hover {
+            background-color: #d31d1d; 
+            color: #ffffff;
+        }
+
+        /* --- 3. CONTENIDO CENTRAL (REEMPLAZADO POR LAS TARJETAS) --- */
+        main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .models-section {
+            background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg');
+            background-size: 100% auto;
+            background-position: 50% 50%;
+            padding: 4rem 1rem;
+            min-height: 65vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            width: 100%;
+            box-shadow: inset 0 10px 15px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1.main-heading { 
+            font-size: 1.8rem; 
+            margin-top: 0;
+            margin-bottom: 0.5rem; 
+            text-align: center; 
+            color: #f8fafc;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        p.subtitle { 
+            color: #cbd5e1; 
+            margin-bottom: 2.5rem; 
+            text-align: center; 
+            font-size: 1.05rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Contenedor de la cuadrícula: separa las tarjetas entre sí con 'gap' */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; /* Espacio separador entre tarjeta y tarjeta */
+            width: 100%;
+            max-width: 950px;
+        }
+
+        /* Cada tarjeta completa es un enlace interactivo */
+        .card-link {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none; /* Saca el subrayado típico de los links */
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Efecto visual cuando pasas el mouse por encima de la tarjeta */
+        .card-link:hover {
+            border-color: #3b82f6;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Contenedor del video en miniatura */
+        .video-wrapper {
+            width: 100%;
+            height: 180px; /* Altura de la miniatura de video */
+            background-color: #0f172a;
+            overflow: hidden;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Evita que el video se deforme */
+        }
+
+        /* Espacio interno para el texto y la flecha */
+        .card-content {
+            padding: 1.25rem; /* Margen interno para que el texto no pegue contra los bordes */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilo del título que funciona como hipervínculo */
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f8fafc;
+            transition: color 0.2s;
+        }
+
+        /* Al pasar el mouse por la tarjeta, el título cambia de color sutilmente */
+        .card-link:hover .card-title {
+            color: #60a5fa; 
+        }
+
+        .arrow {
+            color: #3b82f6;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .card-link:hover .arrow {
+            transform: translateX(4px); /* Mueve la flecha un poquito a la derecha al hacer hover */
+        }
+
+        /* --- 4. PIE DE PÁGINA --- */
+        footer {
+            background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('../fondopie.jpg');
+            background-size: 94% auto;
+            background-position: 40% 43%;
+            color: #ffffff;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            position: relative;
+            box-shadow: inset 0 12px 15px -8px rgba(0, 0, 0, 0.4);
+            margin: 0;
+            border-radius: 0;
+        }
+
+        footer p {
+            margin: 0.4rem 0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- ADAPTABILIDAD PARA CELULARES (RESPONSIVE) --- */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 0.8rem;
+                flex-direction: row; 
+                justify-content: space-between;
+                align-items: center;
+            }
+            .header-title {
+                font-size: 1rem; 
+                margin: 0 0.2rem;
+            }
+            .header-logo-left, .header-logo-right {
+                width: 45px; 
+                height: 45px;
+            }
+            .models-section {
+                background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral-celu.jpg');
+                background-size: cover;
+                background-position: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BANNER SUPERIOR CON LOGOS -->
+    <header>
+        <div class="header-logo-left">
+            <img src="../logoizq.png" alt="Logo Izquierda" onerror="this.style.display='none'">
+        </div>
+        <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
+        <div class="header-logo-right">
+            <img src="../logoder.png" alt="Logo Derecha" onerror="this.style.display='none'">
+        </div>
+    </header>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../nosotros/index.html">Nosotros</a>
+        <a href="../historia/index.html">Historia</a>
+        <a href="index.html">Modelos 3D</a>
+        <a href="../ubicacion/index.html">Ubicación</a>
+    </nav>
+
+    <!-- SECCIÓN CENTRAL CON LAS TARJETAS 3D -->
+    <div class="models-section">
+        <h1 class="main-heading">Modelos 3D sitio: Vuelta de Obligado</h1>
+        <p class="subtitle">¡Tocá cualquiera de los 3 modelos para verlo!</p>
+
+        <div class="grid-container">
+            <!-- Tarjeta 1 -->
+            <a class="card-link" href="https://fedeinglesini.github.io/proyectil/" target="_blank">
+                <div class="video-wrapper">
+                    <video src="Bala.mp4" muted loop playsinline 
+                           onmouseenter="this.play()" 
+                           onmouseleave="this.pause(); this.currentTime = 0;">
+                    </video>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Bala de cañón</span>
+                    <span class="arrow">&rarr;</span>
+                </div>
+            </a>
+
+            <!-- Tarjeta 2 -->
+            <a class="card-link" href="https://fedeinglesini.github.io/Fragmento-de-proyectil/" target="_blank">
+                <div class="video-wrapper">
+                    <video src="Fragmento.mp4" muted loop playsinline 
+                           onmouseenter="this.play()" 
+                           onmouseleave="this.pause(); this.currentTime = 0;">
+                    </video>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Fragmento de proyectil</span>
+                    <span class="arrow">&rarr;</span>
+                </div>
+            </a>
+
+            <!-- Tarjeta 3 -->
+            <a class="card-link" href="https://fedeinglesini.github.io/Boton/" target="_blank">
+                <div class="video-wrapper">
+                    <video src="Boton.mp4" muted loop playsinline 
+                           onmouseenter="this.play()" 
+                           onmouseleave="this.pause(); this.currentTime = 0;">
+                    </video>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Botón de metal</span>
+                    <span class="arrow">&rarr;</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p><strong>Página desarrollada y administrada por Proarhep / Federico Inglesini</strong></p>
+        <p>Agradecimientos al equipo de investigación. Autores de logos: Juan Ramos y Daniel Gomez</p>
+        <p>© 2026 - Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>
