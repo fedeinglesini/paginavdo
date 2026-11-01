@@ -34,6 +34,8 @@
             align-items: center;
             color: #ffffff;
             border: none;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
         .header-logo-left, .header-logo-right {
             width: 135px;
@@ -79,6 +81,15 @@
             margin: 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
             opacity: 0.95;
+        }
+
+        /* Contenedor inferior para los logos en mobile (oculto en PC) */
+        .mobile-logos-container {
+            display: none;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 0.5rem;
         }
 
         /* --- 2. BARRA DE NAVEGACIÓN --- */
@@ -232,29 +243,48 @@
         /* --- ADAPTABILIDAD PARA CELULARES --- */
         @media (max-width: 768px) {
             header {
-                padding: 1rem 0.8rem;
-                flex-direction: row; 
-                justify-content: space-between;
+                padding: 1.2rem 0.8rem;
+                flex-direction: column;
                 align-items: center;
+                text-align: center;
             }
+            /* Ocultamos los logos laterales originales para reubicarlos ordenados abajo */
+            .header-logo-left, .header-logo-right {
+                display: none;
+            }
+            .mobile-logos-container {
+                display: flex;
+            }
+            .mobile-logo-item {
+                width: 75px;
+                height: 75px;
+            }
+            .mobile-logo-item img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+            }
+
             .header-titles {
-                padding: 0.8rem 0.6rem;
-                margin: 0 0.4rem;
+                width: 100%;
+                margin: 0;
+                padding: 0.9rem 0.6rem;
+                background-color: rgba(30, 41, 59, 0.75);
             }
             .header-title {
                 font-size: 1.15rem; 
+                margin-bottom: 0.5rem;
             }
             .header-subtitle-main {
-                font-size: 0.98rem;
+                font-size: 1.05rem;
+                margin-bottom: 0.3rem;
             }
             .header-subtitle-sub {
                 font-size: 0.78rem;
             }
-            .header-logo-left, .header-logo-right {
-                width: 55px; 
-                height: 55px;
-            }
-            /* Pie de página móvil apretado con letra del texto administrado reducida apenitas */
+
+            /* Pie de página móvil apretado */
             footer {
                 flex-direction: column;
                 text-align: center;
@@ -265,7 +295,7 @@
                 width: 100%;
             }
             .footer-center p {
-                font-size: 0.72rem; /* Achicado apenitas para celular */
+                font-size: 0.72rem;
                 margin: 0.1rem 0;
             }
             .footer-bottom-text {
@@ -294,18 +324,35 @@
     </style>
 </head>
 <body>
-    <!-- BANNER SUPERIOR CON LOGOS -->
+    <!-- BANNER SUPERIOR CON LOGOS Y ORDEN ADAPTADO -->
     <header>
+        <!-- Logo izquierdo original (solo visible en PC) -->
         <div class="header-logo-left">
             <img src="logoizq.png" alt="Logo Izquierda" onerror="this.style.display='none'">
         </div>
+
         <div class="header-titles">
+            <!-- Título completo arriba -->
             <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
+            <!-- ProArHEP en el medio -->
             <p class="header-subtitle-main">ProArHEP</p>
+            <!-- Definición debajo -->
             <p class="header-subtitle-sub">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
         </div>
+
+        <!-- Logo derecho original (solo visible en PC) -->
         <div class="header-logo-right">
             <img src="logoder.png" alt="Logo Derecha" onerror="this.style.display='none'">
+        </div>
+
+        <!-- Contenedor exclusivo para móviles: los dos logos abajo flanqueando ProArHEP -->
+        <div class="mobile-logos-container">
+            <div class="mobile-logo-item">
+                <img src="logoizq.png" alt="Logo Izquierda" onerror="this.style.display='none'">
+            </div>
+            <div class="mobile-logo-item">
+                <img src="logoder.png" alt="Logo Derecha" onerror="this.style.display='none'">
+            </div>
         </div>
     </header>
 
