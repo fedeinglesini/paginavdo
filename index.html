@@ -66,33 +66,17 @@
             margin: 0 0 0.4rem 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
         }
-        
-        /* Contenedor exclusivo para la fila del medio en móviles (Logo - ProArHEP - Logo) */
-        .mobile-middle-row {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin: 0.5rem 0;
-        }
-        .mobile-middle-logo {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
-        }
-
         .header-subtitle-main {
             font-size: 1.35rem;
             font-weight: 600;
-            margin: 0;
+            margin: 0 0 0.3rem 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
             letter-spacing: 0.8px;
         }
         .header-subtitle-sub {
             font-size: 1.0rem;
             font-weight: 400;
-            margin: 0.4rem 0 0 0;
+            margin: 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
             opacity: 0.95;
         }
@@ -248,40 +232,54 @@
         /* --- ADAPTABILIDAD PARA CELULARES --- */
         @media (max-width: 768px) {
             header {
-                padding: 1.2rem 0.8rem;
-                flex-direction: column;
-                align-items: center;
+                padding: 1.2rem 0.6rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.8rem;
+            }
+            /* Logos grandes a los costados en la parte superior */
+            .header-logo-left, .header-logo-right {
+                width: 75px;
+                height: 75px;
+            }
+            /* El recuadro del título principal ocupa todo el ancho arriba con excelente tamaño */
+            .header-title-box {
+                order: 1;
+                width: 100%;
+                background-color: rgba(30, 41, 59, 0.75);
+                padding: 0.9rem 0.8rem;
+                border-radius: 8px;
+                border: 1px solid rgba(148, 163, 184, 0.3);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
                 text-align: center;
             }
-            /* Ocultamos los logos laterales originales de PC */
-            .header-logo-left, .header-logo-right {
-                display: none;
-            }
-            /* Activamos la fila del medio con los dos logos flanqueando a ProArHEP */
-            .mobile-middle-row {
-                display: flex;
-            }
-            /* Ocultamos el ProArHEP de PC y dejamos el de mobile */
-            .pc-only {
-                display: none !important;
-            }
-
-            .header-titles {
-                width: 100%;
-                margin: 0;
-                padding: 1rem 0.6rem;
-                background-color: rgba(30, 41, 59, 0.75);
-            }
             .header-title {
-                font-size: 1.15rem; 
-                margin-bottom: 0.2rem;
+                font-size: 1.25rem; 
+                margin: 0;
+            }
+            /* Los logos van abajo de ese título, a los costados del bloque de ProArHEP */
+            .header-logo-left {
+                order: 2;
+            }
+            .header-titles-sub {
+                order: 3;
+                flex-grow: 1;
+                text-align: center;
+                background-color: rgba(30, 41, 59, 0.75);
+                padding: 0.8rem 0.6rem;
+                border-radius: 8px;
+                border: 1px solid rgba(148, 163, 184, 0.3);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            }
+            .header-logo-right {
+                order: 4;
             }
             .header-subtitle-main {
-                font-size: 1.1rem;
+                font-size: 1.15rem;
+                margin-bottom: 0.2rem;
             }
             .header-subtitle-sub {
-                font-size: 0.76rem;
-                margin-top: 0.3rem;
+                font-size: 0.78rem;
             }
 
             /* Pie de página móvil apretado */
@@ -324,32 +322,25 @@
     </style>
 </head>
 <body>
-    <!-- BANNER SUPERIOR CON LOGOS -->
+    <!-- BANNER SUPERIOR CON LOGOS Y RECUPERACIÓN DE ESPACIO -->
     <header>
-        <!-- Logo izquierdo original (solo PC) -->
+        <!-- Logo izquierdo -->
         <div class="header-logo-left">
             <img src="logoizq.png" alt="Logo Izquierda" onerror="this.style.display='none'">
         </div>
 
-        <div class="header-titles">
-            <!-- 1. Título completo arriba -->
+        <!-- Recuadro independiente superior para el título principal -->
+        <div class="header-title-box">
             <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
-            
-            <!-- 2. Fila del medio en móviles: Logo Izq + ProArHEP + Logo Der -->
-            <div class="mobile-middle-row">
-                <img src="logoizq.png" alt="Logo Izq" class="mobile-middle-logo" onerror="this.style.display='none'">
-                <p class="header-subtitle-main">ProArHEP</p>
-                <img src="logoder.png" alt="Logo Der" class="mobile-middle-logo" onerror="this.style.display='none'">
-            </div>
+        </div>
 
-            <!-- ProArHEP exclusivo para PC -->
-            <p class="header-subtitle-main pc-only">ProArHEP</p>
-
-            <!-- 3. Definición completa debajo de todo -->
+        <!-- Recuadro inferior para ProArHEP y su definición -->
+        <div class="header-titles-sub">
+            <p class="header-subtitle-main">ProArHEP</p>
             <p class="header-subtitle-sub">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
         </div>
 
-        <!-- Logo derecho original (solo PC) -->
+        <!-- Logo derecho -->
         <div class="header-logo-right">
             <img src="logoder.png" alt="Logo Derecha" onerror="this.style.display='none'">
         </div>
