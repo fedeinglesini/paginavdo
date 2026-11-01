@@ -11,7 +11,6 @@
         html {
             scroll-behavior: smooth;
         }
-
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background-color: #0f172a;
@@ -19,11 +18,9 @@
             margin: 0;
             padding: 0;
         }
-
         * {
             box-sizing: border-box;
         }
-
         /* --- 1. BANNER SUPERIOR --- */
         header {
             background: linear-gradient(rgba(27, 42, 74, 0.70), rgba(27, 42, 74, 0.70)), url('fondosuperior.jpg');
@@ -38,7 +35,6 @@
             color: #ffffff;
             border: none;
         }
-
         .header-logo-left, .header-logo-right {
             width: 135px;
             height: 135px;
@@ -47,21 +43,36 @@
             justify-content: center;
             flex-shrink: 0;
         }
-
         .header-logo-left img, .header-logo-right img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
         }
-
-        .header-title {
+        .header-titles {
             text-align: center;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin: 0 0.5rem;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
             flex-grow: 1;
+            margin: 0 1rem;
+        }
+        .header-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 0 0.2rem 0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+        }
+        .header-subtitle-main {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 0.2rem 0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            letter-spacing: 0.5px;
+        }
+        .header-subtitle-sub {
+            font-size: 0.85rem;
+            font-weight: 400;
+            margin: 0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            opacity: 0.9;
         }
 
         /* --- 2. BARRA DE NAVEGACIÓN --- */
@@ -74,11 +85,9 @@
             z-index: 1000;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             margin: 0;
-            overflow-x: auto; /* Permite deslizar con el dedo en celulares sin romper la pantalla */
+            overflow-x: auto; 
             white-space: nowrap;
         }
-
-        /* Opciones de la barra */
         nav a {
             color: #ffffff;
             text-decoration: none;
@@ -91,14 +100,12 @@
             border: none;
             outline: none;
         }
-
-        /* Al pasar el cursor / presionar: Rojo Punzó histórico */
         nav a:hover {
             background-color: #d31d1d; 
             color: #ffffff;
         }
 
-        /* --- 3. SECCIÓN CENTRAL (PC) --- */
+        /* --- 3. SECCIÓN CENTRAL --- */
         section {
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral.jpg');
             background-size: 100% auto;
@@ -114,33 +121,28 @@
             margin: 0;
             border-radius: 0;
         }
-
-        /* --- RECUADRO BLANCO / GRIS CLARO CENTRADO (AGRANDADO) --- */
         .content-box {
-            background-color: #D3D3D3; /* Gris claro seleccionado */
+            background-color: #D3D3D3; 
             color: #0f172a;
             width: 100%;
-            max-width: 950px; /* Ancho máximo aumentado */
-            padding: 4.5rem 2rem; /* Espacio interno aumentado para que sea más largo y alto */
+            max-width: 950px; 
+            padding: 4.5rem 2rem; 
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             box-sizing: border-box;
         }
-
         .content-box h2 {
             font-size: 1.8rem;
             margin-top: 0;
             margin-bottom: 0.75rem;
             color: #0f172a;
         }
-
         .content-box p.subtitle {
             color: #475569;
             margin-bottom: 1.5rem;
             font-weight: 600;
             font-size: 1rem;
         }
-
         .content-box p {
             color: #334155;
             line-height: 1.6;
@@ -152,22 +154,54 @@
             background-size: 94% auto;
             background-position: 40% 43%;
             color: #ffffff;
-            text-align: center;
-            padding: 2.5rem 1rem;
+            padding: 2.5rem 2rem;
             font-size: 0.9rem;
             line-height: 1.6;
             position: relative;
             box-shadow: inset 0 12px 15px -8px rgba(0, 0, 0, 0.4);
             margin: 0;
             border-radius: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
         }
-
-        footer p {
-            margin: 0.4rem 0;
+        .footer-center {
+            text-align: center;
+            flex-grow: 1;
+        }
+        .footer-center p {
+            margin: 0.3rem 0;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
+        .footer-bottom-text {
+            margin-top: 0.4rem;
+            font-size: 0.85rem;
+            opacity: 0.95;
+        }
+        .footer-logos {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+        }
+        .footer-logo-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .footer-logo-item img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
 
-        /* --- ADAPTABILIDAD PARA CELULARES (RESPONSIVE) --- */
+        /* --- ADAPTABILIDAD PARA CELULARES --- */
         @media (max-width: 768px) {
             header {
                 padding: 1rem 0.8rem;
@@ -176,42 +210,52 @@
                 align-items: center;
             }
             .header-title {
-                font-size: 1rem; 
-                margin: 0 0.2rem;
+                font-size: 0.95rem; 
+            }
+            .header-subtitle-main {
+                font-size: 0.8rem;
+            }
+            .header-subtitle-sub {
+                font-size: 0.65rem;
             }
             .header-logo-left, .header-logo-right {
-                width: 65px; 
-                height: 65px;
+                width: 55px; 
+                height: 55px;
             }
-            /* FOTO CENTRAL DIFERENTE PARA CELULAR */
-            section {
-                background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral.jpg');
-                background-size: cover;
-                background-position: center;
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-logos {
+                align-items: center;
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-
     <!-- BANNER SUPERIOR CON LOGOS -->
     <header>
         <div class="header-logo-left">
             <img src="logoizq.png" alt="Logo Izquierda" onerror="this.style.display='none'">
         </div>
-        <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
+        <div class="header-titles">
+            <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
+            <p class="header-subtitle-main">ProArHEP</p>
+            <p class="header-subtitle-sub">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
+        </div>
         <div class="header-logo-right">
             <img src="logoder.png" alt="Logo Derecha" onerror="this.style.display='none'">
         </div>
     </header>
 
-    <!-- BARRA DE NAVEGACIÓN (SALIR A LA RAIZ CON ../) -->
+    <!-- BARRA DE NAVEGACIÓN -->
     <nav>
-        <a href="../index.html">Inicio</a>
-        <a href="../sitiohistoria/index.html">Sitio e historia</a>
-        <a href="../modelos3d/index.html">Modelos 3D</a>
-        <a href="../nosotros/index.html">Nosotros</a>
-        <a href="../ubicacion/index.html">Ubicación</a>
+        <a href="index.html">Inicio</a>
+        <a href="sitiohistoria/index.html">Sitio e historia</a>
+        <a href="modelos3d/index.html">Modelos 3D</a>
+        <a href="nosotros/index.html">Nosotros</a>
+        <a href="ubicacion/index.html">Ubicación</a>
     </nav>
 
     <!-- SECCIÓN: INICIO -->
@@ -225,13 +269,26 @@
 
     <!-- PIE DE PÁGINA -->
     <footer>
-        <p><strong>Página desarrollada y administrada por Proarhep / Federico Inglesini</strong></p>
-        <p>Agradecimientos al equipo de investigación. Autores de logos: Juan Ramos y Daniel Gomez</p>
-        <p>© 2026 - Todos los derechos reservados</p>
-    </footer>
+        <div class="footer-center">
+            <p><strong>Página administrada por ProArHEP y desarrollada por Federico Inglesini</strong></p>
+            <p>Agradecimientos a todo el equipo de investigación, Cacique Clara Romero, municipalidad de San Pedro y comunidad de Vuelta de Obligado</p>
+            <p class="footer-bottom-text">© 2026 - ProArHEP todos los derechos reservados</p>
+        </div>
 
+        <div class="footer-logos">
+            <div class="footer-logo-item">
+                <img src="logoizq.png" alt="Logo Izq" onerror="this.style.display='none'">
+                <span>Juan Ramos</span>
+            </div>
+            <div class="footer-logo-item">
+                <img src="logoder.png" alt="Logo Der" onerror="this.style.display='none'">
+                <span>Daniel Gomez</span>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
+
 
 
 
