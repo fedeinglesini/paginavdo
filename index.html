@@ -265,9 +265,9 @@
                 gap: 0.6rem;
             }
 
-            /* Línea 1: Título por encima de los logos */
+            /* Línea 1: Título agrandado por encima de los logos */
             .mobile-line-title {
-                font-size: 1.15rem;
+                font-size: 1.3rem; /* Título más grande para móvil */
                 font-weight: 700;
                 color: #ffffff;
                 margin: 0;
@@ -275,17 +275,17 @@
                 line-height: 1.25;
             }
 
-            /* Línea 2: Logos a los costados con ProArHEP centrado en el medio */
+            /* Línea 2: Logos acercados un poquito al centro con padding horizontal */
             .mobile-line-middle {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 width: 100%;
-                padding: 0 0.5rem;
+                padding: 0 1.2rem; /* Logos acercados al centro */
             }
             .mobile-logo-img {
-                width: 65px;
-                height: 65px;
+                width: 62px;
+                height: 62px;
                 object-fit: contain;
                 filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
                 flex-shrink: 0;
@@ -307,7 +307,7 @@
                 margin: 0;
                 text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
                 opacity: 0.95;
-                white-space: nowrap; /* Evita que salte de renglón si la pantalla lo soporta */
+                white-space: nowrap;
                 width: 100%;
                 text-align: center;
             }
@@ -369,10 +369,10 @@
 
         <!-- Versión Móvil: 3 Líneas sin recuadros -->
         <div class="mobile-banner-layout">
-            <!-- Línea 1: Título por encima de los logos -->
+            <!-- Línea 1: Título agrandado por encima de los logos -->
             <p class="mobile-line-title">Sitio arqueológico Vuelta de Obligado</p>
 
-            <!-- Línea 2: Logos a los costados y ProArHEP en el medio -->
+            <!-- Línea 2: Logos acercados al centro y ProArHEP en el medio -->
             <div class="mobile-line-middle">
                 <img src="logoizq.png" alt="Logo Izq" class="mobile-logo-img" onerror="this.style.display='none'">
                 <p class="mobile-line-proarhep">ProArHEP</p>
