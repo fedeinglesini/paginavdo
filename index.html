@@ -55,20 +55,20 @@
             margin: 0 1rem;
         }
         .header-title {
-            font-size: 1.6rem;
+            font-size: 1.8rem; /* Agrandado un toque más en PC */
             font-weight: 700;
             margin: 0 0 0.3rem 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
         }
         .header-subtitle-main {
-            font-size: 1.25rem;
+            font-size: 1.35rem; /* Agrandado un toque más en PC */
             font-weight: 600;
             margin: 0 0 0.3rem 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
             letter-spacing: 0.8px;
         }
         .header-subtitle-sub {
-            font-size: 0.95rem;
+            font-size: 1.0rem; /* Agrandado un toque más en PC */
             font-weight: 400;
             margin: 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
@@ -230,14 +230,15 @@
                 justify-content: space-between;
                 align-items: center;
             }
+            /* Agrandado muy poquito en celular tal cual pediste */
             .header-title {
-                font-size: 1.05rem; 
+                font-size: 1.15rem; 
             }
             .header-subtitle-main {
-                font-size: 0.9rem;
+                font-size: 0.98rem;
             }
             .header-subtitle-sub {
-                font-size: 0.7rem;
+                font-size: 0.78rem;
             }
             .header-logo-left, .header-logo-right {
                 width: 55px; 
@@ -246,10 +247,16 @@
             footer {
                 flex-direction: column;
                 text-align: center;
+                padding: 2rem 1rem;
+            }
+            .footer-center {
+                width: 100%;
             }
             .footer-logos {
                 align-items: flex-start;
                 width: 100%;
+                max-width: 260px;
+                margin: 0 auto;
             }
         }
     </style>
