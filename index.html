@@ -81,11 +81,6 @@
             opacity: 0.95;
         }
 
-        /* Contenedores específicos para mobile (ocultos en PC) */
-        .mobile-title-box, .mobile-content-container {
-            display: none;
-        }
-
         /* --- 2. BARRA DE NAVEGACIÓN --- */
         nav {
             background-color: #1b2a4a; /* Azul histórico de la Confederación */
@@ -238,74 +233,97 @@
         @media (max-width: 768px) {
             header {
                 padding: 1.2rem 0.6rem;
-                flex-direction: column;
-                align-items: center;
-                gap: 0.8rem;
+                display: block;
+                position: relative;
             }
-            /* Ocultamos los bloques de PC */
+            /* Ocultamos la versión de PC */
             .header-logo-left, .header-logo-right, .header-titles {
                 display: none;
             }
-            /* Mostramos los bloques exclusivos para móvil */
-            .mobile-title-box, .mobile-content-container {
-                display: block;
+
+            /* Contenedor general móvil */
+            .mobile-header-container {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
                 width: 100%;
             }
 
-            /* 1. Recuadro independiente para el título arriba */
-            .mobile-title-box {
+            /* RECUADRO 1: Únicamente para el título arriba */
+            .mobile-box-title {
                 background-color: rgba(30, 41, 59, 0.75);
-                padding: 0.9rem 0.8rem;
-                border-radius: 8px;
                 border: 1px solid rgba(148, 163, 184, 0.3);
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+                border-radius: 8px;
+                padding: 0.8rem 0.6rem;
                 text-align: center;
-                margin-bottom: 0.6rem;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(2px);
             }
-            .mobile-title-box h1 {
-                font-size: 1.2rem;
+            .mobile-box-title h1 {
+                font-size: 1.15rem;
+                font-weight: 700;
                 margin: 0;
                 color: #ffffff;
                 text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
+                line-height: 1.25;
             }
 
-            /* 2. Contenedor inferior adaptado: Logos a los costados y ProArHEP al medio, con la definición abajo */
-            .mobile-content-container {
-                background-color: rgba(30, 41, 59, 0.75);
-                padding: 0.9rem 0.8rem;
-                border-radius: 8px;
-                border: 1px solid rgba(148, 163, 184, 0.3);
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-                text-align: center;
+            /* RECUADRO 2: Para ProArHEP y su definición, con los logos por fuera a los costados */
+            .mobile-middle-wrapper {
+                position: relative;
+                padding: 0 4.2rem; /* Espacio lateral para que los logos queden por fuera */
+                margin-top: 0.2rem;
             }
-            .mobile-middle-row {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-bottom: 0.5rem;
-            }
-            .mobile-side-logo {
+
+            .mobile-outside-logo-left {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
                 width: 60px;
                 height: 60px;
                 object-fit: contain;
-                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
             }
-            .mobile-proarhep-text {
-                font-size: 1.25rem;
+
+            .mobile-outside-logo-right {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 60px;
+                height: 60px;
+                object-fit: contain;
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+            }
+
+            .mobile-box-content {
+                background-color: rgba(30, 41, 59, 0.75);
+                border: 1px solid rgba(148, 163, 184, 0.3);
+                border-radius: 8px;
+                padding: 0.7rem 0.6rem;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(2px);
+            }
+
+            .mobile-proarhep-title {
+                font-size: 1.15rem;
                 font-weight: 600;
                 color: #ffffff;
-                margin: 0;
+                margin: 0 0 0.25rem 0;
                 text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
                 letter-spacing: 0.8px;
             }
-            .mobile-definition-text {
-                font-size: 0.82rem;
+
+            .mobile-proarhep-sub {
+                font-size: 0.75rem;
                 font-weight: 400;
                 color: #ffffff;
                 margin: 0;
                 text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
                 opacity: 0.95;
-                line-height: 1.4;
+                line-height: 1.3;
             }
 
             /* Pie de página móvil apretado */
@@ -350,7 +368,7 @@
 <body>
     <!-- BANNER SUPERIOR -->
     <header>
-        <!-- Versión PC -->
+        <!-- Versión Escritorio (PC) -->
         <div class="header-logo-left">
             <img src="logoizq.png" alt="Logo Izquierda" onerror="this.style.display='none'">
         </div>
@@ -363,19 +381,23 @@
             <img src="logoder.png" alt="Logo Derecha" onerror="this.style.display='none'">
         </div>
 
-        <!-- Versión Móvil: Recuadro del Título Arriba -->
-        <div class="mobile-title-box">
-            <h1>Sitio arqueológico Vuelta de Obligado</h1>
-        </div>
-
-        <!-- Versión Móvil: Fila central con Logos a los costados y ProArHEP al medio, con definición abajo -->
-        <div class="mobile-content-container">
-            <div class="mobile-middle-row">
-                <img src="logoizq.png" alt="Logo Izq" class="mobile-side-logo" onerror="this.style.display='none'">
-                <p class="mobile-proarhep-text">ProArHEP</p>
-                <img src="logoder.png" alt="Logo Der" class="mobile-side-logo" onerror="this.style.display='none'">
+        <!-- Versión Móvil: DOS RECUADROS INDEPENDIENTES -->
+        <div class="mobile-header-container">
+            <!-- RECUADRO 1: Título Arriba -->
+            <div class="mobile-box-title">
+                <h1>Sitio arqueológico Vuelta de Obligado</h1>
             </div>
-            <p class="mobile-definition-text">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
+
+            <!-- RECUADRO 2: ProArHEP y su definición, con los logos por fuera a los costados -->
+            <div class="mobile-middle-wrapper">
+                <img src="logoizq.png" alt="Logo Izq" class="mobile-outside-logo-left" onerror="this.style.display='none'">
+                <img src="logoder.png" alt="Logo Der" class="mobile-outside-logo-right" onerror="this.style.display='none'">
+                
+                <div class="mobile-box-content">
+                    <p class="mobile-proarhep-title">ProArHEP</p>
+                    <p class="mobile-proarhep-sub">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
+                </div>
+            </div>
         </div>
     </header>
 
