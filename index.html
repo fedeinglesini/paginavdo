@@ -53,22 +53,42 @@
             text-align: center;
             flex-grow: 1;
             margin: 0 1rem;
+            background-color: rgba(30, 41, 59, 0.7); 
+            padding: 1.2rem 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(2px);
+        }
+        /* Cuadrado/Barra gris sutil superior dentro del recuadro del título */
+        .header-top-bar {
+            background-color: rgba(71, 85, 105, 0.6);
+            color: #f8fafc;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.25rem 0.8rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.4);
         }
         .header-title {
-            font-size: 1.8rem; /* Agrandado un toque más en PC */
+            font-size: 1.8rem;
             font-weight: 700;
             margin: 0 0 0.3rem 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
         }
         .header-subtitle-main {
-            font-size: 1.35rem; /* Agrandado un toque más en PC */
+            font-size: 1.35rem;
             font-weight: 600;
             margin: 0 0 0.3rem 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
             letter-spacing: 0.8px;
         }
         .header-subtitle-sub {
-            font-size: 1.0rem; /* Agrandado un toque más en PC */
+            font-size: 1.0rem;
             font-weight: 400;
             margin: 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
@@ -186,9 +206,10 @@
             gap: 0.5rem;
             font-size: 0.85rem;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-            background: rgba(0, 0, 0, 0.25);
-            padding: 0.7rem 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.8rem 1rem;
             border-radius: 8px;
+            min-width: 170px;
         }
         .footer-logos-title {
             font-weight: 700;
@@ -230,7 +251,15 @@
                 justify-content: space-between;
                 align-items: center;
             }
-            /* Agrandado muy poquito en celular tal cual pediste */
+            .header-titles {
+                padding: 0.8rem 0.6rem;
+                margin: 0 0.4rem;
+            }
+            .header-top-bar {
+                font-size: 0.65rem;
+                padding: 0.15rem 0.5rem;
+                margin-bottom: 0.3rem;
+            }
             .header-title {
                 font-size: 1.15rem; 
             }
@@ -244,18 +273,23 @@
                 width: 55px; 
                 height: 55px;
             }
+            /* Corrección clave para que el pie de página móvil quede prolijo y ordenado */
             footer {
                 flex-direction: column;
                 text-align: center;
-                padding: 2rem 1rem;
+                padding: 2.2rem 1rem;
+                gap: 1.2rem;
             }
             .footer-center {
                 width: 100%;
             }
+            .footer-center p {
+                font-size: 0.82rem;
+            }
             .footer-logos {
                 align-items: flex-start;
                 width: 100%;
-                max-width: 260px;
+                max-width: 220px;
                 margin: 0 auto;
             }
         }
@@ -268,6 +302,7 @@
             <img src="logoizq.png" alt="Logo Izquierda" onerror="this.style.display='none'">
         </div>
         <div class="header-titles">
+            <div class="header-top-bar">Patrimonio Histórico</div>
             <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
             <p class="header-subtitle-main">ProArHEP</p>
             <p class="header-subtitle-sub">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
