@@ -90,7 +90,7 @@
         }
 
         /* ==========================================
-           2. BARRA DE NAVEGACIÓN
+           2. BARRA DE NAVEGACIÓN Y MENÚ MÓVIL
            ========================================== */
         nav {
             background-color: #1b2a4a;
@@ -119,6 +119,20 @@
         nav a:hover {
             background-color: #d31d1d; 
             color: #ffffff;
+        }
+
+        /* Botón hamburguesa (oculto en escritorio) */
+        .menu-toggle {
+            display: none;
+            background-color: #1b2a4a;
+            color: #ffffff;
+            border: none;
+            font-size: 1.5rem;
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: right;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         /* ==========================================
@@ -312,6 +326,25 @@
                 text-align: center;
             }
 
+            /* Ajustes del menú móvil desplegable */
+            .menu-toggle {
+                display: block; /* Aparece el botón de 3 puntos / hamburguesa */
+            }
+            nav {
+                display: none; /* Oculto por defecto en móvil hasta que se presione */
+                flex-direction: column;
+                width: 100%;
+                white-space: normal;
+            }
+            nav.active {
+                display: flex; /* Se despliega al activar con JS */
+            }
+            nav a {
+                padding: 0.9rem 1.2rem;
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
             /* Pie de página móvil apretado */
             footer {
                 flex-direction: column;
@@ -356,7 +389,7 @@
     <header>
         <!-- Versión Escritorio (PC) -->
         <div class="header-logo-left">
-            <img src="logoizq.png" alt="Logo Izquierda" onerror="this.style.display='none'">
+            <img src="logoizq.png" alt="Logo Izquierda" loading="lazy" onerror="this.style.display='none'">
         </div>
         <div class="header-titles">
             <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
@@ -364,7 +397,7 @@
             <p class="header-subtitle-sub">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
         </div>
         <div class="header-logo-right">
-            <img src="logoder.png" alt="Logo Derecha" onerror="this.style.display='none'">
+            <img src="logoder.png" alt="Logo Derecha" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <!-- Versión Móvil: 3 Líneas sin recuadros -->
@@ -374,9 +407,9 @@
 
             <!-- Línea 2: Logos acercados al centro y ProArHEP en el medio -->
             <div class="mobile-line-middle">
-                <img src="logoizq.png" alt="Logo Izq" class="mobile-logo-img" onerror="this.style.display='none'">
+                <img src="logoizq.png" alt="Logo Izq" class="mobile-logo-img" loading="lazy" onerror="this.style.display='none'">
                 <p class="mobile-line-proarhep">ProArHEP</p>
-                <img src="logoder.png" alt="Logo Der" class="mobile-logo-img" onerror="this.style.display='none'">
+                <img src="logoder.png" alt="Logo Der" class="mobile-logo-img" loading="lazy" onerror="this.style.display='none'">
             </div>
 
             <!-- Línea 3: Denominación debajo de los logos ocupando todo el ancho -->
@@ -384,8 +417,13 @@
         </div>
     </header>
 
+    <!-- BOTÓN MENÚ MÓVIL (HAMBURGUESA / TRES PUNTOS) -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        &#9776; <!-- Icono de barras / hamburguesa -->
+    </button>
+
     <!-- BARRA DE NAVEGACIÓN -->
-    <nav>
+    <nav id="navMenu">
         <a href="index.html">Inicio</a>
         <a href="sitiohistoria/index.html">Sitio e historia</a>
         <a href="modelos3d/index.html">Modelos 3D</a>
@@ -413,18 +451,28 @@
             <div class="footer-logos-title">Autores de logos:</div>
             <div class="footer-logo-item">
                 <a href="logoizq.png" target="_blank">
-                    <img src="logoizq.png" alt="Logo Izq" onerror="this.style.display='none'">
+                    <img src="logoizq.png" alt="Logo Izq" loading="lazy" onerror="this.style.display='none'">
                     <span>Juan Ramos</span>
                 </a>
             </div>
             <div class="footer-logo-item">
                 <a href="logoder.png" target="_blank">
-                    <img src="logoder.png" alt="Logo Der" onerror="this.style.display='none'">
+                    <img src="logoder.png" alt="Logo Der" loading="lazy" onerror="this.style.display='none'">
                     <span>Daniel Gomez</span>
                 </a>
             </div>
         </div>
     </footer>
+
+    <!-- SCRIPT PARA CONTROLAR EL MENÚ DESPLEGABLE MÓVIL -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
 
