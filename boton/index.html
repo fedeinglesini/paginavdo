@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Botón de metal 3D - VdO</title>
     <!-- Logo en la pestaña del navegador (sube un nivel con ../) -->
-    <link rel="icon" type="image/png" href="../logoizq.png">
+    <link rel="icon" type="image/png" href="../logoizq.png?v=2">
     
     <!-- ========================================== -->
     <!-- MOTOR DE GOOGLE (OBLIGATORIO)              -->
@@ -35,8 +35,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            max-width: 70%;
-            max-height: 70%;
+            max-width: 75%;
+            max-height: 75%;
             opacity: 0.15; /* Opacidad sutil para no tapar el objeto 3D */
             z-index: 1; /* Queda detrás del model-viewer */
             pointer-events: none; /* No interfiere con los clics/gestos */
@@ -82,7 +82,13 @@
         src="Boton.glb" 
         alt="Pieza arqueológica" 
         camera-controls 
-        shadow-intensity="1">
+        shadow-intensity="0"
+        exposure="1"
+        environment-image="../studiocalido.hdr"
+        auto-rotate
+        rotation-per-second="15deg"
+        interaction-prompt="none"
+        ar>
     </model-viewer>
 
     <!-- ========================================== -->
