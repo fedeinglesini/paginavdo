@@ -52,7 +52,7 @@
         .content-box p.subtitle { color: #475569; margin-bottom: 1.5rem; font-weight: 600; font-size: 1rem; }
         .content-box p { color: #334155; line-height: 1.6; }
 
-        /* FOOTER */
+        /* FOOTER (PC) */
         footer {
             background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('fondopie.jpg');
             background-size: 94% auto; background-position: 40% 43%; color: #fff;
@@ -60,20 +60,29 @@
             box-shadow: inset 0 12px 15px -8px rgba(0,0,0,0.4);
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
         }
-        .footer-center { text-align: center; flex-grow: 1; }
+        .footer-center { text-align: center; flex-grow: 1; order: 2; }
         .footer-center p { margin: 0.3rem 0; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
         .footer-bottom-text { margin-top: 0.4rem; font-size: 0.85rem; opacity: 0.95; }
         
-        /* Contenedores de bloques en el footer (PC: izquierda / derecha) */
-        .footer-left-block { display: flex; align-items: center; }
-        .footer-unlu-link { display: flex; align-items: center; text-decoration: none; transition: opacity 0.2s ease; }
+        /* Bloque UNLu Izquierda (Estilo unificado con el de Autores) */
+        .footer-left-block {
+            display: flex; flex-direction: column; gap: 0.5rem; background: rgba(0,0,0,0.3);
+            padding: 0.8rem 1rem; border-radius: 8px; min-width: 170px; order: 1;
+        }
+        .footer-unlu-title {
+            font-weight: 700; font-size: 0.85rem; margin-bottom: 0.1rem; text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.2rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        .footer-unlu-link { display: flex; align-items: center; gap: 0.6rem; color: #fff; text-decoration: none; transition: opacity 0.2s ease; }
         .footer-unlu-link:hover { opacity: 0.8; }
-        .footer-unlu-logo { width: 55px; height: 55px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); border-radius: 4px; }
+        .footer-unlu-logo { width: 26px; height: 26px; object-fit: contain; border-radius: 4px; border: 1px solid rgba(255,255,255,0.4); }
+        .footer-unlu-text { font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
 
+        /* Bloque Autores Derecha */
         .footer-logos {
             display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;
             text-shadow: 0 1px 2px rgba(0,0,0,0.5); background: rgba(0,0,0,0.3);
-            padding: 0.8rem 1rem; border-radius: 8px; min-width: 170px;
+            padding: 0.8rem 1rem; border-radius: 8px; min-width: 170px; order: 3;
         }
         .footer-logos-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.1rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.2rem; }
         .footer-logo-item a { display: flex; align-items: center; gap: 0.6rem; color: #fff; text-decoration: none; transition: opacity 0.2s ease; }
@@ -94,7 +103,6 @@
             #desktopNav { display: none !important; }
             .mobile-nav-container { display: block; position: sticky; top: 0; z-index: 2000; width: 100%; }
             
-            /* Barra móvil más fina y estilizada */
             .mobile-menu-bar {
                 background-color: #1b2a4a; color: #fff; display: flex; justify-content: space-between; align-items: center;
                 padding: 0.4rem 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); width: 100%;
@@ -102,7 +110,6 @@
             .mobile-menu-title { font-size: 0.9rem; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
             .menu-toggle { background: transparent; color: #fff; border: none; font-size: 1.2rem; cursor: pointer; padding: 0.1rem; }
 
-            /* Menú desplegable flotante */
             #navMenuMobile {
                 display: none; position: absolute; top: 100%; left: 0; width: 100%; flex-direction: column;
                 background-color: rgba(27, 42, 74, 0.98); backdrop-filter: blur(10px);
@@ -113,21 +120,24 @@
             #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: #fff; text-decoration: none; }
             #navMenuMobile a:hover { background-color: #d31d1d; }
 
-            footer { flex-direction: column; text-align: center; padding: 1.2rem 0.8rem; gap: 0.8rem; }
-            
-            /* En móvil ordenamos: centro (textos), y una fila inferior con UNLu a la izquierda y Autores a la derecha */
+            /* Footer Móvil */
+            footer { flex-direction: column; text-align: center; padding: 1rem 0.8rem; gap: 0.8rem; }
             .footer-center { order: 1; width: 100%; }
-            .footer-left-block { order: 2; width: 100%; display: flex; justify-content: flex-start; }
-            .footer-logos { order: 3; width: auto; align-items: flex-start; max-width: 180px; margin: 0 0 0 auto; padding: 0.35rem 0.6rem; gap: 0.2rem; }
-            
-            /* Ajuste de contenedor inferior en móvil para poner lado a lado UNLu y Autores */
-            .footer-bottom-row { display: flex; justify-content: space-between; align-items: center; width: 100%; order: 2; }
-
             .footer-center p { font-size: 0.72rem; margin: 0.1rem 0; }
             .footer-bottom-text { margin-top: 0.15rem; font-size: 0.70rem; }
-            .footer-logos-title { font-size: 0.75rem; }
+
+            /* Contenedor inferior en móvil para poner lado a lado UNLu y Autores */
+            .mobile-footer-row {
+                display: flex; justify-content: space-between; align-items: stretch; width: 100%; order: 2; gap: 0.5rem;
+            }
+            .footer-left-block { order: 1; flex: 1; max-width: 48%; }
+            .footer-logos { order: 2; flex: 1; max-width: 48%; margin: 0; }
+            
+            .footer-unlu-title, .footer-logos-title { font-size: 0.75rem; }
+            .footer-unlu-text { font-size: 0.75rem; }
             .footer-logo-item img { width: 20px; height: 20px; }
             .footer-logo-item span { font-size: 0.75rem; }
+            .footer-unlu-logo { width: 20px; height: 20px; }
         }
     </style>
 </head>
@@ -183,10 +193,12 @@
     </section>
 
     <footer>
-        <!-- Logo de la UNLu a la izquierda con enlace externo -->
+        <!-- Bloque UNLu Izquierda -->
         <div class="footer-left-block">
-            <a href="https://www.unlu.edu.ar" class="footer-unlu-link" target="_blank" rel="noopener noreferrer" title="Universidad Nacional de Luján">
+            <div class="footer-unlu-title">Universidad:</div>
+            <a href="https://www.unlu.edu.ar" class="footer-unlu-link" target="_blank" rel="noopener noreferrer">
                 <img src="logounlu.png" alt="Logo UNLu" class="footer-unlu-logo" loading="lazy" onerror="this.style.display='none'">
+                <span class="footer-unlu-text">UNLu</span>
             </a>
         </div>
 
@@ -195,7 +207,7 @@
             <p class="footer-bottom-text">© 2026 - ProArHEP todos los derechos reservados</p>
         </div>
 
-        <!-- Bloque de Autores de logos a la derecha -->
+        <!-- Bloque Autores Derecha -->
         <div class="footer-logos">
             <div class="footer-logos-title">Autores de logos:</div>
             <div class="footer-logo-item">
@@ -230,6 +242,7 @@
     </script>
 </body>
 </html>
+
 
 
 
