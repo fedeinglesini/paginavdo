@@ -52,7 +52,7 @@
         .content-box p.subtitle { color: #475569; margin-bottom: 1.5rem; font-weight: 600; font-size: 1rem; }
         .content-box p { color: #334155; line-height: 1.6; }
 
-        /* FOOTER (PC) - EXACTAMENTE COMO LO TENÍAS */
+        /* FOOTER (PC) - Intacto como pediste */
         footer {
             background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('fondopie.jpg');
             background-size: 94% auto; background-position: 40% 43%; color: #fff;
@@ -86,7 +86,10 @@
         .footer-logo-item a:hover { opacity: 0.8; }
         .footer-logo-item img { width: 26px; height: 26px; object-fit: contain; border-radius: 4px; border: 1px solid rgba(255,255,255,0.4); }
 
-        /* RESPONSIVE MÓVIL (Tres pisos ordenados sin barras divisorias) */
+        /* Contenedor exclusivo para la fila de los dos logos en móvil */
+        .footer-mobile-row { display: contents; }
+
+        /* RESPONSIVE MÓVIL */
         @media (max-width: 768px) {
             header { padding: 1.2rem 0.8rem; display: block; }
             .header-logo-left, .header-logo-right, .header-titles { display: none; }
@@ -137,10 +140,10 @@
                 margin: 0;
             }
 
-            /* Piso 2: Fila intermedia con UNLu a la izquierda y Autores a la derecha */
+            /* Piso 2: Fila intermedia con los dos logos lado a lado */
             .footer-mobile-row {
                 order: 2;
-                display: flex;
+                display: flex !important;
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
@@ -152,8 +155,8 @@
                 min-width: auto;
             }
             .footer-unlu-logo {
-                width: 60px;
-                height: 60px;
+                width: 55px;
+                height: 55px;
             }
             .footer-logos {
                 order: 2;
@@ -166,7 +169,7 @@
             .footer-logo-item span { font-size: 0.72rem; }
 
             /* Piso 3: Copyright abajo del todo */
-            .footer-center .footer-bottom-text {
+            .footer-bottom-text {
                 order: 3;
                 width: 100%;
                 margin-top: 0;
@@ -228,33 +231,38 @@
     </section>
 
     <footer>
-        <!-- Logo UNLu limpio a la izquierda -->
-        <div class="footer-left-block">
-            <a href="https://www.unlu.edu.ar" class="footer-unlu-link" target="_blank" rel="noopener noreferrer" title="Universidad Nacional de Luján">
-                <img src="logounlu.png" alt="Logo UNLu" class="footer-unlu-logo" loading="lazy" onerror="this.style.display='none'">
-            </a>
+        <div class="footer-center">
+            <p><strong>Página desarrollada y administrada por ProArHEP - Federico Inglesini</strong></p>
+        </div>
+
+        <div class="footer-mobile-row">
+            <!-- Logo UNLu limpio a la izquierda -->
+            <div class="footer-left-block">
+                <a href="https://www.unlu.edu.ar" class="footer-unlu-link" target="_blank" rel="noopener noreferrer" title="Universidad Nacional de Luján">
+                    <img src="logounlu.png" alt="Logo UNLu" class="footer-unlu-logo" loading="lazy" onerror="this.style.display='none'">
+                </a>
+            </div>
+
+            <!-- Bloque Autores a la derecha -->
+            <div class="footer-logos">
+                <div class="footer-logos-title">Autores de logos:</div>
+                <div class="footer-logo-item">
+                    <a href="logoizq.png" target="_blank" rel="noopener noreferrer">
+                        <img src="logoizq.png" alt="Logo Izq" loading="lazy" onerror="this.style.display='none'">
+                        <span>Juan Ramos</span>
+                    </a>
+                </div>
+                <div class="footer-logo-item">
+                    <a href="logoder.png" target="_blank" rel="noopener noreferrer">
+                        <img src="logoder.png" alt="Logo Der" loading="lazy" onerror="this.style.display='none'">
+                        <span>Daniel Gomez</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="footer-center">
-            <p><strong>Página desarrollada y administrada por ProArHEP - Federico Inglesini</strong></p>
             <p class="footer-bottom-text">© 2026 - ProArHEP todos los derechos reservados</p>
-        </div>
-
-        <!-- Bloque Autores a la derecha -->
-        <div class="footer-logos">
-            <div class="footer-logos-title">Autores de logos:</div>
-            <div class="footer-logo-item">
-                <a href="logoizq.png" target="_blank" rel="noopener noreferrer">
-                    <img src="logoizq.png" alt="Logo Izq" loading="lazy" onerror="this.style.display='none'">
-                    <span>Juan Ramos</span>
-                </a>
-            </div>
-            <div class="footer-logo-item">
-                <a href="logoder.png" target="_blank" rel="noopener noreferrer">
-                    <img src="logoder.png" alt="Logo Der" loading="lazy" onerror="this.style.display='none'">
-                    <span>Daniel Gomez</span>
-                </a>
-            </div>
         </div>
     </footer>
 
@@ -275,6 +283,7 @@
     </script>
 </body>
 </html>
+
 
 
 
