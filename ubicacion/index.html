@@ -4,482 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubicación - Sitio Vuelta de Obligado</title>
-    <!-- Logo en la pestaña del navegador (sube un nivel con ../) -->
     <link rel="icon" type="image/png" href="../logoizq.png">
     <style>
-        /* Estilos generales con scroll suave */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
+        body { font-family: system-ui, -apple-system, sans-serif; background-color: #0f172a; color: #0f172a; margin: 0; padding: 0; }
+        * { box-sizing: border-box; }
 
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: #0f172a;
-            color: #0f172a;
-            margin: 0;
-            padding: 0;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        /* ==========================================
-           1. BANNER SUPERIOR (ESCRITORIO / PC)
-           ========================================== */
+        /* HEADER PC */
         header {
             background: linear-gradient(rgba(27, 42, 74, 0.70), rgba(27, 42, 74, 0.70)), url('../fondosuperior.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 2.2rem 2rem;
-            margin: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #ffffff;
-            border: none;
+            background-size: cover; background-position: center;
+            padding: 2.2rem 2rem; display: flex; justify-content: space-between; align-items: center; color: #fff;
         }
+        .header-logo-left, .header-logo-right { width: 135px; height: 135px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .header-logo-left img, .header-logo-right img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25)); }
+        .header-titles { text-align: center; flex-grow: 1; margin: 0 1rem; background-color: rgba(30, 41, 59, 0.7); padding: 1.2rem 1.5rem; border-radius: 10px; border: 1px solid rgba(148, 163, 184, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
+        .header-title { font-size: 1.8rem; font-weight: 700; margin: 0 0 0.4rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
+        .header-subtitle-main { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.3rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); letter-spacing: 0.8px; }
+        .header-subtitle-sub { font-size: 1.0rem; font-weight: 400; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); opacity: 0.95; }
+        .mobile-banner-layout { display: none; }
 
-        .header-logo-left, .header-logo-right {
-            width: 135px;
-            height: 135px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .header-logo-left img, .header-logo-right img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
-        }
-
-        .header-titles {
-            text-align: center;
-            flex-grow: 1;
-            margin: 0 1rem;
-            background-color: rgba(30, 41, 59, 0.7); 
-            padding: 1.2rem 1.5rem;
-            border-radius: 10px;
-            border: 1px solid rgba(148, 163, 184, 0.3);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(2px);
-        }
-
-        .header-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0 0 0.4rem 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-        }
-
-        .header-subtitle-main {
-            font-size: 1.35rem;
-            font-weight: 600;
-            margin: 0 0 0.3rem 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-            letter-spacing: 0.8px;
-        }
-
-        .header-subtitle-sub {
-            font-size: 1.0rem;
-            font-weight: 400;
-            margin: 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-            opacity: 0.95;
-        }
-
-        /* Ocultamos la versión móvil en pantallas grandes */
-        .mobile-banner-layout {
-            display: none;
-        }
-
-        /* ==========================================
-           2. BARRA DE NAVEGACIÓN
-           ========================================== */
+        /* NAVEGACIÓN PC */
         nav {
-            background-color: #1b2a4a;
-            display: flex;
-            justify-content: flex-start;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            margin: 0;
-            overflow-x: auto; 
-            white-space: nowrap;
+            background-color: #1b2a4a; display: flex; justify-content: flex-start;
+            position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            overflow-x: auto; white-space: nowrap;
         }
-
         nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 0.7rem 1.2rem;
-            background-color: transparent;
-            display: inline-block;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            border: none;
-            outline: none;
+            color: #fff; text-decoration: none; font-weight: 500; font-size: 0.9rem;
+            padding: 0.7rem 1.2rem; display: inline-block; transition: background-color 0.3s ease;
         }
+        nav a:hover { background-color: #d31d1d; }
+        .mobile-nav-container { display: none; }
 
-        nav a:hover {
-            background-color: #d31d1d; 
-            color: #ffffff;
-        }
-
-        /* ==========================================
-           3. SECCIÓN CENTRAL
-           ========================================== */
+        /* SECCIÓN CENTRAL UBICACIÓN */
         section {
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg');
-            background-size: 100% auto;
-            background-position: 50% 50%;
-            padding: 3rem 1rem;
-            min-height: 65vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-sizing: border-box;
-            position: relative;
-            box-shadow: inset 0 10px 15px -10px rgba(0, 0, 0, 0.3);
-            margin: 0;
-            border-radius: 0;
+            background-size: 100% auto; background-position: 50% 50%;
+            padding: 3rem 1rem; min-height: 65vh; display: flex; flex-direction: column; align-items: center;
+            box-shadow: inset 0 10px 15px -10px rgba(0,0,0,0.3);
         }
-
-        /* --- RECUADRO CENTRAL (Más largo y espacioso) --- */
         .content-box {
-            background-color: #D3D3D3; 
-            color: #0f172a;
-            width: 100%;
-            max-width: 1100px; 
-            padding: 3.5rem 2.5rem; 
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            box-sizing: border-box;
+            background-color: #D3D3D3; color: #0f172a; width: 100%; max-width: 1100px;
+            padding: 3.5rem 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
+        .ubicacion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .ubicacion-col h2 { font-size: 1.5rem; margin-top: 0; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #94a3b8; padding-bottom: 0.4rem; }
+        .ubicacion-col h3 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.6rem; color: #1b2a4a; }
+        .ubicacion-col p { color: #334155; line-height: 1.6; margin-bottom: 1rem; font-size: 0.95rem; }
 
-        /* --- DISEÑO DE DOS COLUMNAS --- */
-        .ubicacion-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
+        .climate-table-img { width: 100%; height: auto; border-radius: 4px; margin-top: 1rem; border: 1px solid #94a3b8; box-shadow: 0 4px 10px rgba(0,0,0,0.15); display: block; filter: saturate(85%) contrast(95%); }
+        .map-container { width: 100%; height: 250px; border-radius: 4px; overflow: hidden; margin-top: 1rem; margin-bottom: 0.75rem; border: 1px solid #94a3b8; box-shadow: 0 4px 10px rgba(0,0,0,0.15); background-color: #cbd5e1; }
+        .map-container iframe { width: 100%; height: 100%; border: 0; filter: saturate(80%) contrast(95%); }
+        .map-description { font-size: 0.85rem; color: #475569; font-style: italic; text-align: center; margin: 0; }
 
-        .ubicacion-col h2 {
-            font-size: 1.5rem;
-            margin-top: 0;
-            margin-bottom: 1rem;
-            color: #0f172a;
-            border-bottom: 2px solid #94a3b8;
-            padding-bottom: 0.4rem;
-        }
-
-        /* Subtítulos internos secundarios */
-        .ubicacion-col h3 {
-            font-size: 1.15rem;
-            margin-top: 1.8rem;
-            margin-bottom: 0.6rem;
-            color: #1b2a4a;
-        }
-
-        .ubicacion-col p {
-            color: #334155;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        /* Estilo para la imagen de la tabla climática con bordes de 4px */
-        .climate-table-img {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            margin-top: 1rem;
-            border: 1px solid #94a3b8;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            display: block;
-            filter: saturate(85%) contrast(95%);
-        }
-
-        /* Contenedor del mapa con idénticos bordes (4px) y sombra que la tabla */
-        .map-container {
-            width: 100%;
-            height: 250px;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 1rem;
-            margin-bottom: 0.75rem;
-            border: 1px solid #94a3b8;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            background-color: #cbd5e1;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            filter: saturate(80%) contrast(95%);
-        }
-
-        .map-description {
-            font-size: 0.85rem;
-            color: #475569;
-            font-style: italic;
-            text-align: center;
-            margin: 0;
-        }
-
-        /* ==========================================
-           4. PIE DE PÁGINA
-           ========================================== */
+        /* FOOTER */
         footer {
             background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('../fondopie.jpg');
-            background-size: 94% auto;
-            background-position: 40% 43%;
-            color: #ffffff;
-            padding: 2.5rem 2rem;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            position: relative;
-            box-shadow: inset 0 12px 15px -8px rgba(0, 0, 0, 0.4);
-            margin: 0;
-            border-radius: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
+            background-size: 94% auto; background-position: 40% 43%; color: #fff;
+            padding: 2.5rem 2rem; font-size: 0.9rem; line-height: 1.6;
+            box-shadow: inset 0 12px 15px -8px rgba(0,0,0,0.4);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
         }
-
-        .footer-center {
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        .footer-center p {
-            margin: 0.3rem 0;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .footer-bottom-text {
-            margin-top: 0.4rem;
-            font-size: 0.85rem;
-            opacity: 0.95;
-        }
-
+        .footer-center { text-align: center; flex-grow: 1; }
+        .footer-center p { margin: 0.3rem 0; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+        .footer-bottom-text { margin-top: 0.4rem; font-size: 0.85rem; opacity: 0.95; }
         .footer-logos {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-            background: rgba(0, 0, 0, 0.3);
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
-            min-width: 170px;
+            display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5); background: rgba(0,0,0,0.3);
+            padding: 0.8rem 1rem; border-radius: 8px; min-width: 170px;
         }
+        .footer-logos-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.1rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.2rem; }
+        .footer-logo-item a { display: flex; align-items: center; gap: 0.6rem; color: #fff; text-decoration: none; transition: opacity 0.2s ease; }
+        .footer-logo-item a:hover { opacity: 0.8; }
+        .footer-logo-item img { width: 26px; height: 26px; object-fit: contain; border-radius: 4px; border: 1px solid rgba(255,255,255,0.4); }
 
-        .footer-logos-title {
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-bottom: 0.1rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            padding-bottom: 0.2rem;
-        }
-
-        .footer-logo-item {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .footer-logo-item a {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: #ffffff;
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
-
-        .footer-logo-item a:hover {
-            opacity: 0.8;
-        }
-
-        .footer-logo-item img {
-            width: 26px;
-            height: 26px;
-            object-fit: contain;
-            border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        /* ==========================================
-           5. ADAPTABILIDAD PARA CELULARES (MÓVIL)
-           ========================================== */
+        /* RESPONSIVE MÓVIL */
         @media (max-width: 768px) {
-            header {
-                padding: 1.2rem 0.8rem;
-                display: block;
-            }
+            header { padding: 1.2rem 0.8rem; display: block; }
+            .header-logo-left, .header-logo-right, .header-titles { display: none; }
+            .mobile-banner-layout { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; gap: 0.6rem; }
+            .mobile-line-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
+            .mobile-line-middle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 1.2rem; }
+            .mobile-logo-img { width: 62px; height: 62px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
+            .mobile-line-proarhep { font-size: 1.25rem; font-weight: 600; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
+            .mobile-line-definition { font-size: 0.78rem; font-weight: 400; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); opacity: 0.95; }
 
-            /* Ocultamos la versión de PC en celulares */
-            .header-logo-left, .header-logo-right, .header-titles {
-                display: none;
+            #desktopNav { display: none !important; }
+            .mobile-nav-container { display: block; position: sticky; top: 0; z-index: 2000; width: 100%; }
+            
+            .mobile-menu-bar {
+                background-color: #1b2a4a; color: #fff; display: flex; justify-content: space-between; align-items: center;
+                padding: 0.4rem 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); width: 100%;
             }
+            .mobile-menu-title { font-size: 0.9rem; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+            .menu-toggle { background: transparent; color: #fff; border: none; font-size: 1.2rem; cursor: pointer; padding: 0.1rem; }
 
-            /* Mostramos la estructura móvil de 3 líneas sin recuadros */
-            .mobile-banner-layout {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                width: 100%;
-                gap: 0.6rem;
+            #navMenuMobile {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%; flex-direction: column;
+                background-color: rgba(27, 42, 74, 0.98); backdrop-filter: blur(10px);
+                box-shadow: 0 15px 25px rgba(0,0,0,0.5); opacity: 0; visibility: hidden;
+                transform: translateY(-8px); transition: opacity 0.25s ease, transform 0.25s ease; z-index: 1999;
             }
+            #navMenuMobile.active { display: flex; opacity: 1; visibility: visible; transform: translateY(0); }
+            #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: #fff; text-decoration: none; }
+            #navMenuMobile a:hover { background-color: #d31d1d; }
 
-            /* Línea 1: Título agrandado por encima de los logos */
-            .mobile-line-title {
-                font-size: 1.3rem;
-                font-weight: 700;
-                color: #ffffff;
-                margin: 0;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-                line-height: 1.25;
-            }
+            .ubicacion-grid { grid-template-columns: 1fr; gap: 2rem; }
 
-            /* Línea 2: Logos acercados un poquito al centro con padding horizontal */
-            .mobile-line-middle {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-                padding: 0 1.2rem;
-            }
-
-            .mobile-logo-img {
-                width: 62px;
-                height: 62px;
-                object-fit: contain;
-                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
-                flex-shrink: 0;
-            }
-
-            .mobile-line-proarhep {
-                font-size: 1.25rem;
-                font-weight: 600;
-                color: #ffffff;
-                margin: 0;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-                letter-spacing: 0.8px;
-            }
-
-            /* Línea 3: Denominación debajo de los logos, ocupando todo el ancho */
-            .mobile-line-definition {
-                font-size: 0.78rem;
-                font-weight: 400;
-                color: #ffffff;
-                margin: 0;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-                opacity: 0.95;
-                white-space: nowrap;
-                width: 100%;
-                text-align: center;
-            }
-
-            /* Adaptación del contenido central de Ubicación para móvil */
-            .ubicacion-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            /* Pie de página móvil apretado */
-            footer {
-                flex-direction: column;
-                text-align: center;
-                padding: 0.9rem 0.8rem;
-                gap: 0.5rem;
-            }
-
-            .footer-center {
-                width: 100%;
-            }
-
-            .footer-center p {
-                font-size: 0.72rem;
-                margin: 0.1rem 0;
-            }
-
-            .footer-bottom-text {
-                margin-top: 0.15rem;
-                font-size: 0.70rem;
-            }
-
-            .footer-logos {
-                align-items: flex-start;
-                width: 100%;
-                max-width: 180px;
-                margin: 0 auto;
-                padding: 0.35rem 0.6rem;
-                gap: 0.2rem;
-            }
-
-            .footer-logos-title {
-                font-size: 0.75rem;
-            }
-
-            .footer-logo-item img {
-                width: 20px;
-                height: 20px;
-            }
-
-            .footer-logo-item span {
-                font-size: 0.75rem;
-            }
+            footer { flex-direction: column; text-align: center; padding: 0.9rem 0.8rem; gap: 0.5rem; }
+            .footer-center { width: 100%; }
+            .footer-center p { font-size: 0.72rem; margin: 0.1rem 0; }
+            .footer-bottom-text { margin-top: 0.15rem; font-size: 0.70rem; }
+            .footer-logos { align-items: flex-start; width: 100%; max-width: 180px; margin: 0 auto; padding: 0.35rem 0.6rem; gap: 0.2rem; }
+            .footer-logos-title { font-size: 0.75rem; }
+            .footer-logo-item img { width: 20px; height: 20px; }
+            .footer-logo-item span { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BANNER SUPERIOR -->
     <header>
-        <!-- Versión Escritorio (PC) -->
-        <div class="header-logo-left">
-            <img src="../logoizq.png" alt="Logo Izquierda" onerror="this.style.display='none'">
-        </div>
+        <div class="header-logo-left"><img src="../logoizq.png" alt="Logo Izquierda" loading="lazy" onerror="this.style.display='none'"></div>
         <div class="header-titles">
             <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
             <p class="header-subtitle-main">ProArHEP</p>
             <p class="header-subtitle-sub">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
         </div>
-        <div class="header-logo-right">
-            <img src="../logoder.png" alt="Logo Derecha" onerror="this.style.display='none'">
-        </div>
+        <div class="header-logo-right"><img src="../logoder.png" alt="Logo Derecha" loading="lazy" onerror="this.style.display='none'"></div>
 
-        <!-- Versión Móvil: 3 Líneas sin recuadros -->
         <div class="mobile-banner-layout">
-            <!-- Línea 1: Título agrandado por encima de los logos -->
             <p class="mobile-line-title">Sitio arqueológico Vuelta de Obligado</p>
-
-            <!-- Línea 2: Logos acercados al centro y ProArHEP en el medio -->
             <div class="mobile-line-middle">
-                <img src="../logoizq.png" alt="Logo Izq" class="mobile-logo-img" onerror="this.style.display='none'">
+                <img src="../logoizq.png" alt="Logo Izq" class="mobile-logo-img" loading="lazy" onerror="this.style.display='none'">
                 <p class="mobile-line-proarhep">ProArHEP</p>
-                <img src="../logoder.png" alt="Logo Der" class="mobile-logo-img" onerror="this.style.display='none'">
+                <img src="../logoder.png" alt="Logo Der" class="mobile-logo-img" loading="lazy" onerror="this.style.display='none'">
             </div>
-
-            <!-- Línea 3: Denominación debajo de los logos ocupando todo el ancho -->
             <p class="mobile-line-definition">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
         </div>
     </header>
 
-    <!-- BARRA DE NAVEGACIÓN (SALIR A LA RAIZ CON ../) -->
-    <nav>
+    <div class="mobile-nav-container">
+        <div class="mobile-menu-bar">
+            <span class="mobile-menu-title">Menú del Sitio</span>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">&#9776;</button>
+        </div>
+        <nav id="navMenuMobile">
+            <a href="../index.html">Inicio</a>
+            <a href="../sitiohistoria/index.html">Sitio e historia</a>
+            <a href="../modelos3d/index.html">Modelos 3D</a>
+            <a href="../nosotros/index.html">Nosotros</a>
+            <a href="../ubicacion/index.html">Ubicación</a>
+        </nav>
+    </div>
+
+    <nav id="desktopNav">
         <a href="../index.html">Inicio</a>
         <a href="../sitiohistoria/index.html">Sitio e historia</a>
         <a href="../modelos3d/index.html">Modelos 3D</a>
@@ -487,55 +167,37 @@
         <a href="../ubicacion/index.html">Ubicación</a>
     </nav>
 
-    <!-- SECCIÓN DE UBICACIÓN -->
     <section id="ubicacion">
         <div class="content-box">
             <div class="ubicacion-grid">
                 
-                <!-- COLUMNA IZQUIERDA: UBICACIÓN + ¿CÓMO LLEGAR? -->
                 <div class="ubicacion-col">
                     <h2>Ubicación</h2>
-                    <p>
-                        El sitio histórico de Vuelta de Obligado se encuentra en su localidad homónima, ubicada en el partido de San Pedro en la provincia de Buenos Aires.
-                    </p>
-                    <!-- ¿Cómo llegar? y Mapa -->
-                    <h3>¿Cómo llegar?</h3>
-                    <p>
-                       La ruta para llegar a la localidad es completamente asfaltada ingresando desde el sur (por ejemplo: desde CABA) a través de Río Tala - San Pedro. Desde la ruta nacional Nº 9 se toma la salida hacia Río Tala, luego se continúa por la ruta provincial Nº 1001 hasta llegar a San Pedro. Sin desviarse se sigue derecho por la misma vía (que se transforma en el Acceso a Vuelta de Obligado) y tras alrededor de 20km de lindos paisajes rurales, se entra a Vuelta de Obligado.
-                    </p>
-                    <p>
-                       Desde el norte (por ejemplo: desde Rosario) se puede llegar de la misma forma, pero, también se puede ingresar viniendo por la ruta nacional Nº 9 y tomando la salida hacia San Pedro por la ruta provincial Nº 191 por la que se continúa hasta el cruce con Lucio Mansilla donde se dobla a la izquierda y el camino pasa a ser el Acceso a Vuelta de Obligado, de ahí son los mismos aproximados 20km de lindos paisajes rurales hasta llegar a la localidad. Al igual que la otra alternativa, este recorrido es completamente asfaltado.
-                    </p>
-                    <p>
-                        Desde la Ciudad Autónoma de Buenos Aires son 190km y desde Rosario son 165km.    
-                    </p>
+                    <p>El sitio histórico de Vuelta de Obligado se encuentra en su localidad homónima, ubicada en el partido de San Pedro en la provincia de Buenos Aires.</p>
                     
-                    <!-- Recuadro del Mapa unificado con el formato de la tabla -->
+                    <h3>¿Cómo llegar?</h3>
+                    <p>La ruta para llegar a la localidad es completamente asfaltada ingresando desde el sur (por ejemplo: desde CABA) a través de Río Tala - San Pedro. Desde la ruta nacional Nº 9 se toma la salida hacia Río Tala, luego se continúa por la ruta provincial Nº 1001 hasta llegar a San Pedro. Sin desviarse se sigue derecho por la misma vía (que se transforma en el Acceso a Vuelta de Obligado) y tras alrededor de 20km de lindos paisajes rurales, se entra a Vuelta de Obligado.</p>
+                    <p>Desde el norte (por ejemplo: desde Rosario) se puede llegar de la misma forma, pero, también se puede ingresar viniendo por la ruta nacional Nº 9 y tomando la salida hacia San Pedro por la ruta provincial Nº 191 por la que se continúa hasta el cruce con Lucio Mansilla donde se dobla a la izquierda y el camino pasa a ser el Acceso a Vuelta de Obligado, de ahí son los mismos aproximados 20km de lindos paisajes rurales hasta llegar a la localidad. Al igual que la otra alternativa, este recorrido es completamente asfaltado.</p>
+                    <p>Desde la Ciudad Autónoma de Buenos Aires son 190km y desde Rosario son 165km.</p>
+                    
                     <div class="map-container">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1467.3006802889317!2d-59.81090285660789!3d-33.59680842053154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ba1dda51f097bd%3A0xdc50e50f40a5d653!2sMonumento%20Batalla%20Vuelta%20de%20Obligado!5e0!3m2!1ses!2sar!4v1793445030467!5m2!1ses!2sar" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                     <p class="map-description">Mapa interactivo de la zona de acceso al paraje.</p>
                 </div>
 
-                <!-- COLUMNA DERECHA: GEOGRAFÍA Y CLIMA + TABLA -->
                 <div class="ubicacion-col">
                     <h2>Geografía y clima</h2>
-                    <p>
-                        El relieve de la zona presenta ligeras irregularidades, como barrancas, debido al Río Paraná a orillas del mismo (y frente al sitio histórico) se encuentra una playa de arena. La zona presenta una gran y destacada actividad pesquera. En la localidad y en sus cercanías se pueden observar diversas zonas frondosas, en especial en áreas cercanas al agua (arroyos y río).
-                    </p>
-                    <p>
-                        Las condiciones climáticas entran dentro de la categoría templado húmedo o pampeano, con variaciones marcadas entre estaciones. Los veranos suelen ser calurosos con días húmedos y noches mayoritariamente templadas, las estaciones de transición (otoño y primavera) suelen presentar días templados y noches ligeramente frescas (en especial en mayo y septiembre). Los inviernos presentan tardes templadas (con probabilidad de días fríos) y noches marcadamente más frías. El periodo de mayor precipitación va de octubre a abril.
-                    </p>
+                    <p>El relieve de la zona presenta ligeras irregularidades, como barrancas, debido al Río Paraná a orillas del mismo (y frente al sitio histórico) se encuentra una playa de arena. La zona presenta una gran y destacada actividad pesquera. En la localidad y en sus cercanías se pueden observar diversas zonas frondosas, en especial en áreas cercanas al agua (arroyos y río).</p>
+                    <p>Las condiciones climáticas entran dentro de la categoría templado húmedo o pampeano, con variaciones marcadas entre estaciones. Los veranos suelen ser calurosos con días húmedos y noches mayoritariamente templadas, las estaciones de transición (otoño y primavera) suelen presentar días templados y noches ligeramente frescas (en especial en mayo y septiembre). Los inviernos presentan tardes templadas (con probabilidad de días fríos) y noches marcadamente más frías. El periodo de mayor precipitación va de octubre a abril.</p>
 
-                    <!-- Imagen de la tabla climática con bordes unificados -->
-                    <img src="tablaclimavdo.png" alt="Tabla climática de Vuelta de Obligado" class="climate-table-img" onerror="this.style.display='none'">
+                    <img src="tablaclimavdo.png" alt="Tabla climática de Vuelta de Obligado" class="climate-table-img" loading="lazy" onerror="this.style.display='none'">
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA -->
     <footer>
         <div class="footer-center">
             <p><strong>Página desarrollada y administrada por ProArHEP - Federico Inglesini</strong></p>
@@ -546,21 +208,37 @@
             <div class="footer-logos-title">Autores de logos:</div>
             <div class="footer-logo-item">
                 <a href="../logoizq.png" target="_blank">
-                    <img src="../logoizq.png" alt="Logo Izq" onerror="this.style.display='none'">
+                    <img src="../logoizq.png" alt="Logo Izq" loading="lazy" onerror="this.style.display='none'">
                     <span>Juan Ramos</span>
                 </a>
             </div>
             <div class="footer-logo-item">
                 <a href="../logoder.png" target="_blank">
-                    <img src="../logoder.png" alt="Logo Der" onerror="this.style.display='none'">
+                    <img src="../logoder.png" alt="Logo Der" loading="lazy" onerror="this.style.display='none'">
                     <span>Daniel Gomez</span>
                 </a>
             </div>
         </div>
     </footer>
 
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenuMobile = document.getElementById('navMenuMobile');
+
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenuMobile.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navMenuMobile.contains(e.target) && !menuToggle.contains(e.target)) {
+                navMenuMobile.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
+
 
 
 
