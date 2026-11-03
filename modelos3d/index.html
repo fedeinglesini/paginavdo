@@ -39,9 +39,9 @@
         /* SECCIÓN CENTRAL 3D (FONDO FIJO / PARALLAX) */
         .models-section {
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg');
-            background-size: cover;          /* Cubre todo el área de la sección */
-            background-position: center;     /* Centra la imagen de fondo */
-            background-attachment: fixed;    /* Mantiene la imagen fija durante el scroll */
+            background-size: cover;          
+            background-position: center;     
+            background-attachment: fixed;    /* Fijo en PC */
             padding: 4rem 1rem; min-height: 65vh; display: flex; flex-direction: column; align-items: center;
             box-shadow: inset 0 10px 15px -10px rgba(0,0,0,0.3); width: 100%;
         }
@@ -124,7 +124,13 @@
             #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: #fff; text-decoration: none; }
             #navMenuMobile a:hover { background-color: #d31d1d; }
 
-            .models-section { background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg'); background-size: cover; background-position: center; }
+            /* Corrección del fondo en móvil para evitar el zoom gigante */
+            .models-section { 
+                background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg'); 
+                background-size: cover; 
+                background-position: center; 
+                background-attachment: scroll; /* Evita el error de zoom en celulares */
+            }
 
             /* Footer Móvil */
             footer {
