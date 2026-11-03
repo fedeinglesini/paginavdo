@@ -121,18 +121,24 @@
             color: #ffffff;
         }
 
-        /* Barra contenedora del botón móvil (oculto en escritorio) */
-        .mobile-menu-bar {
+        /* Contenedor general para la barra móvil (oculto en escritorio) */
+        .mobile-nav-container {
             display: none;
-            background-color: #1b2a4a;
-            color: #ffffff;
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 2000;
+            width: 100%;
+        }
+
+        .mobile-menu-bar {
+            background-color: #1b2a4a;
+            color: #ffffff;
+            display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.7rem 1.2rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
         }
 
         .mobile-menu-title {
@@ -308,7 +314,7 @@
                 line-height: 1.25;
             }
 
-            /* Línea 2: Logos acercados un poquito al centro con padding horizontal */
+            /* Línea 2: Logos acercados al centro con padding horizontal */
             .mobile-line-middle {
                 display: flex;
                 align-items: center;
@@ -332,7 +338,7 @@
                 letter-spacing: 0.8px;
             }
 
-            /* Línea 3: Denominación debajo de los logos, ocupando todo el ancho */
+            /* Línea 3: Denominación debajo de los logos ocupando todo el ancho */
             .mobile-line-definition {
                 font-size: 0.78rem;
                 font-weight: 400;
@@ -345,38 +351,38 @@
                 text-align: center;
             }
 
-            /* Activamos la barra superior móvil con título y botón */
-            .mobile-menu-bar {
-                display: flex;
+            /* Mostramos el contenedor móvil superior */
+            .mobile-nav-container {
+                display: block;
             }
-            
-            /* Ocultamos la barra de navegación tradicional en móvil para usar el desplegable flotante */
-            nav {
+
+            /* Ocultamos el nav tradicional de escritorio en móvil */
+            #navMenu {
                 display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 width: 100%;
                 flex-direction: column;
-                background-color: rgba(27, 42, 74, 0.97);
-                backdrop-filter: blur(8px);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+                background-color: rgba(27, 42, 74, 0.98);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 15px 25px rgba(0,0,0,0.5);
                 opacity: 0;
                 visibility: hidden;
-                transform: translateY(-10px);
-                transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+                transform: translateY(-8px);
+                transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
                 white-space: normal;
-                z-index: 999;
+                z-index: 1999;
             }
 
-            nav.active {
+            #navMenu.active {
                 display: flex;
                 opacity: 1;
                 visibility: visible;
                 transform: translateY(0);
             }
 
-            nav a {
+            #navMenu a {
                 padding: 1rem 1.5rem;
                 width: 100%;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -384,7 +390,7 @@
                 font-size: 1rem;
             }
 
-            /* Pie de página móvil apretado */
+            /* Pie de página móvil */
             footer {
                 flex-direction: column;
                 text-align: center;
@@ -456,16 +462,27 @@
         </div>
     </header>
 
-    <!-- BARRA SUPERIOR MÓVIL CON TÍTULO Y BOTÓN FLOTANTE -->
-    <div class="mobile-menu-bar">
-        <span class="mobile-menu-title">Menú del Sitio</span>
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-            &#9776;
-        </button>
+    <!-- CONTENEDOR MÓVIL SUPERIOR (BARRA + MENÚ FLOTANTE) -->
+    <div class="mobile-nav-container">
+        <div class="mobile-menu-bar">
+            <span class="mobile-menu-title">Menú del Sitio</span>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                &#9776;
+            </button>
+        </div>
+        
+        <!-- MENÚ DESPLEGABLE FLOTANTE -->
+        <nav id="navMenu">
+            <a href="index.html">Inicio</a>
+            <a href="sitiohistoria/index.html">Sitio e historia</a>
+            <a href="modelos3d/index.html">Modelos 3D</a>
+            <a href="nosotros/index.html">Nosotros</a>
+            <a href="ubicacion/index.html">Ubicación</a>
+        </nav>
     </div>
 
-    <!-- BARRA DE NAVEGACIÓN (ENCRITORIO Y DESPLEGABLE FLOTANTE MÓVIL) -->
-    <nav id="navMenu">
+    <!-- NAVEGACIÓN NORMAL (ESCRITORIO) -->
+    <nav id="desktopNav" style="display: flex;">
         <a href="index.html">Inicio</a>
         <a href="sitiohistoria/index.html">Sitio e historia</a>
         <a href="modelos3d/index.html">Modelos 3D</a>
@@ -506,7 +523,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT PARA CONTROLAR EL MENÚ DESPLEGABLE FLOTANTE -->
+    <!-- SCRIPT PARA CONTROLAR EL MENÚ FLOTANTE MÓVIL -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
@@ -516,7 +533,7 @@
             navMenu.classList.toggle('active');
         });
 
-        // Cierra el menú si se hace clic fuera de él en la pantalla móvil
+        // Cierra el menú si se hace clic fuera de él
         document.addEventListener('click', (e) => {
             if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                 navMenu.classList.remove('active');
@@ -525,6 +542,7 @@
     </script>
 </body>
 </html>
+
 
 
 
