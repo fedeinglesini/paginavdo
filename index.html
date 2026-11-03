@@ -37,10 +37,12 @@
         nav a:hover { background-color: #d31d1d; }
         .mobile-nav-container { display: none; }
 
-        /* SECCIÓN CENTRAL */
+        /* SECCIÓN CENTRAL CON FONDO FIJO (EFECTO PARALLAX) */
         section {
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral.jpg');
-            background-size: 100% auto; background-position: 50% 50%;
+            background-size: cover;          /* Cubre todo el área de la sección */
+            background-position: center;     /* Centra la imagen de fondo */
+            background-attachment: fixed;    /* Mantiene la imagen fija durante el scroll */
             padding: 3rem 1rem; min-height: 65vh; display: flex; flex-direction: column; align-items: center;
             box-shadow: inset 0 10px 15px -10px rgba(0,0,0,0.3);
         }
