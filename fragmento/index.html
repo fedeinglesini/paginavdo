@@ -7,59 +7,49 @@
     <!-- Logo en la pestaña del navegador (sube un nivel con ../) -->
     <link rel="icon" type="image/png" href="../logoizq.png">
     
-    <!-- ========================================== -->
-    <!-- MOTOR DE GOOGLE (OBLIGATORIO)              -->
-    <!-- No borrar: Es la librería que lee el 3D    -->
-    <!-- ========================================== -->
+    <!-- MOTOR DE GOOGLE (OBLIGATORIO) -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     
     <style>
-        /* ========================================== */
-        /* ESTILOS DE LA PANTALLA (OBLIGATORIO)       */
-        /* ========================================== */
         body {
             margin: 0;
             padding: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #1a1a1a; /* Color de fondo general */
+            background-color: #1a1a1a;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            position: relative; /* Ancla necesaria para los elementos flotantes */
+            position: relative;
         }
 
         model-viewer {
             width: 100%;
             height: 100%;
-             position: relative;
-            z-index: 2; /* Se coloca por encima del logo de fondo */
-            --poster-color: transparent; /* Mantiene el fondo transparente al cargar */
+            position: relative;
+            z-index: 2;
+            --poster-color: transparent;
         }
         
-.logo-fondo {
+        .logo-fondo {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             max-width: 70%;
             max-height: 70%;
-            opacity: 0.15; /* Opacidad sutil para no tapar el objeto 3D */
-            z-index: 1; /* Queda detrás del model-viewer */
-            pointer-events: none; /* No interfiere con los clics/gestos */
+            opacity: 0.15;
+            z-index: 1;
+            pointer-events: none;
             user-select: none;
-     }
+        }
         
-        /* ========================================== */
-        /* ESTILOS: DESCRIPCIÓN SEMI-TRANSPARENTE     */
-        /* Si borrás este bloque, borrá también el HTML abajo */
-        /* ========================================== */
         .caja-descripcion {
             position: absolute;
             top: 20px;
             left: 20px;
-            background: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+            background: rgba(0, 0, 0, 0.5);
             color: #ffffff;
             padding: 12px 18px;
             border-radius: 8px;
@@ -67,27 +57,29 @@
             font-size: 13px;
             max-width: 280px;
             z-index: 10;
-            pointer-events: none; /* Hace que el dedo atraviese el texto y mueva el 3D */
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
- <img src="../logoder.png" alt="Logo Fondo" class="logo-fondo">
+    <img src="../logoder.png" alt="Logo Fondo" class="logo-fondo">
+
     <!-- ========================================== -->
-    <!-- APARTADO: VISOR 3D PRINCIPAL (OBLIGATORIO) -->
-    <!-- Recordá subir el archivo sin espacios ni 'ñ'-->
+    <!-- MODEL-VIEWER CON OPCIONES VISUALES       -->
     <!-- ========================================== -->
     <model-viewer 
         src="Fragmento.glb" 
         alt="Pieza arqueológica" 
         camera-controls 
-        shadow-intensity="0">
+        shadow-intensity="0"
+        exposure="1"
+        environment-image="neutral"
+        auto-rotate
+        rotation-per-second="20deg"
+        interaction-prompt="none"
+        ar>
     </model-viewer>
 
-    <!-- ========================================== -->
-    <!-- APARTADO: CAJA DE DESCRIPCIÓN (OPCIONAL)   -->
-    <!-- Modificá el texto o borrá todo este bloque -->
-    <!-- ========================================== -->
     <div class="caja-descripcion">
         <b>Fragmento de proyectil</b><br>
         Fragmento de proyectil encontrado en el sitio Vuelta de Obligado
@@ -95,3 +87,4 @@
 
 </body>
 </html>
+
