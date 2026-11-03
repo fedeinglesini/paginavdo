@@ -117,20 +117,40 @@
             #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: #fff; text-decoration: none; }
             #navMenuMobile a:hover { background-color: #d31d1d; }
 
-            /* Footer Móvil */
+            /* Footer Móvil Ajustado */
             footer { flex-direction: column; text-align: center; padding: 1.2rem 0.8rem; gap: 0.8rem; }
             .footer-center { order: 1; width: 100%; }
             .footer-center p { font-size: 0.72rem; margin: 0.1rem 0; }
             .footer-bottom-text { margin-top: 0.15rem; font-size: 0.70rem; }
 
-            /* Fila inferior móvil: Logo UNLu limpio a la izquierda y Autores a la derecha */
-            .footer-mobile-row {
-                display: flex; justify-content: space-between; align-items: center; width: 100%; order: 2; gap: 0.5rem;
+            /* Contenedor inferior en móvil para alinear UNLu izquierda y Autores derecha */
+            .footer-left-block {
+                order: 2; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0;
             }
-            .footer-left-block { order: 1; min-width: auto; padding-left: 0; }
-            .footer-logos { order: 2; width: auto; max-width: 170px; margin: 0; }
+            .footer-unlu-logo { width: 50px; height: 50px; }
             
-            .footer-unlu-logo { width: 52px; height: 52px; }
+            /* Hacemos que el bloque de autores comparta la misma línea inferior en móvil */
+            .footer-left-block {
+                display: contents; /* Permite colocar los hijos directos del footer ordenados */
+            }
+            .footer-left-block { order: 2; justify-self: start; }
+            .footer-logos { order: 3; justify-self: end; width: auto; max-width: 170px; margin: 0; }
+            
+            /* Reorganizamos el footer completo en flex para móvil */
+            footer {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas: 
+                    "center center"
+                    "unlu logos";
+                align-items: center;
+                gap: 0.8rem;
+                padding: 1rem 0.8rem;
+            }
+            .footer-center { grid-area: center; order: unset; width: 100%; }
+            .footer-left-block { grid-area: unlu; order: unset; justify-content: flex-start; min-width: auto; padding: 0; }
+            .footer-logos { grid-area: logos; order: unset; width: 100%; max-width: 170px; margin: 0 0 0 auto; }
+
             .footer-logos-title { font-size: 0.75rem; }
             .footer-logo-item img { width: 20px; height: 20px; }
             .footer-logo-item span { font-size: 0.75rem; }
@@ -236,6 +256,7 @@
     </script>
 </body>
 </html>
+
 
 
 
