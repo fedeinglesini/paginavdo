@@ -4,388 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vuelta de Obligado - Sitio e historia</title>
-    <!-- Logo en la pestaña del navegador (sube un nivel con ../) -->
     <link rel="icon" type="image/png" href="../logoizq.png">
     <style>
-        /* Estilos generales con scroll suave */
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: #0f172a;
-            color: #0f172a;
-            margin: 0;
-            padding: 0;
-        }
-        * {
-            box-sizing: border-box;
-        }
+        html { scroll-behavior: smooth; }
+        body { font-family: system-ui, -apple-system, sans-serif; background-color: #0f172a; color: #0f172a; margin: 0; padding: 0; }
+        * { box-sizing: border-box; }
 
-        /* ==========================================
-           1. BANNER SUPERIOR (ESCRITORIO / PC)
-           ========================================== */
+        /* HEADER PC */
         header {
             background: linear-gradient(rgba(27, 42, 74, 0.70), rgba(27, 42, 74, 0.70)), url('../fondosuperior.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 2.2rem 2rem;
-            margin: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #ffffff;
-            border: none;
+            background-size: cover; background-position: center;
+            padding: 2.2rem 2rem; display: flex; justify-content: space-between; align-items: center; color: #fff;
         }
-        .header-logo-left, .header-logo-right {
-            width: 135px;
-            height: 135px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .header-logo-left img, .header-logo-right img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
-        }
-        .header-titles {
-            text-align: center;
-            flex-grow: 1;
-            margin: 0 1rem;
-            background-color: rgba(30, 41, 59, 0.7); 
-            padding: 1.2rem 1.5rem;
-            border-radius: 10px;
-            border: 1px solid rgba(148, 163, 184, 0.3);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(2px);
-        }
-        .header-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0 0 0.4rem 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-        }
-        .header-subtitle-main {
-            font-size: 1.35rem;
-            font-weight: 600;
-            margin: 0 0 0.3rem 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-            letter-spacing: 0.8px;
-        }
-        .header-subtitle-sub {
-            font-size: 1.0rem;
-            font-weight: 400;
-            margin: 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-            opacity: 0.95;
-        }
+        .header-logo-left, .header-logo-right { width: 135px; height: 135px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .header-logo-left img, .header-logo-right img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25)); }
+        .header-titles { text-align: center; flex-grow: 1; margin: 0 1rem; background-color: rgba(30, 41, 59, 0.7); padding: 1.2rem 1.5rem; border-radius: 10px; border: 1px solid rgba(148, 163, 184, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
+        .header-title { font-size: 1.8rem; font-weight: 700; margin: 0 0 0.4rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
+        .header-subtitle-main { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.3rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); letter-spacing: 0.8px; }
+        .header-subtitle-sub { font-size: 1.0rem; font-weight: 400; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); opacity: 0.95; }
+        .mobile-banner-layout { display: none; }
 
-        /* Ocultamos la versión móvil en pantallas grandes */
-        .mobile-banner-layout {
-            display: none;
-        }
-
-        /* ==========================================
-           2. BARRA DE NAVEGACIÓN
-           ========================================== */
+        /* NAVEGACIÓN PC */
         nav {
-            background-color: #1b2a4a;
-            display: flex;
-            justify-content: flex-start;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            margin: 0;
-            overflow-x: auto; 
-            white-space: nowrap;
+            background-color: #1b2a4a; display: flex; justify-content: flex-start;
+            position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            overflow-x: auto; white-space: nowrap;
         }
         nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 0.7rem 1.2rem;
-            background-color: transparent;
-            display: inline-block;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            border: none;
-            outline: none;
+            color: #fff; text-decoration: none; font-weight: 500; font-size: 0.9rem;
+            padding: 0.7rem 1.2rem; display: inline-block; transition: background-color 0.3s ease;
         }
-        nav a:hover {
-            background-color: #d31d1d; 
-            color: #ffffff;
-        }
+        nav a:hover { background-color: #d31d1d; }
+        .mobile-nav-container { display: none; }
 
-        /* ==========================================
-           3. SECCIÓN CENTRAL
-           ========================================== */
+        /* SECCIÓN CENTRAL */
         section {
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg');
-            background-size: 100% auto;
-            background-position: 50% 50%;
-            padding: 3rem 1rem;
-            min-height: 65vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-sizing: border-box;
-            position: relative;
-            box-shadow: inset 0 10px 15px -10px rgba(0, 0, 0, 0.3);
-            margin: 0;
-            border-radius: 0;
+            background-size: 100% auto; background-position: 50% 50%;
+            padding: 3rem 1rem; min-height: 65vh; display: flex; flex-direction: column; align-items: center;
+            box-shadow: inset 0 10px 15px -10px rgba(0,0,0,0.3);
         }
         .content-box {
-            background-color: #D3D3D3; 
-            color: #0f172a;
-            width: 100%;
-            max-width: 1100px; 
-            padding: 3.5rem 2.5rem; 
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            box-sizing: border-box;
+            background-color: #D3D3D3; color: #0f172a; width: 100%; max-width: 1100px;
+            padding: 3.5rem 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .content-box h2 {
-            font-size: 1.8rem;
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            color: #0f172a;
-        }
-        .content-box p.subtitle {
-            color: #475569;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        .content-box p {
-            color: #334155;
-            line-height: 1.6;
-        }
+        .content-box h2 { font-size: 1.8rem; margin-top: 0; margin-bottom: 0.75rem; color: #0f172a; }
+        .content-box p.subtitle { color: #475569; margin-bottom: 1.5rem; font-weight: 600; font-size: 1rem; }
+        .content-box p { color: #334155; line-height: 1.6; }
 
-        /* ==========================================
-           4. PIE DE PÁGINA
-           ========================================== */
+        /* FOOTER */
         footer {
             background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('../fondopie.jpg');
-            background-size: 94% auto;
-            background-position: 40% 43%;
-            color: #ffffff;
-            padding: 2.5rem 2rem;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            position: relative;
-            box-shadow: inset 0 12px 15px -8px rgba(0, 0, 0, 0.4);
-            margin: 0;
-            border-radius: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
+            background-size: 94% auto; background-position: 40% 43%; color: #fff;
+            padding: 2.5rem 2rem; font-size: 0.9rem; line-height: 1.6;
+            box-shadow: inset 0 12px 15px -8px rgba(0,0,0,0.4);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
         }
-        .footer-center {
-            text-align: center;
-            flex-grow: 1;
-        }
-        .footer-center p {
-            margin: 0.3rem 0;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        .footer-bottom-text {
-            margin-top: 0.4rem;
-            font-size: 0.85rem;
-            opacity: 0.95;
-        }
+        .footer-center { text-align: center; flex-grow: 1; }
+        .footer-center p { margin: 0.3rem 0; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+        .footer-bottom-text { margin-top: 0.4rem; font-size: 0.85rem; opacity: 0.95; }
         .footer-logos {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-            background: rgba(0, 0, 0, 0.3);
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
-            min-width: 170px;
+            display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5); background: rgba(0,0,0,0.3);
+            padding: 0.8rem 1rem; border-radius: 8px; min-width: 170px;
         }
-        .footer-logos-title {
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-bottom: 0.1rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            padding-bottom: 0.2rem;
-        }
-        .footer-logo-item {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .footer-logo-item a {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: #ffffff;
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
-        .footer-logo-item a:hover {
-            opacity: 0.8;
-        }
-        .footer-logo-item img {
-            width: 26px;
-            height: 26px;
-            object-fit: contain;
-            border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
+        .footer-logos-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.1rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.2rem; }
+        .footer-logo-item a { display: flex; align-items: center; gap: 0.6rem; color: #fff; text-decoration: none; transition: opacity 0.2s ease; }
+        .footer-logo-item a:hover { opacity: 0.8; }
+        .footer-logo-item img { width: 26px; height: 26px; object-fit: contain; border-radius: 4px; border: 1px solid rgba(255,255,255,0.4); }
 
-        /* ==========================================
-           5. ADAPTABILIDAD PARA CELULARES (MÓVIL)
-           ========================================== */
+        /* RESPONSIVE MÓVIL */
         @media (max-width: 768px) {
-            header {
-                padding: 1.2rem 0.8rem;
-                display: block;
-            }
-            /* Ocultamos la versión de PC en celulares */
-            .header-logo-left, .header-logo-right, .header-titles {
-                display: none;
-            }
-            /* Mostramos la estructura móvil de 3 líneas sin recuadros */
-            .mobile-banner-layout {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                width: 100%;
-                gap: 0.6rem;
-            }
+            header { padding: 1.2rem 0.8rem; display: block; }
+            .header-logo-left, .header-logo-right, .header-titles { display: none; }
+            .mobile-banner-layout { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; gap: 0.6rem; }
+            .mobile-line-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
+            .mobile-line-middle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 1.2rem; }
+            .mobile-logo-img { width: 62px; height: 62px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
+            .mobile-line-proarhep { font-size: 1.25rem; font-weight: 600; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
+            .mobile-line-definition { font-size: 0.78rem; font-weight: 400; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); opacity: 0.95; }
 
-            /* Línea 1: Título agrandado por encima de los logos */
-            .mobile-line-title {
-                font-size: 1.3rem;
-                font-weight: 700;
-                color: #ffffff;
-                margin: 0;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-                line-height: 1.25;
+            #desktopNav { display: none !important; }
+            .mobile-nav-container { display: block; position: sticky; top: 0; z-index: 2000; width: 100%; }
+            
+            .mobile-menu-bar {
+                background-color: #1b2a4a; color: #fff; display: flex; justify-content: space-between; align-items: center;
+                padding: 0.4rem 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); width: 100%;
             }
+            .mobile-menu-title { font-size: 0.9rem; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+            .menu-toggle { background: transparent; color: #fff; border: none; font-size: 1.2rem; cursor: pointer; padding: 0.1rem; }
 
-            /* Línea 2: Logos acercados al centro con padding horizontal */
-            .mobile-line-middle {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-                padding: 0 1.2rem;
+            #navMenuMobile {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%; flex-direction: column;
+                background-color: rgba(27, 42, 74, 0.98); backdrop-filter: blur(10px);
+                box-shadow: 0 15px 25px rgba(0,0,0,0.5); opacity: 0; visibility: hidden;
+                transform: translateY(-8px); transition: opacity 0.25s ease, transform 0.25s ease; z-index: 1999;
             }
-            .mobile-logo-img {
-                width: 62px;
-                height: 62px;
-                object-fit: contain;
-                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
-                flex-shrink: 0;
-            }
-            .mobile-line-proarhep {
-                font-size: 1.25rem;
-                font-weight: 600;
-                color: #ffffff;
-                margin: 0;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-                letter-spacing: 0.8px;
-            }
+            #navMenuMobile.active { display: flex; opacity: 1; visibility: visible; transform: translateY(0); }
+            #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: #fff; text-decoration: none; }
+            #navMenuMobile a:hover { background-color: #d31d1d; }
 
-            /* Línea 3: Denominación debajo de los logos, ocupando todo el ancho */
-            .mobile-line-definition {
-                font-size: 0.78rem;
-                font-weight: 400;
-                color: #ffffff;
-                margin: 0;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
-                opacity: 0.95;
-                white-space: nowrap;
-                width: 100%;
-                text-align: center;
-            }
+            section { background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg'); background-size: cover; background-position: center; }
 
-            /* Pie de página móvil apretado */
-            footer {
-                flex-direction: column;
-                text-align: center;
-                padding: 0.9rem 0.8rem;
-                gap: 0.5rem;
-            }
-            .footer-center {
-                width: 100%;
-            }
-            .footer-center p {
-                font-size: 0.72rem;
-                margin: 0.1rem 0;
-            }
-            .footer-bottom-text {
-                margin-top: 0.15rem;
-                font-size: 0.70rem;
-            }
-            .footer-logos {
-                align-items: flex-start;
-                width: 100%;
-                max-width: 180px;
-                margin: 0 auto;
-                padding: 0.35rem 0.6rem;
-                gap: 0.2rem;
-            }
-            .footer-logos-title {
-                font-size: 0.75rem;
-            }
-            .footer-logo-item img {
-                width: 20px;
-                height: 20px;
-            }
-            .footer-logo-item span {
-                font-size: 0.75rem;
-            }
+            footer { flex-direction: column; text-align: center; padding: 0.9rem 0.8rem; gap: 0.5rem; }
+            .footer-center { width: 100%; }
+            .footer-center p { font-size: 0.72rem; margin: 0.1rem 0; }
+            .footer-bottom-text { margin-top: 0.15rem; font-size: 0.70rem; }
+            .footer-logos { align-items: flex-start; width: 100%; max-width: 180px; margin: 0 auto; padding: 0.35rem 0.6rem; gap: 0.2rem; }
+            .footer-logos-title { font-size: 0.75rem; }
+            .footer-logo-item img { width: 20px; height: 20px; }
+            .footer-logo-item span { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
-    <!-- BANNER SUPERIOR -->
+
     <header>
-        <!-- Versión Escritorio (PC) -->
-        <div class="header-logo-left">
-            <img src="../logoizq.png" alt="Logo Izquierda" onerror="this.style.display='none'">
-        </div>
+        <div class="header-logo-left"><img src="../logoizq.png" alt="Logo Izquierda" loading="lazy" onerror="this.style.display='none'"></div>
         <div class="header-titles">
             <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
             <p class="header-subtitle-main">ProArHEP</p>
             <p class="header-subtitle-sub">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
         </div>
-        <div class="header-logo-right">
-            <img src="../logoder.png" alt="Logo Derecha" onerror="this.style.display='none'">
-        </div>
+        <div class="header-logo-right"><img src="../logoder.png" alt="Logo Derecha" loading="lazy" onerror="this.style.display='none'"></div>
 
-        <!-- Versión Móvil: 3 Líneas sin recuadros -->
         <div class="mobile-banner-layout">
-            <!-- Línea 1: Título agrandado por encima de los logos -->
             <p class="mobile-line-title">Sitio arqueológico Vuelta de Obligado</p>
-
-            <!-- Línea 2: Logos acercados al centro y ProArHEP en el medio -->
             <div class="mobile-line-middle">
-                <img src="../logoizq.png" alt="Logo Izq" class="mobile-logo-img" onerror="this.style.display='none'">
+                <img src="../logoizq.png" alt="Logo Izq" class="mobile-logo-img" loading="lazy" onerror="this.style.display='none'">
                 <p class="mobile-line-proarhep">ProArHEP</p>
-                <img src="../logoder.png" alt="Logo Der" class="mobile-logo-img" onerror="this.style.display='none'">
+                <img src="../logoder.png" alt="Logo Der" class="mobile-logo-img" loading="lazy" onerror="this.style.display='none'">
             </div>
-
-            <!-- Línea 3: Denominación debajo de los logos ocupando todo el ancho -->
             <p class="mobile-line-definition">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
         </div>
     </header>
 
-    <!-- BARRA DE NAVEGACIÓN -->
-    <nav>
+    <div class="mobile-nav-container">
+        <div class="mobile-menu-bar">
+            <span class="mobile-menu-title">Menú del Sitio</span>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">&#9776;</button>
+        </div>
+        <nav id="navMenuMobile">
+            <a href="../index.html">Inicio</a>
+            <a href="../sitiohistoria/index.html">Sitio e historia</a>
+            <a href="../modelos3d/index.html">Modelos 3D</a>
+            <a href="../nosotros/index.html">Nosotros</a>
+            <a href="../ubicacion/index.html">Ubicación</a>
+        </nav>
+    </div>
+
+    <nav id="desktopNav">
         <a href="../index.html">Inicio</a>
         <a href="../sitiohistoria/index.html">Sitio e historia</a>
         <a href="../modelos3d/index.html">Modelos 3D</a>
@@ -393,7 +161,6 @@
         <a href="../ubicacion/index.html">Ubicación</a>
     </nav>
 
-    <!-- SECCIÓN: SITIO E HISTORIA -->
     <section id="sitio-e-historia">
         <div class="content-box">
             <h2>Sitio e historia</h2>
@@ -402,28 +169,43 @@
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA -->
     <footer>
         <div class="footer-center">
             <p><strong>Página desarrollada y administrada por ProArHEP - Federico Inglesini</strong></p>
             <p class="footer-bottom-text">© 2026 - ProArHEP todos los derechos reservados</p>
         </div>
-
         <div class="footer-logos">
             <div class="footer-logos-title">Autores de logos:</div>
             <div class="footer-logo-item">
                 <a href="../logoizq.png" target="_blank">
-                    <img src="../logoizq.png" alt="Logo Izq" onerror="this.style.display='none'">
+                    <img src="../logoizq.png" alt="Logo Izq" loading="lazy" onerror="this.style.display='none'">
                     <span>Juan Ramos</span>
                 </a>
             </div>
             <div class="footer-logo-item">
                 <a href="../logoder.png" target="_blank">
-                    <img src="../logoder.png" alt="Logo Der" onerror="this.style.display='none'">
+                    <img src="../logoder.png" alt="Logo Der" loading="lazy" onerror="this.style.display='none'">
                     <span>Daniel Gomez</span>
                 </a>
             </div>
         </div>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenuMobile = document.getElementById('navMenuMobile');
+
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenuMobile.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navMenuMobile.contains(e.target) && !menuToggle.contains(e.target)) {
+                navMenuMobile.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
+
