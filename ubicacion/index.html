@@ -51,26 +51,18 @@
             padding: 3.5rem 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         .ubicacion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-        .ubicacion-col h2 { font-size: 1.5rem; margin-top: 0; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #94a3b8; padding-bottom: 0.4rem; }
-        .ubicacion-col h3 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.6rem; color: #1b2a4a; }
-        .ubicacion-col p { color: #334155; line-height: 1.6; margin-bottom: 1rem; font-size: 0.95rem; }
-
-        /* FILTROS TINTADOS PARA INTEGRAR LA TABLA Y EL MAPA AL TONO DEL CUADRO */
-        .climate-table-img { 
-            width: 100%; height: auto; border-radius: 4px; margin-top: 1rem; 
-            border: 1px solid #94a3b8; box-shadow: 0 4px 10px rgba(0,0,0,0.15); display: block; 
-            filter: sepia(30%) hue-rotate(5deg) brightness(98%) contrast(95%); 
-        }
         
-        .map-container { 
-            width: 100%; height: 250px; border-radius: 4px; overflow: hidden; 
-            margin-top: 1rem; margin-bottom: 0.75rem; border: 1px solid #94a3b8; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15); background-color: #d9cbb0; 
-        }
-        .map-container iframe { 
-            width: 100%; height: 100%; border: 0; 
-            filter: sepia(25%) hue-rotate(5deg) brightness(97%) contrast(95%); 
-        }
+        /* Títulos con subrayado en rojo institucional */
+        .ubicacion-col h2 { font-size: 1.5rem; margin-top: 0; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #d31d1d; padding-bottom: 0.4rem; }
+        .ubicacion-col h3 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.6rem; color: #1b2a4a; }
+        
+        /* Texto más oscuro y definido */
+        .ubicacion-col p { color: #1e293b; line-height: 1.6; margin-bottom: 1rem; font-size: 0.95rem; }
+
+        .climate-table-img { width: 100%; height: auto; border-radius: 4px; margin-top: 1rem; border: 1px solid #94a3b8; box-shadow: 0 4px 10px rgba(0,0,0,0.15); display: block; filter: saturate(85%) contrast(95%); }
+        
+        .map-container { width: 100%; height: 250px; border-radius: 4px; overflow: hidden; margin-top: 1rem; margin-bottom: 0.75rem; border: 1px solid #94a3b8; box-shadow: 0 4px 10px rgba(0,0,0,0.15); background-color: #cbd5e1; }
+        .map-container iframe { width: 100%; height: 100%; border: 0; filter: saturate(80%) contrast(95%); }
         
         .map-description { font-size: 0.85rem; color: #475569; font-style: italic; text-align: center; margin: 0; }
         
@@ -248,7 +240,7 @@
                     
                     <h3>¿Cómo llegar?</h3>
                     <p>La ruta para llegar a la localidad es completamente asfaltada ingresando desde el sur (por ejemplo: desde CABA) a través de Río Tala - San Pedro. Desde la ruta nacional Nº 9 se toma la salida hacia Río Tala, luego se continúa por la ruta provincial Nº 1001 hasta llegar a San Pedro. Sin desviarse se sigue derecho por la misma vía (que se transforma en el Acceso a Vuelta de Obligado) y tras alrededor de 20km de lindos paisajes rurales, se entra a Vuelta de Obligado.</p>
-                    <p>Desde el norte (por example: desde Rosario) se puede llegar de la misma forma, pero, también se puede ingresar viniendo por la ruta nacional Nº 9 y tomando la salida hacia San Pedro por la ruta provincial Nº 191 por la que se continúa hasta el cruce con Lucio Mansilla donde se dobla a la izquierda y el camino pasa a ser el Acceso a Vuelta de Obligado, de ahí son los mismos aproximados 20km de lindos paisajes rurales hasta llegar a la localidad. Al igual que la otra alternativa, este recorrido es completamente asfaltado.</p>
+                    <p>Desde el norte (por ejemplo: desde Rosario) se puede llegar de la misma forma, pero, también se puede ingresar viniendo por la ruta nacional Nº 9 y tomando la salida hacia San Pedro por la ruta provincial Nº 191 por la que se continúa hasta el cruce con Lucio Mansilla donde se dobla a la izquierda y el camino pasa a ser el Acceso a Vuelta de Obligado, de ahí son los mismos aproximados 20km de lindos paisajes rurales hasta llegar a la localidad. Al igual que la otra alternativa, este recorrido es completamente asfaltado.</p>
                     <p>Desde la Ciudad Autónoma de Buenos Aires son 190km y desde Rosario son 165km.</p>
                     
                     <div class="map-container">
