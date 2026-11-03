@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sitio Vuelta de Obligado</title>
-    <link rel="icon" type="image/png" href="logoizq.png">
+    <!-- Favicon blindado con parámetro de versión para evitar problemas de caché -->
+    <link rel="icon" type="image/png" href="logoizq.png?v=2">
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: system-ui, -apple-system, sans-serif; background-color: #0f172a; color: #0f172a; margin: 0; padding: 0; }
-        * { box-sizing: border-box; }
+        body { font-family: system-ui, -apple-system, sans-serif; background-color: #0f172a; color: #0f172a; margin: 0; padding: 0; box-sizing: border-box; }
+        *, *:before, *:after { box-sizing: inherit; }
 
         /* HEADER PC */
         header {
@@ -22,7 +23,6 @@
         .header-title { font-size: 1.8rem; font-weight: 700; margin: 0 0 0.4rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
         .header-subtitle-main { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.3rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); letter-spacing: 0.8px; }
         .header-subtitle-sub { font-size: 1.0rem; font-weight: 400; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); opacity: 0.95; }
-        .mobile-banner-layout { display: none; }
 
         /* NAVEGACIÓN PC */
         nav {
@@ -48,7 +48,7 @@
             background-color: #D3D3D3; color: #0f172a; width: 100%; max-width: 1100px;
             padding: 3.5rem 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .content-box h2 { font-size: 1.8rem; margin-top: 0; margin-bottom: 0.75rem; color: #0f172a; }
+        .content-box h2 { font-size: 1.8rem; margin: 0 0 0.75rem 0; color: #0f172a; }
         .content-box p.subtitle { color: #475569; margin-bottom: 1.5rem; font-weight: 600; font-size: 1rem; }
         .content-box p { color: #334155; line-height: 1.6; }
 
@@ -64,18 +64,11 @@
         .footer-center p { margin: 0.3rem 0; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
         .footer-bottom-text { margin-top: 0.4rem; font-size: 0.85rem; opacity: 0.95; }
         
-        /* Logo UNLu limpio a la izquierda */
-        .footer-left-block {
-            display: flex; align-items: center; order: 1; min-width: 170px; justify-content: flex-start; padding-left: 0.5rem;
-        }
+        .footer-left-block { display: flex; align-items: center; order: 1; min-width: 170px; justify-content: flex-start; padding-left: 0.5rem; }
         .footer-unlu-link { display: flex; align-items: center; text-decoration: none; transition: opacity 0.2s ease; }
         .footer-unlu-link:hover { opacity: 0.8; }
-        .footer-unlu-logo {
-            width: 90px; height: 90px; object-fit: contain;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5)); border-radius: 4px;
-        }
+        .footer-unlu-logo { width: 90px; height: 90px; object-fit: contain; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5)); border-radius: 4px; }
 
-        /* Bloque Autores Derecha */
         .footer-logos {
             display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;
             text-shadow: 0 1px 2px rgba(0,0,0,0.5); background: rgba(0,0,0,0.3);
@@ -88,14 +81,14 @@
 
         /* RESPONSIVE MÓVIL */
         @media (max-width: 768px) {
-            header { padding: 1.2rem 0.8rem; display: block; }
-            .header-logo-left, .header-logo-right, .header-titles { display: none; }
-            .mobile-banner-layout { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; gap: 0.6rem; }
-            .mobile-line-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
-            .mobile-line-middle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 1.2rem; }
-            .mobile-logo-img { width: 62px; height: 62px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
-            .mobile-line-proarhep { font-size: 1.25rem; font-weight: 600; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
-            .mobile-line-definition { font-size: 0.78rem; font-weight: 400; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); opacity: 0.95; }
+            header { padding: 1.2rem 0.8rem; text-align: center; display: grid; grid-template-columns: 62px 1fr 62px; grid-template-areas: "title title title" "left middle right" "def def def"; align-items: center; justify-items: center; gap: 0.6rem; }
+            .header-title { grid-area: title; font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
+            .header-logo-left { grid-area: left; width: 62px; height: 62px; }
+            .header-subtitle-main { grid-area: middle; font-size: 1.25rem; font-weight: 600; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
+            .header-logo-right { grid-area: right; width: 62px; height: 62px; }
+            .header-subtitle-sub { grid-area: def; font-size: 0.78rem; font-weight: 400; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); opacity: 0.95; }
+            .header-titles { display: contents; }
+            .header-logo-left img, .header-logo-right img { width: 62px; height: 62px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
 
             #desktopNav { display: none !important; }
             .mobile-nav-container { display: block; position: sticky; top: 0; z-index: 2000; width: 100%; }
@@ -117,7 +110,7 @@
             #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: #fff; text-decoration: none; }
             #navMenuMobile a:hover { background-color: #d31d1d; }
 
-            /* Footer Móvil con Grid perfecto para mantener la PC intacta */
+            /* Footer Móvil */
             footer {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -129,42 +122,18 @@
                 gap: 0.8rem 0.5rem;
                 padding: 1rem 0.8rem;
             }
-            .footer-center {
-                grid-area: maintext;
-                text-align: center;
-                width: 100%;
-                margin: 0;
-                order: unset;
-            }
+            .footer-center { grid-area: maintext; text-align: center; width: 100%; margin: 0; order: unset; }
             .footer-center p { font-size: 0.72rem; margin: 0; }
             
-            .footer-left-block {
-                grid-area: unlu;
-                justify-content: flex-start;
-                min-width: auto;
-                padding: 0;
-                order: unset;
-            }
+            .footer-left-block { grid-area: unlu; justify-content: flex-start; min-width: auto; padding: 0; order: unset; }
             .footer-unlu-logo { width: 65px; height: 65px; }
 
-            .footer-logos {
-                grid-area: logos;
-                width: auto;
-                max-width: 170px;
-                margin: 0 0 0 auto;
-                padding: 0.5rem 0.7rem;
-                order: unset;
-            }
+            .footer-logos { grid-area: logos; width: auto; max-width: 170px; margin: 0 0 0 auto; padding: 0.5rem 0.7rem; order: unset; }
             .footer-logos-title { font-size: 0.75rem; }
             .footer-logo-item img { width: 20px; height: 20px; }
             .footer-logo-item span { font-size: 0.75rem; }
 
-            .footer-bottom-text {
-                grid-area: copyright;
-                text-align: center;
-                margin: 0;
-                font-size: 0.70rem;
-            }
+            .footer-bottom-text { grid-area: copyright; text-align: center; margin: 0; font-size: 0.70rem; }
         }
     </style>
 </head>
@@ -177,16 +146,6 @@
             <p class="header-subtitle-sub">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
         </div>
         <div class="header-logo-right"><img src="logoder.png" alt="Logo Derecha" loading="lazy" onerror="this.style.display='none'"></div>
-
-        <div class="mobile-banner-layout">
-            <p class="mobile-line-title">Sitio arqueológico Vuelta de Obligado</p>
-            <div class="mobile-line-middle">
-                <img src="logoizq.png" alt="Logo Izq" class="mobile-logo-img" loading="lazy" onerror="this.style.display='none'">
-                <p class="mobile-line-proarhep">ProArHEP</p>
-                <img src="logoder.png" alt="Logo Der" class="mobile-logo-img" loading="lazy" onerror="this.style.display='none'">
-            </div>
-            <p class="mobile-line-definition">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
-        </div>
     </header>
 
     <div class="mobile-nav-container">
@@ -220,7 +179,6 @@
     </section>
 
     <footer>
-        <!-- Logo UNLu limpio a la izquierda -->
         <div class="footer-left-block">
             <a href="https://www.unlu.edu.ar" class="footer-unlu-link" target="_blank" rel="noopener noreferrer" title="Universidad Nacional de Luján">
                 <img src="logounlu.png" alt="Logo UNLu" class="footer-unlu-logo" loading="lazy" onerror="this.style.display='none'">
@@ -232,7 +190,6 @@
             <p class="footer-bottom-text">© 2026 - ProArHEP todos los derechos reservados</p>
         </div>
 
-        <!-- Bloque Autores a la derecha -->
         <div class="footer-logos">
             <div class="footer-logos-title">Autores de logos:</div>
             <div class="footer-logo-item">
@@ -267,6 +224,7 @@
     </script>
 </body>
 </html>
+
 
 
 
