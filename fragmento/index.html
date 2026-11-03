@@ -33,8 +33,24 @@
         model-viewer {
             width: 100%;
             height: 100%;
+             position: relative;
+            z-index: 2; /* Se coloca por encima del logo de fondo */
+            --poster-color: transparent; /* Mantiene el fondo transparente al cargar */
         }
-
+        
+.logo-fondo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 70%;
+            max-height: 70%;
+            opacity: 0.15; /* Opacidad sutil para no tapar el objeto 3D */
+            z-index: 1; /* Queda detrás del model-viewer */
+            pointer-events: none; /* No interfiere con los clics/gestos */
+            user-select: none;
+     }
+        
         /* ========================================== */
         /* ESTILOS: DESCRIPCIÓN SEMI-TRANSPARENTE     */
         /* Si borrás este bloque, borrá también el HTML abajo */
@@ -56,7 +72,7 @@
     </style>
 </head>
 <body>
-
+ <img src="../logoder.png" alt="Logo Fondo" class="logo-fondo">
     <!-- ========================================== -->
     <!-- APARTADO: VISOR 3D PRINCIPAL (OBLIGATORIO) -->
     <!-- Recordá subir el archivo sin espacios ni 'ñ'-->
