@@ -3,47 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bala de cañon 3D - VdO </title>
-    <!-- Logo en la pestaña del navegador (sube un nivel con ../) -->
+    <title>Bala de cañón 3D - VdO</title>
+    <!-- Logo en la pestaña del navegador -->
     <link rel="icon" type="image/png" href="../logoizq.png">
     
     <!-- ========================================== -->
     <!-- MOTOR DE GOOGLE (OBLIGATORIO)              -->
-    <!-- No borrar: Es la librería que lee el 3D    -->
     <!-- ========================================== -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     
     <style>
         /* ========================================== */
-        /* ESTILOS DE LA PANTALLA (OBLIGATORIO)       -->
+        /* ESTILOS DE LA PANTALLA                     */
         /* ========================================== */
         body {
             margin: 0;
             padding: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #1a1a1a; /* Color de fondo general */
+            background-color: #1a1a1a;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            position: relative; /* Ancla necesaria para los elementos flotantes */
+            position: relative;
+        }
+
+        /* ========================================== */
+        /* LOGO DE FONDO (DETRÁS DEL 3D)              */
+        /* Modificá "../logoizq.png" si querés otro  */
+        /* ========================================== */
+        .logo-fondo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 40%;
+            max-height: 40%;
+            opacity: 0.15; /* Opacidad sutil para no tapar el objeto 3D */
+            z-index: 1; /* Queda detrás del model-viewer */
+            pointer-events: none; /* No interfiere con los clics/gestos */
+            user-select: none;
         }
 
         model-viewer {
             width: 100%;
             height: 100%;
+            position: relative;
+            z-index: 2; /* Se coloca por encima del logo de fondo */
+            --poster-color: transparent; /* Mantiene el fondo transparente al cargar */
         }
 
         /* ========================================== */
-        /* ESTILOS: DESCRIPCIÓN SEMI-TRANSPARENTE     -->
-        /* Si borrás este bloque, borrá también el HTML abajo */
+        /* ESTILOS: DESCRIPCIÓN SEMI-TRANSPARENTE     */
         /* ========================================== */
         .caja-descripcion {
             position: absolute;
             top: 20px;
             left: 20px;
-            background: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+            background: rgba(0, 0, 0, 0.5);
             color: #ffffff;
             padding: 12px 18px;
             border-radius: 8px;
@@ -51,33 +69,30 @@
             font-size: 13px;
             max-width: 280px;
             z-index: 10;
-            pointer-events: none; /* Hace que el dedo atraviese el texto y mueva el 3D */
-        }
-
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- ========================================== -->
-    <!-- APARTADO: VISOR 3D PRINCIPAL (OBLIGATORIO) -->
-    <!-- Modificá "15_9_2026.glb" por tu archivo    -->
-    <!-- ========================================== -->
+    <!-- Logo superpuesto en el fondo -->
+    <img src="../logoder.png" alt="Logo Fondo" class="logo-fondo">
+
+    <!-- Visor 3D Principal -->
     <model-viewer 
         src="Bala.glb" 
-        alt="Pieza arqueológica" 
+        alt="Pieza arqueológica - Bola de cañón" 
         camera-controls 
-        shadow-intensity="1">
+        shadow-intensity="1"
+        ar>
     </model-viewer>
 
-    <!-- ========================================== -->
-    <!-- APARTADO: CAJA DE DESCRIPCIÓN (OPCIONAL)   -->
-    <!-- Modificá el texto o borrá todo este bloque -->
-    <!-- ========================================== -->
+    <!-- Caja de descripción -->
     <div class="caja-descripcion">
-        <b>Bola de cañon</b><br>
-        Pequeña bola de cañon, hallada en el sitio Vuelta de obligado
+        <b>Bola de cañón</b><br>
+        Pequeña bola de cañón, hallada en el sitio Vuelta de Obligado.
     </div>
 
 </body>
 </html>
+
