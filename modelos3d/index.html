@@ -126,7 +126,7 @@
 
             /* Fondo fijo también en móvil y recuadro contenedor idéntico al de las demás secciones (#D3D3D3) */
             section { 
-                background: linear-gradient(rgba(51, 65, 85, 0.2), rgba(51, 65, 85, 0.2)), url('../fondocentral.jpg'); 
+                background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg'); 
                 background-size: cover; 
                 background-position: center; 
                 background-attachment: fixed; 
@@ -139,12 +139,13 @@
             }
 
             .mobile-content-box {
-                background-color: #D3D3D3; 
-                color: #0f172a; 
-                width: 100%; 
-                padding: 2rem 1.2rem; 
-                border-radius: 12px; 
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    background-color: rgba(211, 211, 211, 0.5); /* Fondo gris con leve transparencia */
+    backdrop-filter: blur(4px);                  /* Efecto blur/desenfoque al fondo de atrás */
+    color: #0f172a; 
+    width: 100%; 
+    padding: 2rem 1.2rem; 
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             }
 
             .mobile-content-box h1.main-heading, 
