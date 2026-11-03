@@ -124,12 +124,37 @@
             #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: #fff; text-decoration: none; }
             #navMenuMobile a:hover { background-color: #d31d1d; }
 
-            /* Comportamiento fluido estándar para móvil igual que las demás secciones */
+            /* Fondo fijo también en móvil y recuadro contenedor idéntico al de las demás secciones (#D3D3D3) */
             section { 
                 background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg'); 
                 background-size: cover; 
                 background-position: center; 
-                background-attachment: scroll; 
+                background-attachment: fixed; 
+                padding: 2rem 0.8rem;
+            }
+
+            /* Transformamos los textos y la grilla en un recuadro unificado color #D3D3D3 igual que las demás secciones */
+            section {
+                background-color: #0f172a; /* color base por si acaso */
+            }
+
+            .mobile-content-box {
+                background-color: #D3D3D3; 
+                color: #0f172a; 
+                width: 100%; 
+                padding: 2rem 1.2rem; 
+                border-radius: 12px; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+
+            .mobile-content-box h1.main-heading, 
+            .mobile-content-box p.subtitle {
+                color: #0f172a;
+                text-shadow: none;
+            }
+
+            .mobile-content-box p.subtitle {
+                color: #475569;
             }
 
             /* Footer Móvil */
@@ -194,93 +219,96 @@
     </nav>
 
     <section>
-        <h1 class="main-heading">Modelos 3D sitio: Vuelta de Obligado</h1>
-        <p class="subtitle">¡Tocá cualquiera de los modelos para verlo!</p>
+        <!-- En móviles usamos este contenedor idéntico al de las otras secciones (#D3D3D3) envolviendo todo, y con fondo fixed -->
+        <div class="mobile-content-box">
+            <h1 class="main-heading">Modelos 3D sitio: Vuelta de Obligado</h1>
+            <p class="subtitle">¡Tocá cualquiera de los modelos para verlo!</p>
 
-        <div class="grid-container">
-            <!-- Tarjeta 1 -->
-            <a class="card-link" href="../bala/index.html" target="_blank">
-                <div class="video-wrapper">
-                    <video src="bala.mp4" preload="auto" muted loop playsinline 
-                           onmouseenter="this.play()" 
-                           onmouseleave="this.pause(); this.currentTime = 0;">
-                    </video>
-                </div>
-                <div class="card-content">
-                    <span class="card-title">Bala de cañón</span>
-                    <span class="arrow">&rarr;</span>
-                </div>
-            </a>
+            <div class="grid-container">
+                <!-- Tarjeta 1 -->
+                <a class="card-link" href="../bala/index.html" target="_blank">
+                    <div class="video-wrapper">
+                        <video src="bala.mp4" preload="auto" muted loop playsinline 
+                               onmouseenter="this.play()" 
+                               onmouseleave="this.pause(); this.currentTime = 0;">
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Bala de cañón</span>
+                        <span class="arrow">&rarr;</span>
+                    </div>
+                </a>
 
-            <!-- Tarjeta 2 -->
-            <a class="card-link" href="../fragmento/index.html" target="_blank">
-                <div class="video-wrapper">
-                    <video src="fragmento.mp4" preload="auto" muted loop playsinline 
-                           onmouseenter="this.play()" 
-                           onmouseleave="this.pause(); this.currentTime = 0;">
-                    </video>
-                </div>
-                <div class="card-content">
-                    <span class="card-title">Fragmento de proyectil</span>
-                    <span class="arrow">&rarr;</span>
-                </div>
-            </a>
+                <!-- Tarjeta 2 -->
+                <a class="card-link" href="../fragmento/index.html" target="_blank">
+                    <div class="video-wrapper">
+                        <video src="fragmento.mp4" preload="auto" muted loop playsinline 
+                               onmouseenter="this.play()" 
+                               onmouseleave="this.pause(); this.currentTime = 0;">
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Fragmento de proyectil</span>
+                        <span class="arrow">&rarr;</span>
+                    </div>
+                </a>
 
-            <!-- Tarjeta 3 -->
-            <a class="card-link" href="../boton/index.html" target="_blank">
-                <div class="video-wrapper">
-                    <video src="boton.mp4" preload="auto" muted loop playsinline 
-                           onmouseenter="this.play()" 
-                           onmouseleave="this.pause(); this.currentTime = 0;">
-                    </video>
-                </div>
-                <div class="card-content">
-                    <span class="card-title">Botón de metal</span>
-                    <span class="arrow">&rarr;</span>
-                </div>
-            </a>
+                <!-- Tarjeta 3 -->
+                <a class="card-link" href="../boton/index.html" target="_blank">
+                    <div class="video-wrapper">
+                        <video src="boton.mp4" preload="auto" muted loop playsinline 
+                               onmouseenter="this.play()" 
+                               onmouseleave="this.pause(); this.currentTime = 0;">
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Botón de metal</span>
+                        <span class="arrow">&rarr;</span>
+                    </div>
+                </a>
 
-            <!-- Tarjeta 4 (Nueva - Lista para completar) -->
-            <a class="card-link" href="../nombre_modelo4/index.html" target="_blank">
-                <div class="video-wrapper">
-                    <video src="modelo4.mp4" preload="auto" muted loop playsinline 
-                           onmouseenter="this.play()" 
-                           onmouseleave="this.pause(); this.currentTime = 0;">
-                    </video>
-                </div>
-                <div class="card-content">
-                    <span class="card-title">Nombre del Modelo 4</span>
-                    <span class="arrow">&rarr;</span>
-                </div>
-            </a>
+                <!-- Tarjeta 4 (Nueva - Lista para completar) -->
+                <a class="card-link" href="../nombre_modelo4/index.html" target="_blank">
+                    <div class="video-wrapper">
+                        <video src="modelo4.mp4" preload="auto" muted loop playsinline 
+                               onmouseenter="this.play()" 
+                               onmouseleave="this.pause(); this.currentTime = 0;">
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Nombre del Modelo 4</span>
+                        <span class="arrow">&rarr;</span>
+                    </div>
+                </a>
 
-            <!-- Tarjeta 5 (Nueva - Lista para completar) -->
-            <a class="card-link" href="../nombre_modelo5/index.html" target="_blank">
-                <div class="video-wrapper">
-                    <video src="modelo5.mp4" preload="auto" muted loop playsinline 
-                           onmouseenter="this.play()" 
-                           onmouseleave="this.pause(); this.currentTime = 0;">
-                    </video>
-                </div>
-                <div class="card-content">
-                    <span class="card-title">Nombre del Modelo 5</span>
-                    <span class="arrow">&rarr;</span>
-                </div>
-            </a>
+                <!-- Tarjeta 5 (Nueva - Lista para completar) -->
+                <a class="card-link" href="../nombre_modelo5/index.html" target="_blank">
+                    <div class="video-wrapper">
+                        <video src="modelo5.mp4" preload="auto" muted loop playsinline 
+                               onmouseenter="this.play()" 
+                               onmouseleave="this.pause(); this.currentTime = 0;">
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Nombre del Modelo 5</span>
+                        <span class="arrow">&rarr;</span>
+                    </div>
+                </a>
 
-            <!-- Tarjeta 6 (Nueva - Lista para completar) -->
-            <a class="card-link" href="../nombre_modelo6/index.html" target="_blank">
-                <div class="video-wrapper">
-                    <video src="modelo6.mp4" preload="auto" muted loop playsinline 
-                           onmouseenter="this.play()" 
-                           onmouseleave="this.pause(); this.currentTime = 0;">
-                    </video>
-                </div>
-                <div class="card-content">
-                    <span class="card-title">Nombre del Modelo 6</span>
-                    <span class="arrow">&rarr;</span>
-                </div>
-            </a>
+                <!-- Tarjeta 6 (Nueva - Lista para completar) -->
+                <a class="card-link" href="../nombre_modelo6/index.html" target="_blank">
+                    <div class="video-wrapper">
+                        <video src="modelo6.mp4" preload="auto" muted loop playsinline 
+                               onmouseenter="this.play()" 
+                               onmouseleave="this.pause(); this.currentTime = 0;">
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Nombre del Modelo 6</span>
+                        <span class="arrow">&rarr;</span>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 
