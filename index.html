@@ -90,7 +90,7 @@
         }
 
         /* ==========================================
-           2. BARRA DE NAVEGACIÓN Y MENÚ MÓVIL
+           2. BARRA DE NAVEGACIÓN (ESCRITORIO)
            ========================================== */
         nav {
             background-color: #1b2a4a;
@@ -121,43 +121,9 @@
             color: #ffffff;
         }
 
-        /* Contenedor general para la barra móvil (oculto en escritorio) */
+        /* Ocultamos la barra móvil en escritorio por defecto */
         .mobile-nav-container {
             display: none;
-            position: sticky;
-            top: 0;
-            z-index: 2000;
-            width: 100%;
-        }
-
-        .mobile-menu-bar {
-            background-color: #1b2a4a;
-            color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.7rem 1.2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            width: 100%;
-        }
-
-        .mobile-menu-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
-        }
-
-        .menu-toggle {
-            background: transparent;
-            color: #ffffff;
-            border: none;
-            font-size: 1.4rem;
-            cursor: pointer;
-            padding: 0.2rem 0.4rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         /* ==========================================
@@ -351,13 +317,52 @@
                 text-align: center;
             }
 
+            /* Ocultamos el menú de escritorio en móvil */
+            #desktopNav {
+                display: none !important;
+            }
+
             /* Mostramos el contenedor móvil superior */
             .mobile-nav-container {
                 display: block;
+                position: sticky;
+                top: 0;
+                z-index: 2000;
+                width: 100%;
             }
 
-            /* Ocultamos el nav tradicional de escritorio en móvil */
-            #navMenu {
+            .mobile-menu-bar {
+                background-color: #1b2a4a;
+                color: #ffffff;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.7rem 1.2rem;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                width: 100%;
+            }
+
+            .mobile-menu-title {
+                font-size: 0.95rem;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+            }
+
+            .menu-toggle {
+                background: transparent;
+                color: #ffffff;
+                border: none;
+                font-size: 1.4rem;
+                cursor: pointer;
+                padding: 0.2rem 0.4rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Menú desplegable flotante móvil */
+            #navMenuMobile {
                 display: none;
                 position: absolute;
                 top: 100%;
@@ -375,19 +380,25 @@
                 z-index: 1999;
             }
 
-            #navMenu.active {
+            #navMenuMobile.active {
                 display: flex;
                 opacity: 1;
                 visibility: visible;
                 transform: translateY(0);
             }
 
-            #navMenu a {
+            #navMenuMobile a {
                 padding: 1rem 1.5rem;
                 width: 100%;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 text-align: center;
                 font-size: 1rem;
+                color: #ffffff;
+                text-decoration: none;
+            }
+
+            #navMenuMobile a:hover {
+                background-color: #d31d1d;
             }
 
             /* Pie de página móvil */
@@ -462,7 +473,7 @@
         </div>
     </header>
 
-    <!-- CONTENEDOR MÓVIL SUPERIOR (BARRA + MENÚ FLOTANTE) -->
+    <!-- CONTENEDOR MÓVIL SUPERIOR (SOLO APARECE EN CELULARES) -->
     <div class="mobile-nav-container">
         <div class="mobile-menu-bar">
             <span class="mobile-menu-title">Menú del Sitio</span>
@@ -471,8 +482,8 @@
             </button>
         </div>
         
-        <!-- MENÚ DESPLEGABLE FLOTANTE -->
-        <nav id="navMenu">
+        <!-- MENÚ DESPLEGABLE FLOTANTE MÓVIL -->
+        <nav id="navMenuMobile">
             <a href="index.html">Inicio</a>
             <a href="sitiohistoria/index.html">Sitio e historia</a>
             <a href="modelos3d/index.html">Modelos 3D</a>
@@ -481,8 +492,8 @@
         </nav>
     </div>
 
-    <!-- NAVEGACIÓN NORMAL (ESCRITORIO) -->
-    <nav id="desktopNav" style="display: flex;">
+    <!-- BARRA DE NAVEGACIÓN TRADICIONAL (SOLO PARA ESCRITORIO) -->
+    <nav id="desktopNav">
         <a href="index.html">Inicio</a>
         <a href="sitiohistoria/index.html">Sitio e historia</a>
         <a href="modelos3d/index.html">Modelos 3D</a>
@@ -526,22 +537,23 @@
     <!-- SCRIPT PARA CONTROLAR EL MENÚ FLOTANTE MÓVIL -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
+        const navMenuMobile = document.getElementById('navMenuMobile');
 
         menuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            navMenu.classList.toggle('active');
+            navMenuMobile.classList.toggle('active');
         });
 
         // Cierra el menú si se hace clic fuera de él
         document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
+            if (!navMenuMobile.contains(e.target) && !menuToggle.contains(e.target)) {
+                navMenuMobile.classList.remove('active');
             }
         });
     </script>
 </body>
 </html>
+
 
 
 
