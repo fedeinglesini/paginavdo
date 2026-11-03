@@ -52,7 +52,7 @@
         .content-box p.subtitle { color: #475569; margin-bottom: 1.5rem; font-weight: 600; font-size: 1rem; }
         .content-box p { color: #334155; line-height: 1.6; }
 
-        /* FOOTER (PC) - Intacto como pediste */
+        /* FOOTER (PC) - Intacto y perfecto como estaba */
         footer {
             background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('fondopie.jpg');
             background-size: 98% auto; background-position: 40% 43%; color: #fff;
@@ -61,8 +61,7 @@
             display: grid;
             grid-template-columns: auto 1fr auto;
             grid-template-areas: 
-                "top top top"
-                "unlu . autores"
+                "unlu top autores"
                 "bottom bottom bottom";
             align-items: center;
             gap: 1.5rem 2rem;
@@ -71,7 +70,6 @@
         .footer-center {
             grid-area: top;
             text-align: center;
-            padding-bottom: 0.5rem;
         }
         .footer-center p { margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
 
@@ -105,7 +103,7 @@
         }
         .footer-bottom-text { margin: 0; font-size: 0.85rem; opacity: 0.95; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
 
-        /* RESPONSIVE MÓVIL (Ajustado específicamente) */
+        /* RESPONSIVE MÓVIL */
         @media (max-width: 768px) {
             header { padding: 1.2rem 0.8rem; display: block; }
             .header-logo-left, .header-logo-right, .header-titles { display: none; }
@@ -136,7 +134,7 @@
             #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: #fff; text-decoration: none; }
             #navMenuMobile a:hover { background-color: #d31d1d; }
 
-            /* Footer Móvil con orden estricto: Arriba texto, Medio logos, Abajo copyright */
+            /* Footer Móvil Ordenado: 1. Arriba texto, 2. Medio logos a los costados, 3. Abajo copyright */
             footer {
                 display: flex;
                 flex-direction: column;
@@ -148,22 +146,21 @@
             .footer-center {
                 order: 1;
                 width: 100%;
-                padding-bottom: 0;
             }
             .footer-center p { font-size: 0.75rem; margin: 0; }
 
-            .mobile-footer-middle {
+            .footer-mobile-row {
                 order: 2;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
-                padding: 0 0.2rem;
+                padding: 0 0.5rem;
             }
-            .footer-left-block { order: 1; padding-left: 0; }
-            .footer-unlu-logo { width: 60px; height: 60px; }
+            .footer-left-block { padding-left: 0; }
+            .footer-unlu-logo { width: 65px; height: 65px; }
             
-            .footer-logos { order: 2; width: auto; max-width: 170px; margin: 0; }
+            .footer-logos { width: auto; max-width: 170px; margin: 0; }
             
             .footer-bottom-bar {
                 order: 3;
@@ -231,21 +228,21 @@
     </section>
 
     <footer>
-        <!-- Línea de desarrollo y administración arriba -->
+        <!-- Línea de desarrollo y administración (Arriba) -->
         <div class="footer-center">
             <p><strong>Página desarrollada y administrada por ProArHEP - Federico Inglesini</strong></p>
         </div>
 
-        <!-- En móvil agrupamos los logos en esta fila intermedia para que queden lado a lado -->
-        <div class="mobile-footer-middle" style="display: contents;">
-            <!-- Logo UNLu limpio al medio a la izquierda -->
+        <!-- Fila intermedia para móvil (logos a los costados) -->
+        <div class="footer-mobile-row" style="display: contents;">
+            <!-- Logo UNLu limpio a la izquierda -->
             <div class="footer-left-block">
                 <a href="https://www.unlu.edu.ar" class="footer-unlu-link" target="_blank" rel="noopener noreferrer" title="Universidad Nacional de Luján">
                     <img src="logounlu.png" alt="Logo UNLu" class="footer-unlu-logo" loading="lazy" onerror="this.style.display='none'">
                 </a>
             </div>
 
-            <!-- Bloque Autores al medio a la derecha -->
+            <!-- Bloque Autores a la derecha -->
             <div class="footer-logos">
                 <div class="footer-logos-title">Autores de logos:</div>
                 <div class="footer-logo-item">
