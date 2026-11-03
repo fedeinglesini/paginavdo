@@ -64,19 +64,16 @@
         .footer-center p { margin: 0.3rem 0; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
         .footer-bottom-text { margin-top: 0.4rem; font-size: 0.85rem; opacity: 0.95; }
         
-        /* Bloque UNLu Izquierda (Estilo unificado con el de Autores) */
+        /* Logo UNLu limpio a la izquierda */
         .footer-left-block {
-            display: flex; flex-direction: column; gap: 0.5rem; background: rgba(0,0,0,0.3);
-            padding: 0.8rem 1rem; border-radius: 8px; min-width: 170px; order: 1;
+            display: flex; align-items: center; order: 1; min-width: 170px; justify-content: flex-start; padding-left: 0.5rem;
         }
-        .footer-unlu-title {
-            font-weight: 700; font-size: 0.85rem; margin-bottom: 0.1rem; text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.2rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        }
-        .footer-unlu-link { display: flex; align-items: center; gap: 0.6rem; color: #fff; text-decoration: none; transition: opacity 0.2s ease; }
+        .footer-unlu-link { display: flex; align-items: center; text-decoration: none; transition: opacity 0.2s ease; }
         .footer-unlu-link:hover { opacity: 0.8; }
-        .footer-unlu-logo { width: 26px; height: 26px; object-fit: contain; border-radius: 4px; border: 1px solid rgba(255,255,255,0.4); }
-        .footer-unlu-text { font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+        .footer-unlu-logo {
+            width: 75px; height: 75px; object-fit: contain;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5)); border-radius: 4px;
+        }
 
         /* Bloque Autores Derecha */
         .footer-logos {
@@ -121,23 +118,22 @@
             #navMenuMobile a:hover { background-color: #d31d1d; }
 
             /* Footer Móvil */
-            footer { flex-direction: column; text-align: center; padding: 1rem 0.8rem; gap: 0.8rem; }
+            footer { flex-direction: column; text-align: center; padding: 1.2rem 0.8rem; gap: 0.8rem; }
             .footer-center { order: 1; width: 100%; }
             .footer-center p { font-size: 0.72rem; margin: 0.1rem 0; }
             .footer-bottom-text { margin-top: 0.15rem; font-size: 0.70rem; }
 
-            /* Contenedor inferior en móvil para poner lado a lado UNLu y Autores */
-            .mobile-footer-row {
-                display: flex; justify-content: space-between; align-items: stretch; width: 100%; order: 2; gap: 0.5rem;
+            /* Fila inferior móvil: Logo UNLu limpio a la izquierda y Autores a la derecha */
+            .footer-mobile-row {
+                display: flex; justify-content: space-between; align-items: center; width: 100%; order: 2; gap: 0.5rem;
             }
-            .footer-left-block { order: 1; flex: 1; max-width: 48%; }
-            .footer-logos { order: 2; flex: 1; max-width: 48%; margin: 0; }
+            .footer-left-block { order: 1; min-width: auto; padding-left: 0; }
+            .footer-logos { order: 2; width: auto; max-width: 170px; margin: 0; }
             
-            .footer-unlu-title, .footer-logos-title { font-size: 0.75rem; }
-            .footer-unlu-text { font-size: 0.75rem; }
+            .footer-unlu-logo { width: 52px; height: 52px; }
+            .footer-logos-title { font-size: 0.75rem; }
             .footer-logo-item img { width: 20px; height: 20px; }
             .footer-logo-item span { font-size: 0.75rem; }
-            .footer-unlu-logo { width: 20px; height: 20px; }
         }
     </style>
 </head>
@@ -193,12 +189,10 @@
     </section>
 
     <footer>
-        <!-- Bloque UNLu Izquierda -->
+        <!-- Logo UNLu limpio a la izquierda -->
         <div class="footer-left-block">
-            <div class="footer-unlu-title">Universidad:</div>
-            <a href="https://www.unlu.edu.ar" class="footer-unlu-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.unlu.edu.ar" class="footer-unlu-link" target="_blank" rel="noopener noreferrer" title="Universidad Nacional de Luján">
                 <img src="logounlu.png" alt="Logo UNLu" class="footer-unlu-logo" loading="lazy" onerror="this.style.display='none'">
-                <span class="footer-unlu-text">UNLu</span>
             </a>
         </div>
 
@@ -207,7 +201,7 @@
             <p class="footer-bottom-text">© 2026 - ProArHEP todos los derechos reservados</p>
         </div>
 
-        <!-- Bloque Autores Derecha -->
+        <!-- Bloque Autores a la derecha -->
         <div class="footer-logos">
             <div class="footer-logos-title">Autores de logos:</div>
             <div class="footer-logo-item">
@@ -242,6 +236,7 @@
     </script>
 </body>
 </html>
+
 
 
 
