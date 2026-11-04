@@ -6,34 +6,43 @@
     <title>Sitio Vuelta de Obligado - 3D</title>
     <link rel="icon" type="image/png" href="../logoizq.png?v=2">
     <style>
+        :root {
+            --bg-dark: #0f172a;
+            --navy-main: #1b2a4a;
+            --navy-overlay: rgba(30, 46, 75, 0.6);
+            --red-accent: #d31d1d;
+            --text-light: #ffffff;
+            --border-light: rgba(148, 163, 184, 0.3);
+        }
+
         html { scroll-behavior: smooth; }
-        body { font-family: system-ui, -apple-system, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: system-ui, -apple-system, sans-serif; background-color: var(--bg-dark); color: #f8fafc; margin: 0; padding: 0; box-sizing: border-box; }
         *, *:before, *:after { box-sizing: inherit; }
 
-        /* HEADER PC */
+        /* HEADER PC (Actualizado con el tono y transparencia exactos) */
         header {
-            background: linear-gradient(rgba(27, 42, 74, 0.70), rgba(27, 42, 74, 0.70)), url('../fondosuperior.jpg');
+            background: linear-gradient(var(--navy-overlay), var(--navy-overlay)), url('../fondosuperior.jpg');
             background-size: cover; background-position: center;
-            padding: 2.2rem 2rem; display: flex; justify-content: space-between; align-items: center; color: #fff;
+            padding: 2.2rem 2rem; display: flex; justify-content: space-between; align-items: center; color: var(--text-light);
         }
         .header-logo-left, .header-logo-right { width: 135px; height: 135px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .header-logo-left img, .header-logo-right img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25)); }
-        .header-titles { text-align: center; flex-grow: 1; margin: 0 1rem; background-color: rgba(30, 41, 59, 0.7); padding: 1.2rem 1.5rem; border-radius: 10px; border: 1px solid rgba(148, 163, 184, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
+        .header-titles { text-align: center; flex-grow: 1; margin: 0 1rem; background-color: rgba(30, 41, 59, 0.7); padding: 1.2rem 1.5rem; border-radius: 10px; border: 1px solid var(--border-light); box-shadow: 0 4px 15px rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
         .header-title { font-size: 1.8rem; font-weight: 700; margin: 0 0 0.4rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
         .header-subtitle-main { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.3rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); letter-spacing: 0.8px; }
         .header-subtitle-sub { font-size: 1.0rem; font-weight: 400; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); opacity: 0.95; }
 
         /* NAVEGACIÓN PC */
         nav {
-            background-color: #1b2a4a; display: flex; justify-content: flex-start;
+            background-color: var(--navy-main); display: flex; justify-content: flex-start;
             position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             overflow-x: auto; white-space: nowrap;
         }
         nav a {
-            color: #fff; text-decoration: none; font-weight: 500; font-size: 0.9rem;
+            color: var(--text-light); text-decoration: none; font-weight: 500; font-size: 0.9rem;
             padding: 0.7rem 1.2rem; display: inline-block; transition: background-color 0.3s ease;
         }
-        nav a:hover { background-color: #d31d1d; }
+        nav a:hover { background-color: var(--red-accent); }
         .mobile-nav-container { display: none; }
 
         /* SECCIÓN CENTRAL 3D (FONDO FIJO / PARALLAX) */
@@ -108,7 +117,7 @@
             .mobile-nav-container { display: block; position: sticky; top: 0; z-index: 2000; width: 100%; }
             
             .mobile-menu-bar {
-                background-color: #1b2a4a; color: #fff; display: flex; justify-content: space-between; align-items: center;
+                background-color: var(--navy-main); color: #fff; display: flex; justify-content: space-between; align-items: center;
                 padding: 0.4rem 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); width: 100%;
             }
             .mobile-menu-title { font-size: 0.9rem; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
@@ -122,30 +131,25 @@
             }
             #navMenuMobile.active { display: flex; opacity: 1; visibility: visible; transform: translateY(0); }
             #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: #fff; text-decoration: none; }
-            #navMenuMobile a:hover { background-color: #d31d1d; }
+            #navMenuMobile a:hover { background-color: var(--red-accent); }
 
-            /* Fondo fijo también en móvil y recuadro contenedor idéntico al de las demás secciones (#D3D3D3) */
             section { 
                 background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg'); 
                 background-size: cover; 
                 background-position: center; 
                 background-attachment: fixed; 
                 padding: 2rem 0.8rem;
-            }
-
-            /* Transformamos los textos y la grilla en un recuadro unificado color #D3D3D3 igual que las demás secciones */
-            section {
-                background-color: #0f172a; /* color base por si acaso */
+                background-color: #0f172a;
             }
 
             .mobile-content-box {
-    background-color: rgba(211, 211, 211, 0.75); /* Fondo gris con leve transparencia */
-    backdrop-filter: blur(4px);                  /* Efecto blur/desenfoque al fondo de atrás */
-    color: #0f172a; 
-    width: 100%; 
-    padding: 2rem 1.2rem; 
-    border-radius: 12px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                background-color: rgba(211, 211, 211, 0.75); 
+                backdrop-filter: blur(4px);                  
+                color: #0f172a; 
+                width: 100%; 
+                padding: 2rem 1.2rem; 
+                border-radius: 12px; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             }
 
             .mobile-content-box h1.main-heading, 
@@ -220,7 +224,6 @@
     </nav>
 
     <section>
-        <!-- En móviles usamos este contenedor idéntico al de las otras secciones (#D3D3D3) envolviendo todo, y con fondo fixed -->
         <div class="mobile-content-box">
             <h1 class="main-heading">Modelos 3D sitio: Vuelta de Obligado</h1>
             <p class="subtitle">¡Tocá cualquiera de los modelos para verlo!</p>
@@ -367,7 +370,6 @@
     </script>
 </body>
 </html>
-
 
 
 
