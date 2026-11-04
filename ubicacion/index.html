@@ -4,127 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubicación - Sitio Vuelta de Obligado</title>
-    <!-- Favicon blindado con parámetro de versión para evitar problemas de caché -->
     <link rel="icon" type="image/png" href="../logoizq.png?v=2">
     <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-pergamino: #F5E3B7;
+            --navy-main: #1b2a4a;
+            --navy-overlay: rgba(30, 46, 75, 0.6);
+            --red-accent: #d31d1d;
+            --text-dark: #000000;
+            --text-heading: #0f172a;
+            --text-light: #ffffff;
+            --border-light: rgba(148, 163, 184, 0.3);
+            --shadow-box: 0px 20px 40px rgba(0, 0, 0, 0.75);
+        }
+
         html { scroll-behavior: smooth; }
-        body { font-family: system-ui, -apple-system, sans-serif; background-color: #0f172a; color: #0f172a; margin: 0; padding: 0; box-sizing: border-box; }
-        *, *:before, *:after { box-sizing: inherit; }
+        *, *::before, *::after { box-sizing: border-box; }
+        
+        body { 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: var(--bg-dark); 
+            color: var(--bg-dark); 
+            margin: 0; 
+            padding: 0; 
+        }
 
         /* HEADER PC */
         header {
-            background: linear-gradient(rgba(30, 46, 75, 0.6), rgba(30, 46, 75, 0.6)), url('../fondosuperior.jpg');
-            background-size: cover; background-position: center;
-            padding: 2.2rem 2rem; display: flex; justify-content: space-between; align-items: center; color: #fff;
+            background: linear-gradient(var(--navy-overlay), var(--navy-overlay)), url('../fondosuperior.jpg') center/cover;
+            padding: 2.2rem 2rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            color: var(--text-light);
         }
-        .header-logo-left, .header-logo-right { width: 135px; height: 135px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .header-logo-left img, .header-logo-right img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25)); }
-        .header-titles { text-align: center; flex-grow: 1; margin: 0 1rem; background-color: rgba(30, 41, 59, 0.7); padding: 1.2rem 1.5rem; border-radius: 10px; border: 1px solid rgba(148, 163, 184, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
-        .header-title { font-size: 1.8rem; font-weight: 700; margin: 0 0 0.4rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
-        .header-subtitle-main { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.3rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); letter-spacing: 0.8px; }
+        .header-logo-left, .header-logo-right { 
+            width: 135px; 
+            height: 135px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            flex-shrink: 0; 
+        }
+        .header-logo-left img, .header-logo-right img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; 
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25)); 
+        }
+        .header-titles { 
+            text-align: center; 
+            flex-grow: 1; 
+            margin: 0 1rem; 
+            background-color: rgba(30, 41, 59, 0.7); 
+            padding: 1.2rem 1.5rem; 
+            border-radius: 10px; 
+            border: 1px solid var(--border-light); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
+            backdrop-filter: blur(2px); 
+        }
+        .header-title { font-size: 1.8rem; font-weight: 700; margin: 0 0 0.4rem; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
+        .header-subtitle-main { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.3rem; text-shadow: 0 2px 4px rgba(0,0,0,0.75); letter-spacing: 0.8px; }
         .header-subtitle-sub { font-size: 1.0rem; font-weight: 400; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); opacity: 0.95; }
 
         /* NAVEGACIÓN PC */
         nav {
-            background-color: #1b2a4a; display: flex; justify-content: flex-start;
-            position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            overflow-x: auto; white-space: nowrap;
+            background-color: var(--navy-main); 
+            display: flex; 
+            justify-content: flex-start;
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            overflow-x: auto; 
+            white-space: nowrap;
         }
         nav a {
-            color: #fff; text-decoration: none; font-weight: 500; font-size: 0.9rem;
-            padding: 0.7rem 1.2rem; display: inline-block; transition: background-color 0.3s ease;
+            color: var(--text-light); 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: 0.9rem;
+            padding: 0.7rem 1.2rem; 
+            display: inline-block; 
+            transition: background-color 0.3s ease;
         }
-        nav a:hover { background-color: #d31d1d; }
+        nav a:hover { background-color: var(--red-accent); }
         .mobile-nav-container { display: none; }
 
-        /* SECCIÓN CENTRAL UBICACIÓN (FONDO FIJO / PARALLAX) */
+        /* SECCIÓN CENTRAL UBICACIÓN */
         section {
-            background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral1.jpg');
-            background-size: cover;          /* Cubre todo el área de la sección */
-            background-position: center;     /* Centra la imagen de fondo */
-            background-attachment: fixed;    /* Mantiene la imagen fija durante el scroll */
-            padding: 3rem 1rem; min-height: 65vh; display: flex; flex-direction: column; align-items: center;
+            background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral1.jpg') center/cover fixed;
+            padding: 3rem 1rem; 
+            min-height: 65vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
             box-shadow: inset 0 10px 15px -10px rgba(0,0,0,0.3);
         }
-          .content-box {
-            background-color: #F5E3B7; 
-            color: #000000; 
+        .content-box {
+            background-color: var(--bg-pergamino); 
+            color: var(--text-dark); 
             width: 100%; 
             max-width: 1100px;
             padding: 3.5rem 2.5rem; 
             border-radius: 12px; 
-            /* Sombra bien definida y limpia */
-            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.75);
-            /* Asegura que la sombra se renderice por encima de fondos contiguos */
+            box-shadow: var(--shadow-box);
             position: relative;
             z-index: 2;
         }
         .ubicacion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
         
-        /* Títulos con subrayado en rojo institucional */
-        .ubicacion-col h2 { font-size: 1.5rem; margin-top: 0; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #d31d1d; padding-bottom: 0.4rem; }
-        .ubicacion-col h3 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.6rem; color: #000000; }
-        
-        /* Texto más oscuro y definido */
-        .ubicacion-col p { color: #000000; line-height: 1.6; margin-bottom: 1rem; font-size: 0.95rem; }
-
-        .climate-table-img { width: 100%; height: auto; border-radius: 4px; margin-top: 1rem; border: 1px solid #94a3b8; box-shadow: 0 4px 10px rgba(0,0,0,0.15); display: block; filter: saturate(85%) contrast(95%); }
-        
-        .map-container { width: 100%; height: 250px; border-radius: 4px; overflow: hidden; margin-top: 1rem; margin-bottom: 0.75rem; border: 1px solid #94a3b8; box-shadow: 0 4px 10px rgba(0,0,0,0.15); background-color: #cbd5e1; }
-        .map-container iframe { width: 100%; height: 100%; border: 0; filter: saturate(80%) contrast(95%); }
-        
-        .map-description { font-size: 0.85rem; color: #000000; font-style: italic; text-align: center; margin: 0; }
-        
-        /* BOTÓN SMN CON LOGO */
-        .btn-smn-container {
-            margin-top: 1.2rem;
-            display: flex;
-            justify-content: center;
+        /* Títulos */
+        .ubicacion-col h2 { 
+            font-size: 1.5rem; 
+            margin-top: 0; 
+            margin-bottom: 1rem; 
+            color: var(--text-heading); 
+            border-bottom: 2px solid var(--red-accent); 
+            padding-bottom: 0.4rem; 
         }
+        .ubicacion-col h3 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.6rem; color: var(--text-dark); }
+        .ubicacion-col p { color: var(--text-dark); line-height: 1.6; margin-bottom: 1rem; font-size: 0.95rem; }
+
+        .climate-table-img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 4px; 
+            margin-top: 1rem; 
+            border: 1px solid #94a3b8; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+            display: block; 
+            filter: saturate(85%) contrast(95%); 
+        }
+        
+        .map-container { 
+            width: 100%; 
+            height: 250px; 
+            border-radius: 4px; 
+            overflow: hidden; 
+            margin-top: 1rem; 
+            margin-bottom: 0.75rem; 
+            border: 1px solid #94a3b8; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+            background-color: #cbd5e1; 
+        }
+        .map-container iframe { width: 100%; height: 100%; border: 0; filter: saturate(80%) contrast(95%); }
+        .map-description { font-size: 0.85rem; color: var(--text-dark); font-style: italic; text-align: center; margin: 0; }
+        
+        /* BOTÓN SMN */
+        .btn-smn-container { margin-top: 1.2rem; display: flex; justify-content: center; }
         .btn-smn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
             gap: 0.6rem;
-            background-color: #1b2a4a;
-            color: #ffffff;
+            background-color: var(--navy-main); 
+            color: var(--text-light); 
             padding: 0.6rem 1.1rem;
-            font-size: 0.88rem;
-            font-weight: 500;
-            text-decoration: none;
+            font-size: 0.88rem; 
+            font-weight: 500; 
+            text-decoration: none; 
             border-radius: 6px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                         transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
                         box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .btn-smn:hover {
-            background-color: #d31d1d;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(0,0,0,0.22);
-        }
-        .btn-smn:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-        }
-        .btn-smn img {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
-        }
-        .btn-smn:hover img {
-            transform: scale(1.1);
-        }
+        .btn-smn:hover { background-color: var(--red-accent); transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,0.22); }
+        .btn-smn:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+        .btn-smn img { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; transition: transform 0.3s ease; }
+        .btn-smn:hover img { transform: scale(1.1); }
 
-        /* FOOTER (PC) */
+        /* FOOTER */
         footer {
-            background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('../fondopie.jpg');
-            background-size: 99% auto; background-position: 40% 43%; color: #fff;
-            padding: 2.5rem 2rem; font-size: 0.9rem; line-height: 1.6;
+            background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('../fondopie.jpg') 40% 43%/99% auto;
+            color: var(--text-light); 
+            padding: 2.5rem 2rem; 
+            font-size: 0.9rem; 
+            line-height: 1.6;
             box-shadow: inset 0 12px 15px -8px rgba(0,0,0,0.4);
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            gap: 1.5rem;
         }
         .footer-center { text-align: center; flex-grow: 1; order: 2; }
         .footer-center p { margin: 0.3rem 0; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
@@ -136,35 +200,38 @@
         .footer-unlu-logo { width: 90px; height: 90px; object-fit: contain; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5)); border-radius: 4px; }
 
         .footer-logos {
-            display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5); background: rgba(0,0,0,0.3);
-            padding: 0.8rem 1rem; border-radius: 8px; min-width: 170px; order: 3;
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.5rem; 
+            font-size: 0.85rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5); 
+            background: rgba(0,0,0,0.3);
+            padding: 0.8rem 1rem; 
+            border-radius: 8px; 
+            min-width: 170px; 
+            order: 3;
         }
-        .footer-logos-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.1rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.2rem; }
-        .footer-logo-item a { display: flex; align-items: center; gap: 0.6rem; color: #fff; text-decoration: none; transition: opacity 0.2s ease; }
+        .footer-logos-title { font-weight: 700; margin-bottom: 0.1rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.2rem; }
+        .footer-logo-item a { display: flex; align-items: center; gap: 0.6rem; color: var(--text-light); text-decoration: none; transition: opacity 0.2s ease; }
         .footer-logo-item a:hover { opacity: 0.8; }
         .footer-logo-item img { width: 26px; height: 26px; object-fit: contain; border-radius: 4px; border: 1px solid rgba(255,255,255,0.4); }
 
         /* RESPONSIVE MÓVIL */
         @media (max-width: 768px) {
-            header { padding: 1.2rem 0.8rem; text-align: center; display: grid; grid-template-columns: 62px 1fr 62px; grid-template-areas: "title title title" "left middle right" "def def def"; align-items: center; justify-items: center; gap: 0.6rem; }
-            .header-title { grid-area: title; font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
+            header { padding: 1.2rem 0.8rem; display: grid; grid-template-columns: 62px 1fr 62px; grid-template-areas: "title title title" "left middle right" "def def def"; gap: 0.6rem; justify-items: center; }
+            .header-title { grid-area: title; font-size: 1.3rem; margin: 0; }
             .header-logo-left { grid-area: left; width: 62px; height: 62px; }
-            .header-subtitle-main { grid-area: middle; font-size: 1.25rem; font-weight: 600; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
+            .header-subtitle-main { grid-area: middle; font-size: 1.25rem; margin: 0; }
             .header-logo-right { grid-area: right; width: 62px; height: 62px; }
-            .header-subtitle-sub { grid-area: def; font-size: 0.78rem; font-weight: 400; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); opacity: 0.95; }
+            .header-subtitle-sub { grid-area: def; font-size: 0.78rem; margin: 0; }
             .header-titles { display: contents; }
-            .header-logo-left img, .header-logo-right img { width: 62px; height: 62px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
 
             #desktopNav { display: none !important; }
             .mobile-nav-container { display: block; position: sticky; top: 0; z-index: 2000; width: 100%; }
             
-            .mobile-menu-bar {
-                background-color: #1b2a4a; color: #fff; display: flex; justify-content: space-between; align-items: center;
-                padding: 0.4rem 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); width: 100%;
-            }
-            .mobile-menu-title { font-size: 0.9rem; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
-            .menu-toggle { background: transparent; color: #fff; border: none; font-size: 1.2rem; cursor: pointer; padding: 0.1rem; }
+            .mobile-menu-bar { background-color: var(--navy-main); color: var(--text-light); display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+            .mobile-menu-title { font-size: 0.9rem; font-weight: 600; }
+            .menu-toggle { background: transparent; color: var(--text-light); border: none; font-size: 1.2rem; cursor: pointer; padding: 0.1rem; }
 
             #navMenuMobile {
                 display: none; position: absolute; top: 100%; left: 0; width: 100%; flex-direction: column;
@@ -173,56 +240,47 @@
                 transform: translateY(-8px); transition: opacity 0.25s ease, transform 0.25s ease; z-index: 1999;
             }
             #navMenuMobile.active { display: flex; opacity: 1; visibility: visible; transform: translateY(0); }
-            #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: #fff; text-decoration: none; }
-            #navMenuMobile a:hover { background-color: #d31d1d; }
+            #navMenuMobile a { padding: 0.8rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: var(--text-light); text-decoration: none; }
+            #navMenuMobile a:hover { background-color: var(--red-accent); }
 
             .ubicacion-grid { grid-template-columns: 1fr; gap: 2rem; }
 
-            /* Footer Móvil */
             footer {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                grid-template-areas: 
-                    "maintext maintext"
-                    "unlu logos"
-                    "copyright copyright";
-                align-items: center;
+                grid-template-areas: "maintext maintext" "unlu logos" "copyright copyright";
                 gap: 0.8rem 0.5rem;
                 padding: 1rem 0.8rem;
             }
-            .footer-center { grid-area: maintext; text-align: center; width: 100%; margin: 0; order: unset; }
-            .footer-center p { font-size: 0.72rem; margin: 0; }
-            
-            .footer-left-block { grid-area: unlu; justify-content: flex-start; min-width: auto; padding: 0; order: unset; }
+            .footer-center { grid-area: maintext; margin: 0; }
+            .footer-center p { font-size: 0.72rem; }
+            .footer-left-block { grid-area: unlu; min-width: auto; padding: 0; }
             .footer-unlu-logo { width: 65px; height: 65px; }
-
-            .footer-logos { grid-area: logos; width: auto; max-width: 170px; margin: 0 0 0 auto; padding: 0.5rem 0.7rem; order: unset; }
-            .footer-logos-title { font-size: 0.75rem; }
+            .footer-logos { grid-area: logos; max-width: 170px; margin-left: auto; padding: 0.5rem 0.7rem; }
+            .footer-logos-title, .footer-logo-item span { font-size: 0.75rem; }
             .footer-logo-item img { width: 20px; height: 20px; }
-            .footer-logo-item span { font-size: 0.75rem; }
-
-            .footer-bottom-text { grid-area: copyright; text-align: center; margin: 0; font-size: 0.70rem; }
+            .footer-bottom-text { grid-area: copyright; font-size: 0.70rem; margin: 0; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="header-logo-left"><img src="../logoizq.png" alt="Logo Izquierda" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="header-logo-left"><img src="../logoizq.png" alt="Logo ProArHEP Izquierda" loading="lazy" onerror="this.style.display='none'"></div>
         <div class="header-titles">
             <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
             <p class="header-subtitle-main">ProArHEP</p>
             <p class="header-subtitle-sub">Programa de Arqueología Histórica y Estudios Pluridisciplinarios</p>
         </div>
-        <div class="header-logo-right"><img src="../logoder.png" alt="Logo Derecha" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="header-logo-right"><img src="../logoder.png" alt="Logo ProArHEP Derecha" loading="lazy" onerror="this.style.display='none'"></div>
     </header>
 
     <div class="mobile-nav-container">
         <div class="mobile-menu-bar">
             <span class="mobile-menu-title">Menú del Sitio</span>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">&#9776;</button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenuMobile">&#9776;</button>
         </div>
-        <nav id="navMenuMobile">
+        <nav id="navMenuMobile" aria-label="Navegación Móvil">
             <a href="../index.html">Inicio</a>
             <a href="../sitiohistoria/index.html">Sitio e historia</a>
             <a href="../modelos3d/index.html">Modelos 3D</a>
@@ -231,7 +289,7 @@
         </nav>
     </div>
 
-    <nav id="desktopNav">
+    <nav id="desktopNav" aria-label="Navegación Principal">
         <a href="../index.html">Inicio</a>
         <a href="../sitiohistoria/index.html">Sitio e historia</a>
         <a href="../modelos3d/index.html">Modelos 3D</a>
@@ -239,44 +297,45 @@
         <a href="../ubicacion/index.html">Ubicación</a>
     </nav>
 
-    <section id="ubicacion">
-        <div class="content-box">
-            <div class="ubicacion-grid">
-                
-                <div class="ubicacion-col">
-                    <h2>Ubicación</h2>
-                    <p>El sitio histórico de Vuelta de Obligado se encuentra en su localidad homónima, dentro del partido de San Pedro en la provincia de Buenos Aires.</p>
+    <main id="ubicacion">
+        <section>
+            <div class="content-box">
+                <div class="ubicacion-grid">
                     
-                    <h3>¿Cómo llegar?</h3>
-                    <p>La ruta para llegar a la localidad es completamente asfaltada ingresando desde el sur (por ejemplo: desde CABA) a través de Río Tala - San Pedro. Desde la ruta nacional Nº 9 se toma la salida hacia Río Tala, luego se continúa por la ruta provincial Nº 1001 hasta llegar a San Pedro. Sin desviarse se sigue derecho por la misma vía (que se transforma en el Acceso a Vuelta de Obligado) y tras alrededor de 20km de lindos paisajes rurales, se entra a Vuelta de Obligado.</p>
-                    <p>Desde el norte (por ejemplo: desde Rosario) se puede llegar de la misma forma, pero, también se puede ingresar viniendo por la ruta nacional Nº 9 y tomando la salida hacia San Pedro por la ruta provincial Nº 191 por la que se continúa hasta el cruce con Lucio Mansilla donde se dobla a la izquierda y el camino pasa a ser el Acceso a Vuelta de Obligado, de ahí son los mismos aproximados 20km de lindos paisajes rurales hasta llegar a la localidad. Al igual que la otra alternativa, este recorrido es completamente asfaltado.</p>
-                    <p>Desde la Ciudad Autónoma de Buenos Aires son 190km y desde Rosario son 165km.</p>
-                    
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1467.3006802889317!2d-59.81090285660789!3d-33.59680842053154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ba1dda51f097bd%3A0xdc50e50f40a5d653!2sMonumento%20Batalla%20Vuelta%20de%20Obligado!5e0!3m2!1ses!2sar!4v1793445030467!5m2!1ses!2sar" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <div class="ubicacion-col">
+                        <h2>Ubicación</h2>
+                        <p>El sitio histórico de Vuelta de Obligado se encuentra en su localidad homónima, dentro del partido de San Pedro en la provincia de Buenos Aires.</p>
+                        
+                        <h3>¿Cómo llegar?</h3>
+                        <p>La ruta para llegar a la localidad es completamente asfaltada ingresando desde el sur (por ejemplo: desde CABA) a través de Río Tala - San Pedro. Desde la ruta nacional Nº 9 se toma la salida hacia Río Tala, luego se continúa por la ruta provincial Nº 1001 hasta llegar a San Pedro. Sin desviarse se sigue derecho por la misma vía (que se transforma en el Acceso a Vuelta de Obligado) y tras alrededor de 20km de lindos paisajes rurales, se entra a Vuelta de Obligado.</p>
+                        <p>Desde el norte (por ejemplo: desde Rosario) se puede llegar de la misma forma, pero, también se puede ingresar viniendo por la ruta nacional Nº 9 y tomando la salida hacia San Pedro por la ruta provincial Nº 191 por la que se continúa hasta el cruce con Lucio Mansilla donde se dobla a la izquierda y el camino pasa a ser el Acceso a Vuelta de Obligado, de ahí son los mismos aproximados 20km de lindos paisajes rurales hasta llegar a la localidad. Al igual que la otra alternativa, este recorrido es completamente asfaltado.</p>
+                        <p>Desde la Ciudad Autónoma de Buenos Aires son 190km y desde Rosario son 165km.</p>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1467.3006802889317!2d-59.81090285660789!3d-33.59680842053154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ba1dda51f097bd%3A0xdc50e50f40a5d653!2sMonumento%20Batalla%20Vuelta%20de%20Obligado!5e0!3m2!1ses!2sar!4v1793445030467!5m2!1ses!2sar" title="Mapa interactivo de ubicación" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+                        <p class="map-description">Mapa interactivo de la zona.</p>
                     </div>
-                    <p class="map-description">Mapa interactivo de la zona.</p>
-                </div>
 
-                <div class="ubicacion-col">
-                    <h2>Geografía y clima</h2>
-                    <p>El relieve de la zona presenta ligeras irregularidades, como barrancas, debido al Río Paraná a orillas del mismo (y frente al sitio histórico) se encuentra una playa de arena. La zona presenta una gran y destacada actividad pesquera. En la localidad y en sus cercanías se pueden observar diversas zonas frondosas, en especial en áreas cercanas al agua (arroyos y río).</p>
-                    <p>Las condiciones climáticas entran dentro de la categoría templado húmedo o pampeano, con variaciones marcadas entre estaciones. Los veranos suelen ser calurosos con días húmedos y noches mayoritariamente templadas, las estaciones de transición (otoño y primavera) suelen presentar días templados y noches ligeramente frescas (en especial en mayo y septiembre). Los inviernos presentan tardes templadas (con probabilidad de días fríos) y noches marcadamente más frías. El periodo de mayor precipitación va de octubre a abril.</p>
-                    <p>Tabla con valores climáticos promedio de la zona de Vuelta de Obligado:</p>
-                    <img src="tablaclimavdo.png" alt="Tabla climática de Vuelta de Obligado" class="climate-table-img" loading="lazy" onerror="this.style.display='none'">
-                    
-                    <!-- Botón SMN con tu propio logo integrado -->
-                    <div class="btn-smn-container">
-                        <a href="https://www.smn.gob.ar/" target="_blank" rel="noopener noreferrer" class="btn-smn">
-                            <img src="../logosmn.png" alt="Logo SMN" loading="lazy" onerror="this.style.display='none'">
-                            <span>Consultar pronóstico en el SMN</span>
-                        </a>
+                    <div class="ubicacion-col">
+                        <h2>Geografía y clima</h2>
+                        <p>El relieve de la zona presenta ligeras irregularidades, como barrancas, debido al Río Paraná a orillas del mismo (y frente al sitio histórico) se encuentra una playa de arena. La zona presenta una gran y destacada actividad pesquera. En la localidad y en sus cercanías se pueden observar diversas zonas frondosas, en especial en áreas cercanas al agua (arroyos y río).</p>
+                        <p>Las condiciones climáticas entran dentro de la categoría templado húmedo o pampeano, con variaciones marcadas entre estaciones. Los veranos suelen ser calurosos con días húmedos y noches mayoritariamente templadas, las estaciones de transición (otoño y primavera) suelen presentar días templados y noches ligeramente frescas (en especial en mayo y septiembre). Los inviernos presentan tardes templadas (con probabilidad de días fríos) y noches marcadamente más frías. El periodo de mayor precipitación va de octubre a abril.</p>
+                        <p>Tabla con valores climáticos promedio de la zona de Vuelta de Obligado:</p>
+                        <img src="tablaclimavdo.png" alt="Tabla climática de Vuelta de Obligado" class="climate-table-img" loading="lazy" onerror="this.style.display='none'">
+                        
+                        <div class="btn-smn-container">
+                            <a href="https://www.smn.gob.ar/" target="_blank" rel="noopener noreferrer" class="btn-smn">
+                                <img src="../logosmn.png" alt="Logo SMN" loading="lazy" onerror="this.style.display='none'">
+                                <span>Consultar pronóstico en el SMN</span>
+                            </a>
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-left-block">
@@ -294,13 +353,13 @@
             <div class="footer-logos-title">Autores de logos:</div>
             <div class="footer-logo-item">
                 <a href="../logoizq.png" target="_blank" rel="noopener noreferrer">
-                    <img src="../logoizq.png" alt="Logo Izq" loading="lazy" onerror="this.style.display='none'">
+                    <img src="../logoizq.png" alt="Logo Izquierdo" loading="lazy" onerror="this.style.display='none'">
                     <span>Juan Ramos</span>
                 </a>
             </div>
             <div class="footer-logo-item">
                 <a href="../logoder.png" target="_blank" rel="noopener noreferrer">
-                    <img src="../logoder.png" alt="Logo Der" loading="lazy" onerror="this.style.display='none'">
+                    <img src="../logoder.png" alt="Logo Derecho" loading="lazy" onerror="this.style.display='none'">
                     <span>Daniel Gomez</span>
                 </a>
             </div>
@@ -308,22 +367,27 @@
     </footer>
 
     <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenuMobile = document.getElementById('navMenuMobile');
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenuMobile = document.getElementById('navMenuMobile');
 
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenuMobile.classList.toggle('active');
-        });
+            menuToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const isActive = navMenuMobile.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', isActive);
+            });
 
-        document.addEventListener('click', (e) => {
-            if (!navMenuMobile.contains(e.target) && !menuToggle.contains(e.target)) {
-                navMenuMobile.classList.remove('active');
-            }
+            document.addEventListener('click', function (e) {
+                if (!navMenuMobile.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navMenuMobile.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
         });
     </script>
 </body>
 </html>
+
 
 
 
