@@ -99,25 +99,40 @@
         .content-box ul { margin-bottom: 1rem; padding-left: 1.5rem; }
         .content-box li { color: var(--text-dark); line-height: 1.6; margin-bottom: 0.5rem; }
         
-        /* ESTILOS DE IMÁGENES CENTRALES Y PROPORCIONADAS */
-        .content-img-center {
-            display: block;
-            width: 100%;
-            max-width: 450px;
+        /* ESTILOS DE IMÁGENES FLOTADAS Y AJUSTADAS AL TEXTO */
+        .img-left {
+            float: left;
+            width: 340px;
+            max-width: 100%;
             height: auto;
-            margin: 1.5rem auto 0.4rem auto;
             border-radius: 4px;
+            margin: 0.3rem 1.5rem 0.8rem 0;
             border: 1px solid #94a3b8;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             filter: saturate(90%) contrast(95%);
         }
+        .img-right {
+            float: right;
+            width: 360px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 0.3rem 0 0.8rem 1.5rem;
+            border: 1px solid #94a3b8;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            filter: saturate(90%) contrast(95%);
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
         .img-description { 
-            font-size: 0.85rem; 
+            font-size: 0.82rem; 
             color: var(--text-dark); 
             font-style: italic; 
-            text-align: center;
-            margin-top: 0.4rem;
-            margin-bottom: 1.2rem; 
+            margin-top: 0.3rem;
+            margin-bottom: 0.8rem;
         }
 
         .content-box blockquote {
@@ -199,6 +214,9 @@
             #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: var(--text-light); text-decoration: none; }
             #navMenuMobile a:hover { background-color: var(--red-accent); }
 
+            /* En celulares las imágenes se centran y ocupan todo el ancho */
+            .img-left, .img-right { float: none; display: block; width: 100%; margin: 1rem auto; }
+
             /* Footer Móvil */
             footer {
                 display: grid;
@@ -272,13 +290,14 @@
             <p>Frente al sitio se encuentra una zona de paraje con acceso a la playa, áreas de acampe, parrillas y diversos puestos locales.</p>
 
             <h4>Campañas arqueológicas</h4>
-            <p>Las investigaciones arqueológicas en Vuelta de Obligado comenzaron en mayo de 2000, lideradas por el Dr. Mariano Ramos y el equipo del programa ProArHEP (Universidad Nacional de Luján). Se trata de uno de los primeros proyectos en Argentina y América del Sur dedicado al estudio de un campo de batalla desde la Arqueología Histórica, acumulando más de 50 campañas de campo hasta la fecha.</p>
-            
-            <!-- FOTO 1: foto1.png (centrada, chica y con su descripción prolija abajo) -->
-            <img src="foto1.png" alt="Equipo realizando excavaciones arqueológicas" class="content-img-center" loading="lazy" onerror="this.style.display='none'">
-            <p class="img-description">Excavaciones en monte. Foto Gerardo Dell´Oro, 2014.</p>
+            <div class="clearfix">
+                <!-- FOTO 1: foto1.png flotando a la IZQUIERDA -->
+                <img src="foto1.png" alt="Equipo realizando excavaciones arqueológicas" class="img-left" loading="lazy" onerror="this.style.display='none'">
+                <p>Las investigaciones arqueológicas en Vuelta de Obligado comenzaron en mayo de 2000, lideradas por el Dr. Mariano Ramos y el equipo del programa ProArHEP (Universidad Nacional de Luján). Se trata de uno de los primeros proyectos en Argentina y América del Sur dedicado al estudio de un campo de batalla desde la Arqueología Histórica, acumulando más de 50 campañas de campo hasta la fecha.</p>
+                <p class="img-description" style="text-align: left;">Excavaciones en monte. Foto Gerardo Dell´Oro, 2014.</p>
+                <p>Para reconstruir lo sucedido de forma precisa, el equipo trabaja combinando distintas técnicas científicas:</p>
+            </div>
 
-            <p>Para reconstruir lo sucedido de forma precisa, el equipo trabaja combinando distintas técnicas científicas:</p>
             <ul>
                 <li><strong>Prospecciones en tierra y agua:</strong> Uso de detectores de metales, radares, magnetómetros y sonar de barrido lateral en el río Paraná para ubicar restos metálicos, estructuras y embarcaciones sumergidas.</li>
                 <li><strong>Excavaciones en extensión:</strong> Trabajos minuciosos en las áreas donde estuvieron las baterías de cañones, el campamento y el depósito de municiones.</li>
@@ -286,17 +305,18 @@
             </ul>
 
             <h4>¿Qué se encontró?</h4>
-            <p>A lo largo de las campañas se han recuperado más de 11.600 objetos y fragmentos. Entre los hallazgos más destacados se encuentran:</p>
-            <ul>
-                <li><strong>Materiales militares y de la vida en campaña:</strong> Proyectiles de artillería, fragmentos de bombas explosivas anglo-francesas, plomo fundido, piedras de chispa para fusil, botones de uniformes y clavos cuadrangulares.</li>
-                <li><strong>Restos cotidianos:</strong> Fragmentos de botellas de vidrio y gres: de vino y ginebra, cerámicas y restos de maderas quemadas.</li>
-                <li><strong>Estructuras exhumadas:</strong> Marcas de los postes de madera que sostenían las empalizadas defensivas y bases donde se apoyaban los cañones.</li>
-                <li><strong>El hallazgo de las Cadenas (2020):</strong> Durante la bajante histórica del río Paraná en 2020, se rescató en la playa un tramo original de cadena de 46 eslabones de hierro, aún atado a un grueso tronco de madera de 30 cm, que servía como sistema de anclaje de la barrera náutica de 1845.</li>
-            </ul>
-
-            <!-- FOTO HALLAZGOS: hallazgos.png (bien arriba, antes de la cita, para que no tape nada) -->
-            <img src="hallazgos.png" alt="Tabla y gráficos de hallazgos arqueológicos" class="content-img-center" loading="lazy" onerror="this.style.display='none'">
-            <p class="img-description">Tabla de hallazgos recuperados a lo largo de las campañas.</p>
+            <div class="clearfix">
+                <!-- TABLA HALLAZGOS: hallazgos.png flotando a la DERECHA e intercalado con el texto -->
+                <img src="hallazgos.png" alt="Tabla y gráficos de hallazgos arqueológicos" class="img-right" loading="lazy" onerror="this.style.display='none'">
+                <p>A lo largo de las campañas se han recuperado más de 11.600 objetos y fragmentos. Entre los hallazgos más destacados se encuentran:</p>
+                <ul>
+                    <li><strong>Materiales militares y de la vida en campaña:</strong> Proyectiles de artillería, fragmentos de bombas explosivas anglo-francesas, plomo fundido, piedras de chispa para fusil, botones de uniformes y clavos cuadrangulares.</li>
+                    <li><strong>Restos cotidianos:</strong> Fragmentos de botellas de vidrio y gres: de vino y ginebra, cerámicas y restos de maderas quemadas.</li>
+                    <li><strong>Estructuras exhumadas:</strong> Marcas de los postes de madera que sostenían las empalizadas defensivas y bases donde se apoyaban los cañones.</li>
+                    <li><strong>El hallazgo de las Cadenas (2020):</strong> Durante la bajante histórica del río Paraná en 2020, se rescató en la playa un tramo original de cadena de 46 eslabones de hierro, aún atado a un grueso tronco de madera de 30 cm, que servía como sistema de anclaje de la barrera náutica de 1845.</li>
+                </ul>
+                <p class="img-description" style="text-align: right;">Tabla de hallazgos recuperados a lo largo de las campañas.</p>
+            </div>
 
             <blockquote>
                 <p>"A más de un metro de profundidad, la hipótesis arqueológica se transformó en revelación histórica: descubrimos un imponente durmiente de madera de 30 centímetros de sección rodeado por la cadena en un nudo de amarre perfecto conocido como 'boca de lobo o presilla de alondra'. Era el sistema de anclaje original de las defensas náuticas de 1845, intacto tras 175 años de olvido."</p>
@@ -329,13 +349,14 @@
                 <li><strong>Escuadra Anglo-Francesa:</strong> Compuesta por los barcos de guerra más modernos de la época, incluyendo vapores acorazados (HMS Gorgon, HMS Firebrand, Fulton) y bergantines con una potencia combinada de 82 cañones de gran calibre con un alcance y poder destructivo muy superior.</li>
             </ul>
 
-            <h5>El desarrollo del combate</h5>
-            <p>Cerca de las 9:00 de la mañana, al disiparse la neblina, los barcos europeos iniciaron el cañoneo sobre las barrancas. Desde la costa, las tropas argentinas respondieron el fuego mientras la banda de música ejecutaba el Himno Nacional, entonado por los combatientes.</p>
-            <p>Durante más de cuatro horas el combate fue feroz. Las baterías argentinas dispararon balas macizas, tarros de metralla y cohetes. Sin embargo, cerca de las 13:00 horas, en un segundo intento, las fuerzas invasoras lograron cortar las cadenas que cruzaban el río. Con el paso abierto, la flota enemiga pudo avanzar y acorralar las defensas patrias atacando desde dos frentes.</p>
-
-            <!-- MAPA DE SULLIVAN: sullivan.jpg (más chico, centrado y con descripción correcta) -->
-            <img src="sullivan.jpg" alt="Plano histórico de Sullivan de la Batalla de Vuelta de Obligado" class="content-img-center" loading="lazy" onerror="this.style.display='none'">
-            <p class="img-description">Plano histórico de Sullivan de la batalla de 1845.</p>
+            <div class="clearfix">
+                <!-- MAPA SULLIVAN: sullivan.jpg flotando a la DERECHA e intercalado con el combate -->
+                <img src="sullivan.jpg" alt="Plano histórico de Sullivan de la Batalla de Vuelta de Obligado" class="img-right" loading="lazy" onerror="this.style.display='none'">
+                <h5>El desarrollo del combate</h5>
+                <p>Cerca de las 9:00 de la mañana, al disiparse la neblina, los barcos europeos iniciaron el cañoneo sobre las barrancas. Desde la costa, las tropas argentinas respondieron el fuego mientras la banda de música ejecutaba el Himno Nacional, entonado por los combatientes.</p>
+                <p>Durante más de cuatro horas el combate fue feroz. Las baterías argentinas dispararon balas macizas, tarros de metralla y cohetes. Sin embargo, cerca de las 13:00 horas, en un segundo intento, las fuerzas invasoras lograron cortar las cadenas que cruzaban el río. Con el paso abierto, la flota enemiga pudo avanzar y acorralar las defensas patrias atacando desde dos frentes.</p>
+                <p class="img-description" style="text-align: right;">Plano histórico de Sullivan de la batalla de 1845.</p>
+            </div>
 
             <p>Hacia las 16:00 horas las baterías argentinas comenzaron a quedarse sin municiones. Los europeos iniciaron el desembarco de tropas en la playa, donde enfrentaron firmes cargas de la caballería y de los indios amigos argentinos. Tras 8 horas de combate, la batalla principal concluyó cerca de las 17:00 horas, dejando un saldo aproximado de 750 bajas, la mayoría del bando argentino.</p>
 
