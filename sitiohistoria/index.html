@@ -99,6 +99,27 @@
         .content-box p { color: var(--text-dark); line-height: 1.6; margin-bottom: 1rem; }
         .content-box ul { margin-bottom: 1rem; padding-left: 1.5rem; }
         .content-box li { color: var(--text-dark); line-height: 1.6; margin-bottom: 0.5rem; }
+        
+        /* ESTILOS PARA IMÁGENES DE CONTENIDO */
+        .content-img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 4px; 
+            margin-top: 1.2rem; 
+            border: 1px solid #94a3b8; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+            display: block; 
+            filter: saturate(90%) contrast(95%); 
+        }
+        .img-description { 
+            font-size: 0.85rem; 
+            color: var(--text-dark); 
+            font-style: italic; 
+            text-align: center; 
+            margin-top: 0.4rem;
+            margin-bottom: 1.2rem; 
+        }
+
         .content-box blockquote {
             border-left: 4px solid var(--red-accent);
             margin: 1.5rem 0;
@@ -252,6 +273,11 @@
 
             <h4>Campañas arqueológicas</h4>
             <p>Las investigaciones arqueológicas en Vuelta de Obligado comenzaron en mayo de 2000, lideradas por el Dr. Mariano Ramos y el equipo del programa ProArHEP (Universidad Nacional de Luján). Se trata de uno de los primeros proyectos en Argentina y América del Sur dedicado al estudio de un campo de batalla desde la Arqueología Histórica, acumulando más de 50 campañas de campo hasta la fecha.</p>
+            
+            <!-- FOTO 1: foto1.jpg -->
+            <img src="foto1.png" alt="Equipo realizando excavaciones arqueológicas" class="content-img" loading="lazy" onerror="this.style.display='none'">
+            <p class="img-description">Excavaciones en monte. Foto Gerardo Dell´Oro, 2014.</p>
+
             <p>Para reconstruir lo sucedido de forma precisa, el equipo trabaja combinando distintas técnicas científicas:</p>
             <ul>
                 <li><strong>Prospecciones en tierra y agua:</strong> Uso de detectores de metales, radares, magnetómetros y sonar de barrido lateral en el río Paraná para ubicar restos metálicos, estructuras y embarcaciones sumergidas.</li>
@@ -268,11 +294,15 @@
                 <li><strong>El hallazgo de las Cadenas (2020):</strong> Durante la bajante histórica del río Paraná en 2020, se rescató en la playa un tramo original de cadena de 46 eslabones de hierro, aún atado a un grueso tronco de madera de 30 cm, que servía como sistema de anclaje de la barrera náutica de 1845.</li>
             </ul>
 
+            <!-- FOTO HALLAZGOS: hallazgos.png -->
+            <img src="hallazgos.png" alt="Tabla y gráficos de hallazgos arqueológicos" class="content-img" loading="lazy" onerror="this.style.display='none'">
+            <p class="img-description">Tabla de hallazgos recuperados a lo largo de las campañas.</p>
+
             <blockquote>
                 <p>"A más de un metro de profundidad, la hipótesis arqueológica se transformó en revelación histórica: descubrimos un imponente durmiente de madera de 30 centímetros de sección rodeado por la cadena en un nudo de amarre perfecto conocido como 'boca de lobo o presilla de alondra'. Era el sistema de anclaje original de las defensas náuticas de 1845, intacto tras 175 años de olvido."</p>
                 <p>"Mientras colaborábamos codo a codo con los operarios municipales y la retroexcavadora para liberar el madero, un grupo numeroso de vecinos y prefectos comenzó a agolparse alrededor de la cinta de peligro. Cuando la pala mecánica finalmente elevó la cadena liberada, el silencio de la playa se rompió con un aplauso cerrado, vitoreos espontáneos de emoción y un grito unánime de «¡Viva la Patria!» que retumbó en las barrancas."</p>
                 <p>"Mirar hoy la cadena de 46 eslabones resguardada en el Museo de Sitio es una experiencia que nos sigue emocionando... Recuperar las cadenas de la Vuelta de Obligado no fue una intervención arqueológica convencional; fue una experiencia profundamente movilizadora que nos marcó a fuego..."</p>
-                <p>— Marcelo Gómez
+                <footer>— Marcelo Gómez</footer>
             </blockquote>
 
             <h4>Hallazgos indígenas</h4>
@@ -298,6 +328,10 @@
                 <li><strong>Defensa Argentina (Confederación):</strong> Alrededor de 2.500 personas integradas por soldados profesionales, milicias de vecinos, indios amigos, criollos, afrodescendientes y personal de salud. Disponían de 35 cañones divididos en 4 baterías costeras, cañones volantes y algunos barcos pequeños (como el bergantín Republicano). El sistema defensivo principal consistía en una línea de atajo: tres gruesas cadenas de hierro apoyadas sobre 24 barcos sin mástiles instalados de costa a costa en el río, acompañados por chalanas encendidas (brulotes) para quemar los barcos enemigos.</li>
                 <li><strong>Escuadra Anglo-Francesa:</strong> Compuesta por los barcos de guerra más modernos de la época, incluyendo vapores acorazados (HMS Gorgon, HMS Firebrand, Fulton) y bergantines con una potencia combinada de 82 cañones de gran calibre con un alcance y poder destructivo muy superior.</li>
             </ul>
+
+            <!-- MAPA DE SULLIVAN: sullivan.png -->
+            <img src="sullivan.jpg" alt="Plano histórico de Sullivan de la Batalla de Vuelta de Obligado" class="content-img" loading="lazy" onerror="this.style.display='none'">
+            <p class="img-description">Plano histórico de Sullivan de la batalla de 1845.</p>
 
             <h5>El desarrollo del combate</h5>
             <p>Cerca de las 9:00 de la mañana, al disiparse la neblina, los barcos europeos iniciaron el cañoneo sobre las barrancas. Desde la costa, las tropas argentinas respondieron el fuego mientras la banda de música ejecutaba el Himno Nacional, entonado por los combatientes.</p>
