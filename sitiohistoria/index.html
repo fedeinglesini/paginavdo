@@ -95,29 +95,44 @@
             margin-top: 1.2rem;
             margin-bottom: 0.4rem;
         }
-        .content-box p.subtitle { color: #000000; margin-bottom: 1.5rem; font-weight: 600; font-size: 1rem; }
         .content-box p { color: var(--text-dark); line-height: 1.6; margin-bottom: 1rem; }
         .content-box ul { margin-bottom: 1rem; padding-left: 1.5rem; }
         .content-box li { color: var(--text-dark); line-height: 1.6; margin-bottom: 0.5rem; }
         
-        /* ESTILOS PARA IMÁGENES DE CONTENIDO */
-        .content-img { 
-            width: 100%; 
-            height: auto; 
-            border-radius: 4px; 
-            margin-top: 1.2rem; 
-            border: 1px solid #94a3b8; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
-            display: block; 
-            filter: saturate(90%) contrast(95%); 
+        /* ESTILOS PARA IMÁGENES FLOTADAS (CHICAS Y UBICADAS A LOS LADOS) */
+        .img-left {
+            float: left;
+            width: 350px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 0.3rem 1.5rem 1rem 0;
+            border: 1px solid #94a3b8;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            filter: saturate(90%) contrast(95%);
+        }
+        .img-right {
+            float: right;
+            width: 350px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 0.3rem 0 1rem 1.5rem;
+            border: 1px solid #94a3b8;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            filter: saturate(90%) contrast(95%);
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
         }
         .img-description { 
-            font-size: 0.85rem; 
+            font-size: 0.82rem; 
             color: var(--text-dark); 
             font-style: italic; 
-            text-align: center; 
-            margin-top: 0.4rem;
-            margin-bottom: 1.2rem; 
+            margin-top: 0.3rem;
+            margin-bottom: 0.8rem;
         }
 
         .content-box blockquote {
@@ -199,6 +214,9 @@
             #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: var(--text-light); text-decoration: none; }
             #navMenuMobile a:hover { background-color: var(--red-accent); }
 
+            /* En celulares las imágenes se centran y ocupan todo el ancho para mejor lectura */
+            .img-left, .img-right { float: none; display: block; width: 100%; margin: 1rem auto; }
+
             /* Footer Móvil */
             footer {
                 display: grid;
@@ -272,13 +290,14 @@
             <p>Frente al sitio se encuentra una zona de paraje con acceso a la playa, áreas de acampe, parrillas y diversos puestos locales.</p>
 
             <h4>Campañas arqueológicas</h4>
-            <p>Las investigaciones arqueológicas en Vuelta de Obligado comenzaron en mayo de 2000, lideradas por el Dr. Mariano Ramos y el equipo del programa ProArHEP (Universidad Nacional de Luján). Se trata de uno de los primeros proyectos en Argentina y América del Sur dedicado al estudio de un campo de batalla desde la Arqueología Histórica, acumulando más de 50 campañas de campo hasta la fecha.</p>
-            
-            <!-- FOTO 1: foto1.jpg -->
-            <img src="foto1.png" alt="Equipo realizando excavaciones arqueológicas" class="content-img" loading="lazy" onerror="this.style.display='none'">
-            <p class="img-description">Excavaciones en monte. Foto Gerardo Dell´Oro, 2014.</p>
+            <div class="clearfix">
+                <!-- FOTO 1: foto1.png a la IZQUIERDA -->
+                <img src="foto1.png" alt="Equipo realizando excavaciones arqueológicas" class="img-left" loading="lazy" onerror="this.style.display='none'">
+                <p>Las investigaciones arqueológicas en Vuelta de Obligado comenzaron en mayo de 2000, lideradas por el Dr. Mariano Ramos y el equipo del programa ProArHEP (Universidad Nacional de Luján). Se trata de uno de los primeros proyectos en Argentina y América del Sur dedicado al estudio de un campo de batalla desde la Arqueología Histórica, acumulando más de 50 campañas de campo hasta la fecha.</p>
+                <p class="img-description">Excavaciones en monte. Foto Gerardo Dell´Oro, 2014.</p>
+                <p>Para reconstruir lo sucedido de forma precisa, el equipo trabaja combinando distintas técnicas científicas:</p>
+            </div>
 
-            <p>Para reconstruir lo sucedido de forma precisa, el equipo trabaja combinando distintas técnicas científicas:</p>
             <ul>
                 <li><strong>Prospecciones en tierra y agua:</strong> Uso de detectores de metales, radares, magnetómetros y sonar de barrido lateral en el río Paraná para ubicar restos metálicos, estructuras y embarcaciones sumergidas.</li>
                 <li><strong>Excavaciones en extensión:</strong> Trabajos minuciosos en las áreas donde estuvieron las baterías de cañones, el campamento y el depósito de municiones.</li>
@@ -294,16 +313,17 @@
                 <li><strong>El hallazgo de las Cadenas (2020):</strong> Durante la bajante histórica del río Paraná en 2020, se rescató en la playa un tramo original de cadena de 46 eslabones de hierro, aún atado a un grueso tronco de madera de 30 cm, que servía como sistema de anclaje de la barrera náutica de 1845.</li>
             </ul>
 
-            <!-- FOTO HALLAZGOS: hallazgos.png -->
-            <img src="hallazgos.png" alt="Tabla y gráficos de hallazgos arqueológicos" class="content-img" loading="lazy" onerror="this.style.display='none'">
-            <p class="img-description">Tabla de hallazgos recuperados a lo largo de las campañas.</p>
-
-            <blockquote>
-                <p>"A más de un metro de profundidad, la hipótesis arqueológica se transformó en revelación histórica: descubrimos un imponente durmiente de madera de 30 centímetros de sección rodeado por la cadena en un nudo de amarre perfecto conocido como 'boca de lobo o presilla de alondra'. Era el sistema de anclaje original de las defensas náuticas de 1845, intacto tras 175 años de olvido."</p>
-                <p>"Mientras colaborábamos codo a codo con los operarios municipales y la retroexcavadora para liberar el madero, un grupo numeroso de vecinos y prefectos comenzó a agolparse alrededor de la cinta de peligro. Cuando la pala mecánica finalmente elevó la cadena liberada, el silencio de la playa se rompió con un aplauso cerrado, vitoreos espontáneos de emoción y un grito unánime de «¡Viva la Patria!» que retumbó en las barrancas."</p>
-                <p>"Mirar hoy la cadena de 46 eslabones resguardada en el Museo de Sitio es una experiencia que nos sigue emocionando... Recuperar las cadenas de la Vuelta de Obligado no fue una intervención arqueológica convencional; fue una experiencia profundamente movilizadora que nos marcó a fuego..."</p>
-                <footer>— Marcelo Gómez</footer>
-            </blockquote>
+            <!-- HALLAZGOS: hallazgos.png a la DERECHA -->
+            <div class="clearfix">
+                <img src="hallazgos.png" alt="Tabla y gráficos de hallazgos arqueológicos" class="img-right" loading="lazy" onerror="this.style.display='none'">
+                <blockquote>
+                    <p>"A más de un metro de profundidad, la hipótesis arqueológica se transformó en revelación histórica: descubrimos un imponente durmiente de madera de 30 centímetros de sección rodeado por la cadena en un nudo de amarre perfecto conocido como 'boca de lobo o presilla de alondra'. Era el sistema de anclaje original de las defensas náuticas de 1845, intacto tras 175 años de olvido."</p>
+                    <p>"Mientras colaborábamos codo a codo con los operarios municipales y la retroexcavadora para liberar el madero, un grupo numeroso de vecinos y prefectos comenzó a agolparse alrededor de la cinta de peligro. Cuando la pala mecánica finalmente elevó la cadena liberada, el silencio de la playa se rompió con un aplauso cerrado, vitoreos espontáneos de emoción y un grito unánime de «¡Viva la Patria!» que retumbó en las barrancas."</p>
+                    <p>"Mirar hoy la cadena de 46 eslabones resguardada en el Museo de Sitio es una experiencia que nos sigue emocionando... Recuperar las cadenas de la Vuelta de Obligado no fue una intervención arqueológica convencional; fue una experiencia profundamente movilizadora que nos marcó a fuego..."</p>
+                    <p>— Marcelo Gómez</p>
+                </blockquote>
+                <p class="img-description" style="text-align: right;">Tabla de hallazgos recuperados a lo largo de las campañas.</p>
+            </div>
 
             <h4>Hallazgos indígenas</h4>
             <p>Mucho antes de la batalla de 1845, el paraje de Vuelta de Obligado ya estaba habitado. Durante las excavaciones arqueológicas en la playa y en las barrancas, los investigadores encontraron fragmentos de cerámica indígena, herramientas de piedra (talla lítica) y restos de huesos de animales consumidos por las comunidades originarias.</p>
@@ -329,13 +349,15 @@
                 <li><strong>Escuadra Anglo-Francesa:</strong> Compuesta por los barcos de guerra más modernos de la época, incluyendo vapores acorazados (HMS Gorgon, HMS Firebrand, Fulton) y bergantines con una potencia combinada de 82 cañones de gran calibre con un alcance y poder destructivo muy superior.</li>
             </ul>
 
-            <!-- MAPA DE SULLIVAN: sullivan.png -->
-            <img src="sullivan.jpg" alt="Plano histórico de Sullivan de la Batalla de Vuelta de Obligado" class="content-img" loading="lazy" onerror="this.style.display='none'">
-            <p class="img-description">Plano histórico de Sullivan de la batalla de 1845.</p>
+            <!-- SULLIVAN: sullivan.jpg a la DERECHA -->
+            <div class="clearfix">
+                <img src="sullivan.jpg" alt="Plano histórico de Sullivan de la Batalla de Vuelta de Obligado" class="img-right" loading="lazy" onerror="this.style.display='none'">
+                <h5>El desarrollo del combate</h5>
+                <p>Cerca de las 9:00 de la mañana, al disiparse la neblina, los barcos europeos iniciaron el cañoneo sobre las barrancas. Desde la costa, las tropas argentinas respondieron el fuego mientras la banda de música ejecutaba el Himno Nacional, entonado por los combatientes.</p>
+                <p>Durante más de cuatro horas el combate fue feroz. Las baterías argentinas dispararon balas macizas, tarros de metralla y cohetes. Sin embargo, cerca de las 13:00 horas, en un segundo intento, las fuerzas invasoras lograron cortar las cadenas que cruzaban el río. Con el paso abierto, la flota enemiga pudo avanzar y acorralar las defensas patrias atacando desde dos frentes.</p>
+                <p class="img-description" style="text-align: right;">Plano histórico de Sullivan de la batalla de 1845.</p>
+            </div>
 
-            <h5>El desarrollo del combate</h5>
-            <p>Cerca de las 9:00 de la mañana, al disiparse la neblina, los barcos europeos iniciaron el cañoneo sobre las barrancas. Desde la costa, las tropas argentinas respondieron el fuego mientras la banda de música ejecutaba el Himno Nacional, entonado por los combatientes.</p>
-            <p>Durante más de cuatro horas el combate fue feroz. Las baterías argentinas dispararon balas macizas, tarros de metralla y cohetes. Sin embargo, cerca de las 13:00 horas, en un segundo intento, las fuerzas invasoras lograron cortar las cadenas que cruzaban el río. Con el paso abierto, la flota enemiga pudo avanzar y acorralar las defensas patrias atacando desde dos frentes.</p>
             <p>Hacia las 16:00 horas las baterías argentinas comenzaron a quedarse sin municiones. Los europeos iniciaron el desembarco de tropas en la playa, donde enfrentaron firmes cargas de la caballería y de los indios amigos argentinos. Tras 8 horas de combate, la batalla principal concluyó cerca de las 17:00 horas, dejando un saldo aproximado de 750 bajas, la mayoría del bando argentino.</p>
 
             <h5>Trascendencia y legado</h5>
@@ -391,5 +413,6 @@
     </script>
 </body>
 </html>
+
 
 
