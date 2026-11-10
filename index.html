@@ -104,6 +104,7 @@
             position: relative;
             width: 100%;
             height: 420px;
+            cursor: pointer; /* Indica que se puede hacer clic para ampliar */
         }
         .carousel-slide.active {
             display: block;
@@ -113,6 +114,10 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.3s ease;
+        }
+        .carousel-slide:hover img {
+            transform: scale(1.01);
         }
         .carousel-caption {
             position: absolute;
@@ -125,6 +130,7 @@
             font-size: 0.88rem;
             text-align: center;
             font-style: italic;
+            pointer-events: none; /* Para que el clic pase a la imagen */
         }
         .carousel-btn {
             position: absolute;
@@ -164,6 +170,86 @@
         .dot.active {
             background-color: var(--navy-main);
         }
+
+        /* ESTILOS DEL MODAL (VISOR DE FOTO GRANDE) */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 5000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+        .image-modal.active {
+            display: flex;
+        }
+        .modal-content-wrapper {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-img {
+            max-width: 100%;
+            max-height: 75vh;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .modal-caption {
+            color: #ffffff;
+            margin-top: 1rem;
+            font-size: 1.05rem;
+            text-align: center;
+            font-style: italic;
+            padding: 0 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+        .modal-close {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            color: #ffffff;
+            font-size: 2.2rem;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .modal-close:hover {
+            color: var(--red-accent);
+        }
+        .modal-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-60%);
+            background-color: rgba(27, 42, 74, 0.85);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: background-color 0.3s, transform 0.2s;
+            z-index: 5010;
+        }
+        .modal-btn:hover {
+            background-color: var(--red-accent);
+            transform: translateY(-60%) scale(1.05);
+        }
+        .modal-btn.modal-prev { left: -10px; }
+        .modal-btn.modal-next { right: -10px; }
 
         /* FOOTER (PC) */
         footer {
@@ -224,6 +310,12 @@
             #navMenuMobile a:hover { background-color: var(--red-accent); }
 
             .carousel-slide { height: 260px; }
+
+            /* Ajustes del visor en celulares */
+            .modal-btn { padding: 0.6rem 0.8rem; font-size: 1.1rem; }
+            .modal-btn.modal-prev { left: 5px; }
+            .modal-btn.modal-next { right: 5px; }
+            .modal-close { top: -40px; right: 5px; }
 
             /* Footer Móvil */
             footer {
@@ -287,34 +379,34 @@
 
     <section id="inicio">
         <div class="content-box">
-            <h2>Inicio</h2>
-            <p class="subtitle">Bienvenidos al portal del proyecto.</p>
+            <h2>Bienvenidos al portal del proyecto</h2>
+            <p class="subtitle">.</p>
 
             <!-- CARRUSEL DE 5 FOTOS -->
             <div class="carousel-container">
-                <div class="carousel-slide active">
+                <div class="carousel-slide active" onclick="openModal(0)">
                     <img src="foto1.jpg" alt="Foto 1 del proyecto" loading="lazy" onerror="this.src='foto1.png'; this.onerror=null;">
                     <div class="carousel-caption">Vista general del sitio arqueológico Vuelta de Obligado.</div>
                 </div>
-                <div class="carousel-slide">
+                <div class="carousel-slide" onclick="openModal(1)">
                     <img src="foto2.jpg" alt="Foto 2 del proyecto" loading="lazy" onerror="this.style.display='none'">
                     <div class="carousel-caption">Campañas arqueológicas de campo.</div>
                 </div>
-                <div class="carousel-slide">
+                <div class="carousel-slide" onclick="openModal(2)">
                     <img src="foto3.jpg" alt="Foto 3 del proyecto" loading="lazy" onerror="this.style.display='none'">
                     <div class="carousel-caption">Recuperación de patrimonio histórico.</div>
                 </div>
-                <div class="carousel-slide">
+                <div class="carousel-slide" onclick="openModal(3)">
                     <img src="foto4.jpg" alt="Foto 4 del proyecto" loading="lazy" onerror="this.style.display='none'">
                     <div class="carousel-caption">Trabajos de investigación y laboratorio.</div>
                 </div>
-                <div class="carousel-slide">
+                <div class="carousel-slide" onclick="openModal(4)">
                     <img src="foto5.jpg" alt="Foto 5 del proyecto" loading="lazy" onerror="this.style.display='none'">
                     <div class="carousel-caption">Monumento a la Soberanía Nacional.</div>
                 </div>
 
-                <button class="carousel-btn prev" aria-label="Anterior">&#10094;</button>
-                <button class="carousel-btn next" aria-label="Siguiente">&#10095;</button>
+                <button class="carousel-btn prev" aria-label="Anterior" onclick="event.stopPropagation(); prevSlide();">&#10094;</button>
+                <button class="carousel-btn next" aria-label="Siguiente" onclick="event.stopPropagation(); nextSlide();">&#10095;</button>
             </div>
             
             <div class="carousel-dots">
@@ -330,6 +422,17 @@
             <p>Aquí podrás recorrer el desarrollo de las campañas, explorar modelos 3D de los materiales recuperados, conocer más sobre nuestro equipo y consultar toda la información útil sobre el sitio y su ubicación.</p>
         </div>
     </section>
+
+    <!-- VENTANA MODAL (VISOR DE FOTOS AMPLIADAS) -->
+    <div id="imageModal" class="image-modal" onclick="closeModal()">
+        <div class="modal-content-wrapper" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+            <img id="modalImg" class="modal-img" src="" alt="Foto ampliada">
+            <div id="modalCaption" class="modal-caption"></div>
+            <button class="modal-btn modal-prev" onclick="modalPrev()" aria-label="Anterior">&#10094;</button>
+            <button class="modal-btn modal-next" onclick="modalNext()" aria-label="Siguiente">&#10095;</button>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-left-block">
@@ -428,6 +531,42 @@
         }
 
         startInterval();
+
+        /* SCRIPT DEL VISOR MODAL (AMPLIAR FOTOS) */
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalCaption = document.getElementById('modalCaption');
+
+        function openModal(index) {
+            currentSlide = index;
+            updateModalContent();
+            modal.classList.add('active');
+            clearInterval(slideInterval); // Pausa el carrusel automático mientras se ve ampliada
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            startInterval(); // Reanuda el carrusel automático
+        }
+
+        function updateModalContent() {
+            const activeSlideImg = slides[currentSlide].querySelector('img');
+            const activeCaptionText = slides[currentSlide].querySelector('.carousel-caption').textContent;
+            
+            modalImg.src = activeSlideImg.src;
+            modalImg.alt = activeSlideImg.alt;
+            modalCaption.textContent = activeCaptionText;
+        }
+
+        function modalNext() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateModalContent();
+        }
+
+        function modalPrev() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateModalContent();
+        }
     </script>
 </body>
 </html>
