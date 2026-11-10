@@ -104,7 +104,7 @@
             position: relative;
             width: 100%;
             height: 420px;
-            cursor: pointer; /* Indica que se puede hacer clic para ampliar */
+            cursor: pointer;
         }
         .carousel-slide.active {
             display: block;
@@ -130,7 +130,7 @@
             font-size: 0.88rem;
             text-align: center;
             font-style: italic;
-            pointer-events: none; /* Para que el clic pase a la imagen */
+            pointer-events: none;
         }
         .carousel-btn {
             position: absolute;
@@ -171,85 +171,216 @@
             background-color: var(--navy-main);
         }
 
-        /* ESTILOS DEL MODAL (VISOR DE FOTO GRANDE) */
+        /* ==========================================
+           VISOR MODAL 2026 (LIGHTBOX TÁCTIL & MODERNO)
+           ========================================== */
         .image-modal {
-            display: none;
             position: fixed;
-            z-index: 5000;
-            left: 0;
-            top: 0;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(8, 12, 20, 0.96);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        .image-modal.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            position: relative;
             width: 100%;
             height: 100%;
-            background-color: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-            padding: 2rem 1rem;
-        }
-        .image-modal.active {
-            display: flex;
-        }
-        .modal-content-wrapper {
-            position: relative;
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
+            max-width: 1400px;
+            max-height: 98vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            padding: 3.8rem 1rem 1.5rem 1rem;
+            box-sizing: border-box;
+            transform: scale(0.95);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
+        .image-modal.active .modal-container {
+            transform: scale(1);
+        }
+
+        .modal-top-bar {
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10010;
+        }
+
+        .modal-counter {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #f8fafc;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-close-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-close-btn:hover {
+            background: var(--red-accent);
+            border-color: var(--red-accent);
+            transform: scale(1.08);
+        }
+
+        .modal-close-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        .modal-stage {
+            position: relative;
+            flex-grow: 1;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
         .modal-img {
             max-width: 100%;
-            max-height: 75vh;
+            max-height: 68vh;
             object-fit: contain;
-            border-radius: 6px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            user-select: none;
+            -webkit-user-drag: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
         }
-        .modal-caption {
-            color: #ffffff;
-            margin-top: 1rem;
-            font-size: 1.05rem;
-            text-align: center;
-            font-style: italic;
-            padding: 0 1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-        .modal-close {
-            position: absolute;
-            top: -45px;
-            right: 0;
-            color: #ffffff;
-            font-size: 2.2rem;
-            font-weight: bold;
-            background: none;
-            border: none;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        .modal-close:hover {
-            color: var(--red-accent);
-        }
-        .modal-btn {
+
+        .modal-nav-btn {
             position: absolute;
             top: 50%;
-            transform: translateY(-60%);
-            background-color: rgba(27, 42, 74, 0.85);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 1rem 1.2rem;
-            cursor: pointer;
-            font-size: 1.5rem;
+            transform: translateY(-50%);
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            transition: background-color 0.3s, transform 0.2s;
-            z-index: 5010;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(10px);
+            z-index: 10005;
         }
-        .modal-btn:hover {
-            background-color: var(--red-accent);
-            transform: translateY(-60%) scale(1.05);
+
+        .modal-nav-btn:hover {
+            background: var(--red-accent);
+            border-color: var(--red-accent);
+            transform: translateY(-50%) scale(1.08);
         }
-        .modal-btn.modal-prev { left: -10px; }
-        .modal-btn.modal-next { right: -10px; }
+
+        .modal-nav-btn svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        .modal-prev { left: 0.5rem; }
+        .modal-next { right: 0.5rem; }
+
+        .modal-thumbs {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            overflow-x: auto;
+            max-width: 100%;
+            padding: 0.3rem;
+            scrollbar-width: none;
+        }
+        .modal-thumbs::-webkit-scrollbar { display: none; }
+        
+        .modal-thumb {
+            width: 56px;
+            height: 40px;
+            border-radius: 6px;
+            overflow: hidden;
+            opacity: 0.45;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+        .modal-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .modal-thumb.active {
+            opacity: 1;
+            border-color: var(--red-accent);
+            transform: scale(1.06);
+            box-shadow: 0 4px 12px rgba(211, 29, 29, 0.4);
+        }
+
+        .modal-caption-pill {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            color: #f1f5f9;
+            padding: 0.65rem 1.1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            text-align: center;
+            max-width: 750px;
+            width: 92%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            margin-top: 0.6rem;
+            font-style: italic;
+        }
 
         /* FOOTER (PC) */
         footer {
@@ -310,12 +441,6 @@
             #navMenuMobile a:hover { background-color: var(--red-accent); }
 
             .carousel-slide { height: 260px; }
-
-            /* Ajustes del visor en celulares */
-            .modal-btn { padding: 0.6rem 0.8rem; font-size: 1.1rem; }
-            .modal-btn.modal-prev { left: 5px; }
-            .modal-btn.modal-next { right: 5px; }
-            .modal-close { top: -40px; right: 5px; }
 
             /* Footer Móvil */
             footer {
@@ -423,14 +548,35 @@
         </div>
     </section>
 
-    <!-- VENTANA MODAL (VISOR DE FOTOS AMPLIADAS) -->
+    <!-- VISOR MODAL 2026 (LIGHTBOX TÁCTIL) -->
     <div id="imageModal" class="image-modal" onclick="closeModal()">
-        <div class="modal-content-wrapper" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
-            <img id="modalImg" class="modal-img" src="" alt="Foto ampliada">
-            <div id="modalCaption" class="modal-caption"></div>
-            <button class="modal-btn modal-prev" onclick="modalPrev()" aria-label="Anterior">&#10094;</button>
-            <button class="modal-btn modal-next" onclick="modalNext()" aria-label="Siguiente">&#10095;</button>
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <!-- Barra superior -->
+            <div class="modal-top-bar">
+                <div id="modalCounter" class="modal-counter">1 / 5</div>
+                <button class="modal-close-btn" onclick="closeModal()" aria-label="Cerrar">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <!-- Imagen principal y flechas -->
+            <div class="modal-stage">
+                <button class="modal-nav-btn modal-prev" onclick="modalPrev()" aria-label="Anterior">
+                    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                
+                <img id="modalImg" class="modal-img" src="" alt="Foto ampliada">
+                
+                <button class="modal-nav-btn modal-next" onclick="modalNext()" aria-label="Siguiente">
+                    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
+
+            <!-- Tira de miniaturas táctiles inferior -->
+            <div id="modalThumbs" class="modal-thumbs"></div>
+
+            <!-- Descripción -->
+            <div id="modalCaption" class="modal-caption-pill"></div>
         </div>
     </div>
 
@@ -520,7 +666,6 @@
             });
         });
 
-        // Cambio automático cada 15 segundos (15000 ms)
         function startInterval() {
             slideInterval = setInterval(nextSlide, 15000);
         }
@@ -532,45 +677,132 @@
 
         startInterval();
 
-        /* SCRIPT DEL VISOR MODAL (AMPLIAR FOTOS) */
+        /* SCRIPT DEL VISOR MODAL 2026 (LIGHTBOX TÁCTIL) */
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const modalCaption = document.getElementById('modalCaption');
+        const modalCounter = document.getElementById('modalCounter');
+        const modalThumbsContainer = document.getElementById('modalThumbs');
+
+        function initModalThumbs() {
+            modalThumbsContainer.innerHTML = '';
+            slides.forEach((slide, idx) => {
+                const imgEl = slide.querySelector('img');
+                const thumb = document.createElement('div');
+                thumb.className = `modal-thumb ${idx === currentSlide ? 'active' : ''}`;
+                thumb.innerHTML = `<img src="${imgEl.src}" alt="Miniatura ${idx + 1}" loading="lazy">`;
+                thumb.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentSlide = idx;
+                    updateModalContent();
+                    showSlide(currentSlide);
+                    resetInterval();
+                });
+                modalThumbsContainer.appendChild(thumb);
+            });
+        }
 
         function openModal(index) {
             currentSlide = index;
+            initModalThumbs();
             updateModalContent();
             modal.classList.add('active');
-            clearInterval(slideInterval); // Pausa el carrusel automático mientras se ve ampliada
+            document.body.style.overflow = 'hidden';
+            clearInterval(slideInterval);
         }
 
         function closeModal() {
             modal.classList.remove('active');
-            startInterval(); // Reanuda el carrusel automático
+            document.body.style.overflow = '';
+            startInterval();
         }
 
         function updateModalContent() {
             const activeSlideImg = slides[currentSlide].querySelector('img');
             const activeCaptionText = slides[currentSlide].querySelector('.carousel-caption').textContent;
             
-            modalImg.src = activeSlideImg.src;
-            modalImg.alt = activeSlideImg.alt;
+            modalImg.style.opacity = '0';
+            modalImg.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                modalImg.src = activeSlideImg.src;
+                modalImg.alt = activeSlideImg.alt;
+                modalImg.style.opacity = '1';
+                modalImg.style.transform = 'scale(1)';
+            }, 120);
+
             modalCaption.textContent = activeCaptionText;
+            modalCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+            const thumbs = modalThumbsContainer.querySelectorAll('.modal-thumb');
+            thumbs.forEach((t, i) => {
+                if (i === currentSlide) {
+                    t.classList.add('active');
+                    t.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                } else {
+                    t.classList.remove('active');
+                }
+            });
         }
 
         function modalNext() {
             currentSlide = (currentSlide + 1) % totalSlides;
             updateModalContent();
+            showSlide(currentSlide);
         }
 
         function modalPrev() {
             currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
             updateModalContent();
+            showSlide(currentSlide);
+        }
+
+        // Navegación por teclado (ESC y flechas)
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') modalNext();
+            if (e.key === 'ArrowLeft') modalPrev();
+        });
+
+        // Gestos Táctiles Avanzados (Swipe izq/der para cambiar foto, swipe abajo para cerrar)
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+
+        modal.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        modal.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipeGesture();
+        }, { passive: true });
+
+        function handleSwipeGesture() {
+            const diffX = touchEndX - touchStartX;
+            const diffY = touchEndY - touchStartY;
+            const threshold = 45;
+
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > threshold) {
+                    if (diffX > 0) {
+                        modalPrev();
+                    } else {
+                        modalNext();
+                    }
+                }
+            } else {
+                if (diffY > 90) {
+                    closeModal();
+                }
+            }
         }
     </script>
 </body>
 </html>
-
 
 
 
