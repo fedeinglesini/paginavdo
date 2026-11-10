@@ -196,19 +196,22 @@
             margin: 0 0 0.8rem 0;
             line-height: 1.4;
         }
+        .popover-btn-container {
+            text-align: center;
+        }
         .popover-btn {
             display: inline-block;
-            background-color: var(--red-accent);
+            background-color: var(--navy-main);
             color: #ffffff;
             text-decoration: none;
             font-size: 0.8rem;
             font-weight: 600;
-            padding: 0.4rem 0.8rem;
+            padding: 0.4rem 1rem;
             border-radius: 4px;
             transition: background-color 0.2s;
         }
         .popover-btn:hover {
-            background-color: #b91c1c;
+            background-color: var(--red-accent);
         }
 
         /* FOOTER (PC) */
@@ -370,8 +373,8 @@
                 </div>
                 <p>A lo largo de las campañas se han recuperado más de 11.600 objetos y fragmentos. Entre los hallazgos más destacados se encuentran:</p>
                 <ul>
-                    <li><strong>Materiales militares y de la vida en campaña:</strong> <span class="interactive-word" data-title="Proyectiles de artillería" data-subtitle="Información detallada sobre los proyectiles recuperados." data-link="#">Proyectiles de artillería</span>, <span class="interactive-word" data-title="Bombas Anglo-Francesas" data-subtitle="Detalles de los fragmentos explosivos." data-link="#">fragmentos de bombas explosivas anglo-francesas</span>, plomo fundido, piedras de chispa para fusil, <span class="interactive-word" data-title="Botones de uniformes" data-subtitle="Registro de indumentaria militar." data-link="#">botones de uniformes</span> y <span class="interactive-word" data-title="Clavos cuadrangulares" data-subtitle="Elementos de construcción de la época." data-link="#">clavos cuadrangulares</span>.</li>
-                    <li><strong>Restos cotidianos:</strong> Fragmentos de <span class="interactive-word" data-title="Botellas de vidrio" data-subtitle="Envases de vino y ginebra recuperados." data-link="#">botellas</span> de vidrio y gres: de vino y ginebra, <span class="interactive-word" data-title="Cerámicas y maderas" data-subtitle="Restos arqueológicos orgánicos e inorgánicos." data-link="#">cerámicas y restos de maderas quemadas</span>.</li>
+                    <li><strong>Materiales militares y de la vida en campaña:</strong> <span class="interactive-word" data-title="Bala de cañón" data-subtitle="Modelo 3D disponible" data-link="../bala/index.html">Proyectiles de artillería</span>, <span class="interactive-word" data-title="Fragmento de proyectil" data-subtitle="Modelo 3D disponible" data-link="../fragmento/index.html">fragmentos de bombas explosivas anglo-francesas</span>, plomo fundido, piedras de chispa para fusil, <span class="interactive-word" data-title="Botón de metal" data-subtitle="Modelo 3D disponible" data-link="../boton/index.html">botones de uniformes</span> y <span class="interactive-word" data-title="Clavos cuadrangulares" data-subtitle="Modelo 3D disponible" data-link="../clavo/index.html">clavos cuadrangulares</span>.</li>
+                    <li><strong>Restos cotidianos:</strong> Fragmentos de <span class="interactive-word" data-title="Botella de gres" data-subtitle="Modelo 3D disponible" data-link="../botella/index.html">botellas</span> de vidrio y gres: de vino y ginebra, <span class="interactive-word" data-title="Cerámica" data-subtitle="Modelo 3D disponible" data-link="../ceramica/index.html">cerámicas</span> y restos de maderas quemadas.</li>
                     <li><strong>Estructuras exhumadas:</strong> Marcas de los postes de madera que sostenían las empalizadas defensivas y bases donde se apoyaban los cañones.</li>
                     <li><strong>El hallazgo de las Cadenas (2020):</strong> Durante la bajante histórica del río Paraná en 2020, se rescató en la playa un tramo original de cadena de 46 eslabones de hierro, aún atado a un grueso tronco de madera de 30 cm, que servía como sistema de anclaje de la barrera náutica de 1845.</li>
                 </ul>
@@ -431,7 +434,9 @@
     <div id="globalPopover" class="custom-popover">
         <h4 id="popoverTitle" class="popover-title">Título</h4>
         <p id="popoverSubtitle" class="popover-subtitle">Subtítulo explicativo aquí.</p>
-        <a id="popoverLink" href="#" class="popover-btn" target="_blank">Ver más</a>
+        <div class="popover-btn-container">
+            <a id="popoverLink" href="#" class="popover-btn" target="_blank">Ver más</a>
+        </div>
     </div>
 
     <footer>
