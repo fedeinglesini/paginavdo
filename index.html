@@ -172,7 +172,7 @@
         }
 
         /* ==========================================
-           VISOR MODAL 2026 (LIGHTBOX TÁCTIL & MODERNO)
+           VISOR MODAL 2026 (LIGHTBOX TÁCTIL CON ZOOM)
            ========================================== */
         .image-modal {
             position: fixed;
@@ -241,6 +241,54 @@
             backdrop-filter: blur(10px);
         }
 
+        /* Controles de Zoom */
+        .modal-zoom-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 0.2rem 0.4rem;
+            border-radius: 999px;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-tool-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .modal-tool-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-tool-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        #zoomResetBtn {
+            width: auto;
+            padding: 0 0.4rem;
+            border-radius: 6px;
+        }
+
         .modal-close-btn {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -281,6 +329,11 @@
             justify-content: center;
             overflow: hidden;
             margin: 0.5rem 0;
+            cursor: grab;
+        }
+
+        .modal-stage:active {
+            cursor: grabbing;
         }
 
         .modal-img {
@@ -291,7 +344,8 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
             user-select: none;
             -webkit-user-drag: none;
-            transition: opacity 0.25s ease, transform 0.25s ease;
+            transition: transform 0.15s ease-out, opacity 0.25s ease;
+            transform-origin: center center;
         }
 
         .modal-nav-btn {
@@ -548,12 +602,24 @@
         </div>
     </section>
 
-    <!-- VISOR MODAL 2026 (LIGHTBOX TÁCTIL) -->
+    <!-- VISOR MODAL 2026 (LIGHTBOX TÁCTIL CON ZOOM) -->
     <div id="imageModal" class="image-modal" onclick="closeModal()">
         <div class="modal-container" onclick="event.stopPropagation()">
             <!-- Barra superior -->
             <div class="modal-top-bar">
                 <div id="modalCounter" class="modal-counter">1 / 5</div>
+                
+                <!-- Controles de Zoom -->
+                <div class="modal-zoom-controls">
+                    <button class="modal-tool-btn" onclick="zoomOut()" aria-label="Alejar">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    </button>
+                    <button class="modal-tool-btn" id="zoomResetBtn" onclick="resetZoom()" aria-label="Restaurar zoom">100%</button>
+                    <button class="modal-tool-btn" onclick="zoomIn()" aria-label="Acercar">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    </button>
+                </div>
+
                 <button class="modal-close-btn" onclick="closeModal()" aria-label="Cerrar">
                     <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
@@ -677,12 +743,47 @@
 
         startInterval();
 
-        /* SCRIPT DEL VISOR MODAL 2026 (LIGHTBOX TÁCTIL) */
+        /* SCRIPT DEL VISOR MODAL 2026 (LIGHTBOX CON ZOOM Y NAVEGACIÓN CORREGIDA) */
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const modalCaption = document.getElementById('modalCaption');
         const modalCounter = document.getElementById('modalCounter');
         const modalThumbsContainer = document.getElementById('modalThumbs');
+        const stage = document.querySelector('.modal-stage');
+
+        let scale = 1;
+        let pointX = 0;
+        let pointY = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+
+        function resetZoom() {
+            scale = 1;
+            pointX = 0;
+            pointY = 0;
+            updateTransform();
+        }
+
+        function zoomIn() {
+            scale = Math.min(scale * 1.3, 4);
+            updateTransform();
+        }
+
+        function zoomOut() {
+            scale = Math.max(scale / 1.3, 1);
+            if (scale === 1) {
+                pointX = 0;
+                pointY = 0;
+            }
+            updateTransform();
+        }
+
+        function updateTransform() {
+            modalImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+            const percent = Math.round(scale * 100);
+            document.getElementById('zoomResetBtn').textContent = `${percent}%`;
+        }
 
         function initModalThumbs() {
             modalThumbsContainer.innerHTML = '';
@@ -694,6 +795,7 @@
                 thumb.addEventListener('click', (e) => {
                     e.stopPropagation();
                     currentSlide = idx;
+                    resetZoom();
                     updateModalContent();
                     showSlide(currentSlide);
                     resetInterval();
@@ -704,6 +806,7 @@
 
         function openModal(index) {
             currentSlide = index;
+            resetZoom();
             initModalThumbs();
             updateModalContent();
             modal.classList.add('active');
@@ -714,6 +817,7 @@
         function closeModal() {
             modal.classList.remove('active');
             document.body.style.overflow = '';
+            resetZoom();
             startInterval();
         }
 
@@ -726,8 +830,8 @@
             setTimeout(() => {
                 modalImg.src = activeSlideImg.src;
                 modalImg.alt = activeSlideImg.alt;
+                resetZoom();
                 modalImg.style.opacity = '1';
-                modalImg.style.transform = 'scale(1)';
             }, 120);
 
             modalCaption.textContent = activeCaptionText;
@@ -746,17 +850,99 @@
 
         function modalNext() {
             currentSlide = (currentSlide + 1) % totalSlides;
+            resetZoom();
             updateModalContent();
             showSlide(currentSlide);
         }
 
         function modalPrev() {
             currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            resetZoom();
             updateModalContent();
             showSlide(currentSlide);
         }
 
-        // Navegación por teclado (ESC y flechas)
+        // Zoom con la rueda del mouse
+        modalImg.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const zoomFactor = 1.15;
+            if (e.deltaY < 0) {
+                scale = Math.min(scale * zoomFactor, 4);
+            } else {
+                scale = Math.max(scale / zoomFactor, 1);
+                if (scale === 1) { pointX = 0; pointY = 0; }
+            }
+            updateTransform();
+        }, { passive: false });
+
+        // Doble clic / doble toque para alternar zoom
+        modalImg.addEventListener('dblclick', (e) => {
+            e.stopPropagation();
+            if (scale > 1) {
+                resetZoom();
+            } else {
+                scale = 2.5;
+                updateTransform();
+            }
+        });
+
+        // Arrastrar / Panorámica cuando hay zoom (Mouse)
+        stage.addEventListener('mousedown', (e) => {
+            if (scale <= 1) return;
+            isDragging = true;
+            startX = e.clientX - pointX;
+            startY = e.clientY - pointY;
+            e.preventDefault();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            pointX = e.clientX - startX;
+            pointY = e.clientY - startY;
+            updateTransform();
+        });
+
+        window.addEventListener('mouseup', () => { isDragging = false; });
+
+        // Soporte táctil para Zoom (Pellizcar) y Panorámica
+        let initialPinchDistance = null;
+
+        stage.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                initialPinchDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+            } else if (e.touches.length === 1 && scale > 1) {
+                isDragging = true;
+                startX = e.touches[0].clientX - pointX;
+                startY = e.touches[0].clientY - pointY;
+            }
+        }, { passive: true });
+
+        stage.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 2 && initialPinchDistance !== null) {
+                const currentDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                const factor = currentDistance / initialPinchDistance;
+                scale = Math.min(Math.max(scale * (factor * 0.05 + 0.95), 1), 4);
+                initialPinchDistance = currentDistance;
+                updateTransform();
+            } else if (e.touches.length === 1 && isDragging && scale > 1) {
+                pointX = e.touches[0].clientX - startX;
+                pointY = e.touches[0].clientY - startY;
+                updateTransform();
+            }
+        }, { passive: true });
+
+        stage.addEventListener('touchend', (e) => {
+            if (e.touches.length < 2) initialPinchDistance = null;
+            if (e.touches.length === 0) isDragging = false;
+        });
+
+        // Navegación por teclado (ESC, Flechas)
         document.addEventListener('keydown', (e) => {
             if (!modal.classList.contains('active')) return;
             if (e.key === 'Escape') closeModal();
@@ -764,18 +950,20 @@
             if (e.key === 'ArrowLeft') modalPrev();
         });
 
-        // Gestos Táctiles Avanzados (Swipe izq/der para cambiar foto, swipe abajo para cerrar)
+        // Gestos Táctiles (Swipe izq/der para cambiar foto, swipe abajo para cerrar si no hay zoom)
         let touchStartX = 0;
         let touchStartY = 0;
         let touchEndX = 0;
         let touchEndY = 0;
 
         modal.addEventListener('touchstart', (e) => {
+            if (scale > 1) return; // Desactiva swipe si hay zoom activo
             touchStartX = e.changedTouches[0].screenX;
             touchStartY = e.changedTouches[0].screenY;
         }, { passive: true });
 
         modal.addEventListener('touchend', (e) => {
+            if (scale > 1) return;
             touchEndX = e.changedTouches[0].screenX;
             touchEndY = e.changedTouches[0].screenY;
             handleSwipeGesture();
@@ -788,16 +976,11 @@
 
             if (Math.abs(diffX) > Math.abs(diffY)) {
                 if (Math.abs(diffX) > threshold) {
-                    if (diffX > 0) {
-                        modalPrev();
-                    } else {
-                        modalNext();
-                    }
+                    if (diffX > 0) modalPrev();
+                    else modalNext();
                 }
             } else {
-                if (diffY > 90) {
-                    closeModal();
-                }
+                if (diffY > 90) closeModal();
             }
         }
     </script>
