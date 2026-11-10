@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sitio Vuelta de Obligado - Inicio</title>
-    <!-- Favicon blindado con parámetro de versión para evitar problemas de caché -->
     <link rel="icon" type="image/png" href="logoizq.png?v=2">
     <style>
         :root {
@@ -13,18 +12,16 @@
             --navy-main: #1b2a4a;
             --navy-overlay: rgba(30, 46, 75, 0.6);
             --red-accent: #d31d1d;
-            --text-dark: #000000;
+            --text-dark: #000;
             --text-heading: #0f172a;
-            --text-light: #ffffff;
+            --text-light: #fff;
             --border-light: rgba(148, 163, 184, 0.3);
             --shadow-box: 0px 20px 40px rgba(0, 0, 0, 0.75);
         }
-
         html { scroll-behavior: smooth; }
         *, *:before, *:after { box-sizing: inherit; }
         body { font-family: system-ui, -apple-system, sans-serif; background-color: var(--bg-dark); color: var(--text-dark); margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* HEADER PC */
         header {
             background: linear-gradient(var(--navy-overlay), var(--navy-overlay)), url('fondosuperior.jpg');
             background-size: cover; background-position: center;
@@ -37,7 +34,6 @@
         .header-subtitle-main { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.3rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); letter-spacing: 0.8px; }
         .header-subtitle-sub { font-size: 1.0rem; font-weight: 400; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); opacity: 0.95; }
 
-        /* NAVEGACIÓN PC */
         nav {
             background-color: var(--navy-main); display: flex; justify-content: flex-start;
             position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -50,420 +46,145 @@
         nav a:hover { background-color: var(--red-accent); }
         .mobile-nav-container { display: none; }
 
-        /* SECCIÓN CENTRAL */
         section {
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral2.jpg');
-            background-size: cover;          
-            background-position: center;     
-            background-attachment: fixed;    
+            background-size: cover; background-position: center; background-attachment: fixed;
             padding: 3rem 1rem; min-height: 65vh; display: flex; flex-direction: column; align-items: center;
             box-shadow: inset 0 10px 15px -10px rgba(0,0,0,0.3);
         }
         .content-box {
-            background-color: var(--bg-pergamino); 
-            color: var(--text-dark); 
-            width: 100%; 
-            max-width: 1100px;
-            padding: 3.5rem 2.5rem; 
-            border-radius: 12px; 
-            box-shadow: var(--shadow-box);
-            position: relative;
-            z-index: 2;
+            background-color: var(--bg-pergamino); color: var(--text-dark); width: 100%; max-width: 1100px;
+            padding: 3.5rem 2.5rem; border-radius: 12px; box-shadow: var(--shadow-box); position: relative; z-index: 2;
         }
-        .content-box h2 { 
-            font-size: 1.8rem; 
-            margin: 0 0 0.75rem 0; 
-            color: var(--text-heading); 
-            border-bottom: 2px solid var(--red-accent); 
-            padding-bottom: 0.4rem; 
-        }
-        .content-box h3 {
-            font-size: 1.4rem;
-            color: var(--text-heading);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--red-accent);
-            padding-bottom: 0.3rem;
-        }
-        .content-box p.subtitle { color: #000000; margin-bottom: 1.5rem; font-weight: 600; font-size: 1rem; }
+        .content-box h2 { font-size: 1.8rem; margin: 0 0 0.75rem 0; color: var(--text-heading); border-bottom: 2px solid var(--red-accent); padding-bottom: 0.4rem; }
+        .content-box h3 { font-size: 1.4rem; color: var(--text-heading); margin-top: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--red-accent); padding-bottom: 0.3rem; }
+        .content-box p.subtitle { color: #000; margin-bottom: 1.5rem; font-weight: 600; font-size: 1rem; }
         .content-box p { color: var(--text-dark); line-height: 1.6; margin-bottom: 1rem; }
 
-        /* ESTILOS DEL CARRUSEL DE FOTOS */
+        /* CARRUSEL */
         .carousel-container {
-            position: relative;
-            max-width: 100%;
-            margin: 1.5rem 0 1rem 0;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #94a3b8;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            background-color: #1e293b;
+            position: relative; max-width: 100%; margin: 1.5rem 0 1rem 0; border-radius: 8px;
+            overflow: hidden; border: 1px solid #94a3b8; box-shadow: 0 4px 10px rgba(0,0,0,0.15); background-color: #1e293b;
         }
-        .carousel-slide {
-            display: none;
-            position: relative;
-            width: 100%;
-            height: 420px;
-            cursor: pointer;
-        }
-        .carousel-slide.active {
-            display: block;
-        }
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-        .carousel-slide:hover img {
-            transform: scale(1.01);
-        }
+        .carousel-slide { display: none; position: relative; width: 100%; height: 420px; cursor: pointer; }
+        .carousel-slide.active { display: block; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+        .carousel-slide:hover img { transform: scale(1.01); }
         .carousel-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(27, 42, 74, 0.85);
-            color: #ffffff;
-            padding: 0.8rem 1rem;
-            font-size: 0.88rem;
-            text-align: center;
-            font-style: italic;
-            pointer-events: none;
+            position: absolute; bottom: 0; left: 0; right: 0; background: rgba(27, 42, 74, 0.85);
+            color: #fff; padding: 0.8rem 1rem; font-size: 0.88rem; text-align: center; font-style: italic; pointer-events: none;
         }
         .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(27, 42, 74, 0.75);
-            color: white;
-            border: none;
-            padding: 0.8rem 1rem;
-            cursor: pointer;
-            font-size: 1.2rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-            z-index: 10;
+            position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(27, 42, 74, 0.75);
+            color: white; border: none; padding: 0.8rem 1rem; cursor: pointer; font-size: 1.2rem; border-radius: 4px; z-index: 10; transition: background 0.3s;
         }
-        .carousel-btn:hover {
-            background-color: var(--red-accent);
-        }
+        .carousel-btn:hover { background-color: var(--red-accent); }
         .carousel-btn.prev { left: 12px; }
         .carousel-btn.next { right: 12px; }
 
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.6rem;
-            margin-bottom: 1.5rem;
-        }
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #cbd5e1;
-            border: 1px solid #94a3b8;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .dot.active {
-            background-color: var(--navy-main);
-        }
+        .carousel-dots { display: flex; justify-content: center; gap: 0.6rem; margin-bottom: 1.5rem; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background-color: #cbd5e1; border: 1px solid #94a3b8; cursor: pointer; transition: background 0.3s; }
+        .dot.active { background-color: var(--navy-main); }
 
-        /* ==========================================
-           VISOR MODAL 2026 (LIGHTBOX TÁCTIL CON ZOOM)
-           ========================================== */
+        /* VISOR MODAL 2026 (OPTIMIZADO & SEGURO CONTRA SOLAPAMIENTO) */
         .image-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(8, 12, 20, 0.96);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
-            overflow: hidden;
-            touch-action: none;
+            position: fixed; inset: 0; z-index: 9999; background: rgba(8, 12, 20, 0.96);
+            backdrop-filter: blur(20px) saturate(180%); display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.3s ease, visibility 0.3s ease; overflow: hidden; touch-action: none;
         }
-
-        .image-modal.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
+        .image-modal.active { opacity: 1; visibility: visible; pointer-events: auto; }
+        
         .modal-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            max-width: 1400px;
-            max-height: 98vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 3.8rem 1rem 1.5rem 1rem;
-            box-sizing: border-box;
-            transform: scale(0.95);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative; width: 100%; height: 100%; max-width: 1400px; max-height: 98vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3.8rem 1rem 1.5rem 1rem; box-sizing: border-box;
         }
 
-        .image-modal.active .modal-container {
-            transform: scale(1);
-        }
-
+        /* Barra superior con Z-index alto para que nunca sea tapada por la imagen */
         .modal-top-bar {
-            position: absolute;
-            top: 1rem;
-            left: 1.5rem;
-            right: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 10010;
+            position: absolute; top: 1rem; left: 1.5rem; right: 1.5rem;
+            display: flex; justify-content: space-between; align-items: center; z-index: 20000; pointer-events: auto;
         }
-
         .modal-counter {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: #f8fafc;
-            padding: 0.35rem 0.9rem;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #f8fafc; padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.85rem; font-weight: 500; backdrop-filter: blur(10px);
         }
-
-        /* Controles de Zoom */
         .modal-zoom-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 0.2rem 0.4rem;
-            border-radius: 999px;
-            backdrop-filter: blur(10px);
+            display: flex; align-items: center; gap: 0.3rem; background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12); padding: 0.2rem 0.4rem; border-radius: 999px; backdrop-filter: blur(10px);
         }
-
         .modal-tool-btn {
-            background: transparent;
-            border: none;
-            color: #ffffff;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: background 0.2s;
+            background: transparent; border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.75rem; font-weight: 600;
         }
-
-        .modal-tool-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .modal-tool-btn svg {
-            width: 16px;
-            height: 16px;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            fill: none;
-        }
-
-        #zoomResetBtn {
-            width: auto;
-            padding: 0 0.4rem;
-            border-radius: 6px;
-        }
+        .modal-tool-btn:hover { background: rgba(255, 255, 255, 0.2); }
+        .modal-tool-btn svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+        #zoomResetBtn { width: auto; padding: 0 0.4rem; border-radius: 6px; }
 
         .modal-close-btn {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: #ffffff;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12); color: #fff;
+            width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
+            transition: all 0.25s ease; backdrop-filter: blur(10px);
         }
+        .modal-close-btn:hover { background: var(--red-accent); border-color: var(--red-accent); transform: scale(1.08); }
+        .modal-close-btn svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 
-        .modal-close-btn:hover {
-            background: var(--red-accent);
-            border-color: var(--red-accent);
-            transform: scale(1.08);
-        }
-
-        .modal-close-btn svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            stroke-width: 2.2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            fill: none;
-        }
-
+        /* Stage de la imagen con z-index menor y overflow controlado */
         .modal-stage {
-            position: relative;
-            flex-grow: 1;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            margin: 0.5rem 0;
-            cursor: grab;
+            position: relative; flex-grow: 1; width: 100%; display: flex; align-items: center; justify-content: center;
+            overflow: hidden; margin: 0.5rem 0; cursor: grab; z-index: 10000;
         }
-
-        .modal-stage:active {
-            cursor: grabbing;
-        }
+        .modal-stage:active { cursor: grabbing; }
 
         .modal-img {
-            max-width: 100%;
-            max-height: 68vh;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-            user-select: none;
-            -webkit-user-drag: none;
-            transition: transform 0.15s ease-out, opacity 0.25s ease;
-            transform-origin: center center;
+            max-width: 100%; max-height: 68vh; object-fit: contain; border-radius: 10px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8); user-select: none; -webkit-user-drag: none;
+            transition: transform 0.1s ease-out, opacity 0.2s ease; transform-origin: center center;
         }
 
         .modal-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(15, 23, 42, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #ffffff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            backdrop-filter: blur(10px);
-            z-index: 10005;
+            position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.15); color: #fff; width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); z-index: 20000; transition: all 0.25s ease;
         }
-
-        .modal-nav-btn:hover {
-            background: var(--red-accent);
-            border-color: var(--red-accent);
-            transform: translateY(-50%) scale(1.08);
-        }
-
-        .modal-nav-btn svg {
-            width: 22px;
-            height: 22px;
-            stroke: currentColor;
-            stroke-width: 2.2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            fill: none;
-        }
-
+        .modal-nav-btn:hover { background: var(--red-accent); border-color: var(--red-accent); transform: translateY(-50%) scale(1.08); }
+        .modal-nav-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
         .modal-prev { left: 0.5rem; }
         .modal-next { right: 0.5rem; }
 
-        .modal-thumbs {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 0.75rem;
-            overflow-x: auto;
-            max-width: 100%;
-            padding: 0.3rem;
-            scrollbar-width: none;
-        }
+        .modal-thumbs { display: flex; gap: 0.5rem; margin-top: 0.75rem; overflow-x: auto; max-width: 100%; padding: 0.3rem; scrollbar-width: none; z-index: 20000; }
         .modal-thumbs::-webkit-scrollbar { display: none; }
-        
-        .modal-thumb {
-            width: 56px;
-            height: 40px;
-            border-radius: 6px;
-            overflow: hidden;
-            opacity: 0.45;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.25s ease;
-            flex-shrink: 0;
-        }
-        .modal-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .modal-thumb.active {
-            opacity: 1;
-            border-color: var(--red-accent);
-            transform: scale(1.06);
-            box-shadow: 0 4px 12px rgba(211, 29, 29, 0.4);
-        }
+        .modal-thumb { width: 56px; height: 40px; border-radius: 6px; overflow: hidden; opacity: 0.45; cursor: pointer; border: 2px solid transparent; transition: all 0.25s ease; flex-shrink: 0; }
+        .modal-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-thumb.active { opacity: 1; border-color: var(--red-accent); transform: scale(1.06); box-shadow: 0 4px 12px rgba(211, 29, 29, 0.4); }
 
         .modal-caption-pill {
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(12px);
-            color: #f1f5f9;
-            padding: 0.65rem 1.1rem;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            text-align: center;
-            max-width: 750px;
-            width: 92%;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            margin-top: 0.6rem;
-            font-style: italic;
+            background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(12px);
+            color: #f1f5f9; padding: 0.65rem 1.1rem; border-radius: 12px; font-size: 0.9rem; text-align: center; max-width: 750px; width: 92%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); margin-top: 0.6rem; font-style: italic; z-index: 20000;
         }
 
-        /* FOOTER (PC) */
         footer {
             background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('fondopie.jpg');
             background-size: 99% auto; background-position: 40% 43%; color: var(--text-light);
-            padding: 2.5rem 2rem; font-size: 0.9rem; line-height: 1.6;
-            box-shadow: inset 0 12px 15px -8px rgba(0,0,0,0.4);
+            padding: 2.5rem 2rem; font-size: 0.9rem; line-height: 1.6; box-shadow: inset 0 12px 15px -8px rgba(0,0,0,0.4);
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
         }
         .footer-center { text-align: center; flex-grow: 1; order: 2; }
         .footer-center p { margin: 0.3rem 0; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
         .footer-bottom-text { margin-top: 0.4rem; font-size: 0.85rem; opacity: 0.95; }
-        
         .footer-left-block { display: flex; align-items: center; order: 1; min-width: 170px; justify-content: flex-start; padding-left: 0.5rem; }
         .footer-unlu-link { display: flex; align-items: center; text-decoration: none; transition: opacity 0.2s ease; }
         .footer-unlu-link:hover { opacity: 0.8; }
         .footer-unlu-logo { width: 90px; height: 90px; object-fit: contain; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5)); border-radius: 4px; }
-
         .footer-logos {
-            display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5); background: rgba(0,0,0,0.3);
-            padding: 0.8rem 1rem; border-radius: 8px; min-width: 170px; order: 3;
+            display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.3); padding: 0.8rem 1rem; border-radius: 8px; min-width: 170px; order: 3;
         }
         .footer-logos-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.1rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.2rem; }
         .footer-logo-item a { display: flex; align-items: center; gap: 0.6rem; color: var(--text-light); text-decoration: none; transition: opacity 0.2s ease; }
         .footer-logo-item a:hover { opacity: 0.8; }
         .footer-logo-item img { width: 26px; height: 26px; object-fit: contain; border-radius: 4px; border: 1px solid rgba(255,255,255,0.4); }
 
-        /* RESPONSIVE MÓVIL */
         @media (max-width: 768px) {
             header { padding: 1.2rem 0.8rem; text-align: center; display: grid; grid-template-columns: 62px 1fr 62px; grid-template-areas: "title title title" "left middle right" "def def def"; align-items: center; justify-items: center; gap: 0.6rem; }
             .header-title { grid-area: title; font-size: 1.3rem; font-weight: 700; color: var(--text-light); margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
@@ -476,19 +197,13 @@
 
             #desktopNav { display: none !important; }
             .mobile-nav-container { display: block; position: sticky; top: 0; z-index: 2000; width: 100%; }
-            
-            .mobile-menu-bar {
-                background-color: var(--navy-main); color: var(--text-light); display: flex; justify-content: space-between; align-items: center;
-                padding: 0.4rem 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); width: 100%;
-            }
-            .mobile-menu-title { font-size: 0.9rem; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+            .mobile-menu-bar { background-color: var(--navy-main); color: var(--text-light); display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); width: 100%; }
+            .mobile-menu-title { font-size: 0.9rem; font-weight: 600; }
             .menu-toggle { background: transparent; color: var(--text-light); border: none; font-size: 1.2rem; cursor: pointer; padding: 0.1rem; }
 
             #navMenuMobile {
                 display: none; position: absolute; top: 100%; left: 0; width: 100%; flex-direction: column;
-                background-color: rgba(27, 42, 74, 0.98); backdrop-filter: blur(10px);
-                box-shadow: 0 15px 25px rgba(0,0,0,0.5); opacity: 0; visibility: hidden;
-                transform: translateY(-8px); transition: opacity 0.25s ease, transform 0.25s ease; z-index: 1999;
+                background-color: rgba(27, 42, 74, 0.98); backdrop-filter: blur(10px); box-shadow: 0 15px 25px rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s ease; z-index: 1999;
             }
             #navMenuMobile.active { display: flex; opacity: 1; visibility: visible; transform: translateY(0); }
             #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: var(--text-light); text-decoration: none; }
@@ -496,29 +211,19 @@
 
             .carousel-slide { height: 260px; }
 
-            /* Footer Móvil */
             footer {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-areas: 
-                    "maintext maintext"
-                    "unlu logos"
-                    "copyright copyright";
-                align-items: center;
-                gap: 0.8rem 0.5rem;
-                padding: 1rem 0.8rem;
+                display: grid; grid-template-columns: 1fr 1fr;
+                grid-template-areas: "maintext maintext" "unlu logos" "copyright copyright";
+                align-items: center; gap: 0.8rem 0.5rem; padding: 1rem 0.8rem;
             }
-            .footer-center { grid-area: maintext; text-align: center; width: 100%; margin: 0; order: unset; }
+            .footer-center { grid-area: maintext; text-align: center; width: 100%; margin: 0; }
             .footer-center p { font-size: 0.72rem; margin: 0; }
-            
-            .footer-left-block { grid-area: unlu; justify-content: flex-start; min-width: auto; padding: 0; order: unset; }
+            .footer-left-block { grid-area: unlu; justify-content: flex-start; padding: 0; }
             .footer-unlu-logo { width: 65px; height: 65px; }
-
-            .footer-logos { grid-area: logos; width: auto; max-width: 170px; margin: 0 0 0 auto; padding: 0.5rem 0.7rem; order: unset; }
+            .footer-logos { grid-area: logos; width: auto; max-width: 170px; margin: 0 0 0 auto; padding: 0.5rem 0.7rem; }
             .footer-logos-title { font-size: 0.75rem; }
             .footer-logo-item img { width: 20px; height: 20px; }
             .footer-logo-item span { font-size: 0.75rem; }
-
             .footer-bottom-text { grid-area: copyright; text-align: center; margin: 0; font-size: 0.70rem; }
         }
     </style>
@@ -584,8 +289,8 @@
                     <div class="carousel-caption">Trabajos con cucharín en cuadrícula</div>
                 </div>
 
-                <button class="carousel-btn prev" aria-label="Anterior" onclick="event.stopPropagation(); prevSlide();">&#10094;</button>
-                <button class="carousel-btn next" aria-label="Siguiente" onclick="event.stopPropagation(); nextSlide();">&#10095;</button>
+                <button class="carousel-btn prev" aria-label="Anterior" onclick="event.stopPropagation(); goToSlide(currentSlide - 1); resetInterval();">&#10094;</button>
+                <button class="carousel-btn next" aria-label="Siguiente" onclick="event.stopPropagation(); goToSlide(currentSlide + 1); resetInterval();">&#10095;</button>
             </div>
             
             <div class="carousel-dots">
@@ -602,14 +307,11 @@
         </div>
     </section>
 
-    <!-- VISOR MODAL 2026 (LIGHTBOX TÁCTIL CON ZOOM) -->
+    <!-- VISOR MODAL 2026 -->
     <div id="imageModal" class="image-modal" onclick="closeModal()">
         <div class="modal-container" onclick="event.stopPropagation()">
-            <!-- Barra superior -->
             <div class="modal-top-bar">
                 <div id="modalCounter" class="modal-counter">1 / 5</div>
-                
-                <!-- Controles de Zoom -->
                 <div class="modal-zoom-controls">
                     <button class="modal-tool-btn" onclick="zoomOut()" aria-label="Alejar">
                         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
@@ -619,29 +321,24 @@
                         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
                     </button>
                 </div>
-
                 <button class="modal-close-btn" onclick="closeModal()" aria-label="Cerrar">
                     <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
             </div>
 
-            <!-- Imagen principal y flechas -->
             <div class="modal-stage">
-                <button class="modal-nav-btn modal-prev" onclick="modalPrev()" aria-label="Anterior">
+                <button class="modal-nav-btn modal-prev" onclick="goToSlide(currentSlide - 1); updateModalContent();" aria-label="Anterior">
                     <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
                 </button>
                 
                 <img id="modalImg" class="modal-img" src="" alt="Foto ampliada">
                 
-                <button class="modal-nav-btn modal-next" onclick="modalNext()" aria-label="Siguiente">
+                <button class="modal-nav-btn modal-next" onclick="goToSlide(currentSlide + 1); updateModalContent();" aria-label="Siguiente">
                     <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </button>
             </div>
 
-            <!-- Tira de miniaturas táctiles inferior -->
             <div id="modalThumbs" class="modal-thumbs"></div>
-
-            <!-- Descripción -->
             <div id="modalCaption" class="modal-caption-pill"></div>
         </div>
     </div>
@@ -652,12 +349,10 @@
                 <img src="logounlu.png" alt="Logo UNLu" class="footer-unlu-logo" loading="lazy" onerror="this.style.display='none'">
             </a>
         </div>
-
         <div class="footer-center">
             <p><strong>Página desarrollada y administrada por ProArHEP - Federico Inglesini</strong></p>
             <p class="footer-bottom-text">© 2026 - ProArHEP todos los derechos reservados</p>
         </div>
-
         <div class="footer-logos">
             <div class="footer-logos-title">Autores de logos:</div>
             <div class="footer-logo-item">
@@ -678,72 +373,50 @@
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const navMenuMobile = document.getElementById('navMenuMobile');
-
         menuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             navMenuMobile.classList.toggle('active');
         });
-
         document.addEventListener('click', (e) => {
             if (!navMenuMobile.contains(e.target) && !menuToggle.contains(e.target)) {
                 navMenuMobile.classList.remove('active');
             }
         });
 
-        /* SCRIPT DEL CARRUSEL DE FOTOS */
+        /* CARRUSEL Y VISOR UNIFICADO */
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.dot');
         const totalSlides = slides.length;
         let slideInterval;
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                dots[i].classList.remove('active');
-            });
+        function goToSlide(index) {
             currentSlide = (index + totalSlides) % totalSlides;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+            dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+            if (modal.classList.contains('active')) {
+                resetZoom();
+                updateModalContent();
+            }
         }
-
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-        }
-
-        document.querySelector('.carousel-btn.next').addEventListener('click', () => {
-            nextSlide();
-            resetInterval();
-        });
-
-        document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
-            prevSlide();
-            resetInterval();
-        });
 
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
-                showSlide(index);
+                goToSlide(index);
                 resetInterval();
             });
         });
 
         function startInterval() {
-            slideInterval = setInterval(nextSlide, 15000);
+            slideInterval = setInterval(() => goToSlide(currentSlide + 1), 15000);
         }
-
         function resetInterval() {
             clearInterval(slideInterval);
             startInterval();
         }
-
         startInterval();
 
-        /* SCRIPT DEL VISOR MODAL 2026 (LIGHTBOX CON ZOOM Y NAVEGACIÓN CORREGIDA) */
+        /* VISOR MODAL Y ZOOM OPTIMIZADO */
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const modalCaption = document.getElementById('modalCaption');
@@ -751,38 +424,21 @@
         const modalThumbsContainer = document.getElementById('modalThumbs');
         const stage = document.querySelector('.modal-stage');
 
-        let scale = 1;
-        let pointX = 0;
-        let pointY = 0;
-        let isDragging = false;
-        let startX = 0;
-        let startY = 0;
+        let scale = 1, pointX = 0, pointY = 0, isDragging = false, startX = 0, startY = 0;
 
         function resetZoom() {
-            scale = 1;
-            pointX = 0;
-            pointY = 0;
+            scale = 1; pointX = 0; pointY = 0;
             updateTransform();
         }
-
-        function zoomIn() {
-            scale = Math.min(scale * 1.3, 4);
-            updateTransform();
-        }
-
+        function zoomIn() { scale = Math.min(scale * 1.4, 4); updateTransform(); }
         function zoomOut() {
-            scale = Math.max(scale / 1.3, 1);
-            if (scale === 1) {
-                pointX = 0;
-                pointY = 0;
-            }
+            scale = Math.max(scale / 1.4, 1);
+            if (scale === 1) { pointX = 0; pointY = 0; }
             updateTransform();
         }
-
         function updateTransform() {
             modalImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
-            const percent = Math.round(scale * 100);
-            document.getElementById('zoomResetBtn').textContent = `${percent}%`;
+            document.getElementById('zoomResetBtn').textContent = `${Math.round(scale * 100)}%`;
         }
 
         function initModalThumbs() {
@@ -794,10 +450,7 @@
                 thumb.innerHTML = `<img src="${imgEl.src}" alt="Miniatura ${idx + 1}" loading="lazy">`;
                 thumb.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    currentSlide = idx;
-                    resetZoom();
-                    updateModalContent();
-                    showSlide(currentSlide);
+                    goToSlide(idx);
                     resetInterval();
                 });
                 modalThumbsContainer.appendChild(thumb);
@@ -805,8 +458,7 @@
         }
 
         function openModal(index) {
-            currentSlide = index;
-            resetZoom();
+            goToSlide(index);
             initModalThumbs();
             updateModalContent();
             modal.classList.add('active');
@@ -826,93 +478,53 @@
             const activeCaptionText = slides[currentSlide].querySelector('.carousel-caption').textContent;
             
             modalImg.style.opacity = '0';
-            modalImg.style.transform = 'scale(0.98)';
             setTimeout(() => {
                 modalImg.src = activeSlideImg.src;
                 modalImg.alt = activeSlideImg.alt;
-                resetZoom();
                 modalImg.style.opacity = '1';
-            }, 120);
+            }, 100);
 
             modalCaption.textContent = activeCaptionText;
             modalCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
 
-            const thumbs = modalThumbsContainer.querySelectorAll('.modal-thumb');
-            thumbs.forEach((t, i) => {
-                if (i === currentSlide) {
-                    t.classList.add('active');
-                    t.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                } else {
-                    t.classList.remove('active');
-                }
+            modalThumbsContainer.querySelectorAll('.modal-thumb').forEach((t, i) => {
+                t.classList.toggle('active', i === currentSlide);
+                if (i === currentSlide) t.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
             });
         }
 
-        function modalNext() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            resetZoom();
-            updateModalContent();
-            showSlide(currentSlide);
-        }
-
-        function modalPrev() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            resetZoom();
-            updateModalContent();
-            showSlide(currentSlide);
-        }
-
-        // Zoom con la rueda del mouse
+        /* ZOOM MOUSE Y RUEDA */
         modalImg.addEventListener('wheel', (e) => {
             e.preventDefault();
-            const zoomFactor = 1.15;
-            if (e.deltaY < 0) {
-                scale = Math.min(scale * zoomFactor, 4);
-            } else {
-                scale = Math.max(scale / zoomFactor, 1);
-                if (scale === 1) { pointX = 0; pointY = 0; }
-            }
+            scale = e.deltaY < 0 ? Math.min(scale * 1.2, 4) : Math.max(scale / 1.2, 1);
+            if (scale === 1) { pointX = 0; pointY = 0; }
             updateTransform();
         }, { passive: false });
 
-        // Doble clic / doble toque para alternar zoom
         modalImg.addEventListener('dblclick', (e) => {
             e.stopPropagation();
-            if (scale > 1) {
-                resetZoom();
-            } else {
-                scale = 2.5;
-                updateTransform();
-            }
+            scale > 1 ? resetZoom() : (scale = 2.5, updateTransform());
         });
 
-        // Arrastrar / Panorámica cuando hay zoom (Mouse)
         stage.addEventListener('mousedown', (e) => {
             if (scale <= 1) return;
-            isDragging = true;
-            startX = e.clientX - pointX;
-            startY = e.clientY - pointY;
+            isDragging = true; startX = e.clientX - pointX; startY = e.clientY - pointY;
             e.preventDefault();
         });
-
         window.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
-            pointX = e.clientX - startX;
-            pointY = e.clientY - startY;
+            pointX = e.clientX - startX; pointY = e.clientY - startY;
             updateTransform();
         });
-
         window.addEventListener('mouseup', () => { isDragging = false; });
 
-        // Soporte táctil para Zoom (Pellizcar) y Panorámica
-        let initialPinchDistance = null;
+        /* SOPORTE TÁCTIL MÓVIL OPTIMIZADO (PINCH ZOOM RÁPIDO) */
+        let initialPinchDistance = null, baseScale = 1;
 
         stage.addEventListener('touchstart', (e) => {
             if (e.touches.length === 2) {
-                initialPinchDistance = Math.hypot(
-                    e.touches[0].clientX - e.touches[1].clientX,
-                    e.touches[0].clientY - e.touches[1].clientY
-                );
+                initialPinchDistance = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                baseScale = scale;
             } else if (e.touches.length === 1 && scale > 1) {
                 isDragging = true;
                 startX = e.touches[0].clientX - pointX;
@@ -922,13 +534,8 @@
 
         stage.addEventListener('touchmove', (e) => {
             if (e.touches.length === 2 && initialPinchDistance !== null) {
-                const currentDistance = Math.hypot(
-                    e.touches[0].clientX - e.touches[1].clientX,
-                    e.touches[0].clientY - e.touches[1].clientY
-                );
-                const factor = currentDistance / initialPinchDistance;
-                scale = Math.min(Math.max(scale * (factor * 0.05 + 0.95), 1), 4);
-                initialPinchDistance = currentDistance;
+                const currentDistance = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                scale = Math.min(Math.max(baseScale * (currentDistance / initialPinchDistance), 1), 5);
                 updateTransform();
             } else if (e.touches.length === 1 && isDragging && scale > 1) {
                 pointX = e.touches[0].clientX - startX;
@@ -942,47 +549,34 @@
             if (e.touches.length === 0) isDragging = false;
         });
 
-        // Navegación por teclado (ESC, Flechas)
+        /* TECLADO Y GESTOS SWIPE */
         document.addEventListener('keydown', (e) => {
             if (!modal.classList.contains('active')) return;
             if (e.key === 'Escape') closeModal();
-            if (e.key === 'ArrowRight') modalNext();
-            if (e.key === 'ArrowLeft') modalPrev();
+            if (e.key === 'ArrowRight') { goToSlide(currentSlide + 1); updateModalContent(); }
+            if (e.key === 'ArrowLeft') { goToSlide(currentSlide - 1); updateModalContent(); }
         });
 
-        // Gestos Táctiles (Swipe izq/der para cambiar foto, swipe abajo para cerrar si no hay zoom)
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let touchEndX = 0;
-        let touchEndY = 0;
-
+        let touchStartX = 0, touchStartY = 0;
         modal.addEventListener('touchstart', (e) => {
-            if (scale > 1) return; // Desactiva swipe si hay zoom activo
+            if (scale > 1) return;
             touchStartX = e.changedTouches[0].screenX;
             touchStartY = e.changedTouches[0].screenY;
         }, { passive: true });
 
         modal.addEventListener('touchend', (e) => {
             if (scale > 1) return;
-            touchEndX = e.changedTouches[0].screenX;
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipeGesture();
-        }, { passive: true });
-
-        function handleSwipeGesture() {
-            const diffX = touchEndX - touchStartX;
-            const diffY = touchEndY - touchStartY;
-            const threshold = 45;
-
+            const diffX = e.changedTouches[0].screenX - touchStartX;
+            const diffY = e.changedTouches[0].screenY - touchStartY;
             if (Math.abs(diffX) > Math.abs(diffY)) {
-                if (Math.abs(diffX) > threshold) {
-                    if (diffX > 0) modalPrev();
-                    else modalNext();
+                if (Math.abs(diffX) > 45) {
+                    goToSlide(diffX > 0 ? currentSlide - 1 : currentSlide + 1);
+                    updateModalContent();
                 }
-            } else {
-                if (diffY > 90) closeModal();
+            } else if (diffY > 90) {
+                closeModal();
             }
-        }
+        }, { passive: true });
     </script>
 </body>
 </html>
