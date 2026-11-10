@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio Vuelta de Obligado</title>
+    <title>Sitio Vuelta de Obligado - Inicio</title>
     <!-- Favicon blindado con parámetro de versión para evitar problemas de caché -->
     <link rel="icon" type="image/png" href="logoizq.png?v=2">
     <style>
@@ -24,7 +24,7 @@
         *, *:before, *:after { box-sizing: inherit; }
         body { font-family: system-ui, -apple-system, sans-serif; background-color: var(--bg-dark); color: var(--text-dark); margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* HEADER PC (Actualizado con el tono y transparencia exactos de Ubicación) */
+        /* HEADER PC */
         header {
             background: linear-gradient(var(--navy-overlay), var(--navy-overlay)), url('fondosuperior.jpg');
             background-size: cover; background-position: center;
@@ -50,7 +50,7 @@
         nav a:hover { background-color: var(--red-accent); }
         .mobile-nav-container { display: none; }
 
-        /* SECCIÓN CENTRAL CON FONDO FIJO (EFECTO PARALLAX) Y NUEVA BOX */
+        /* SECCIÓN CENTRAL */
         section {
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('fondocentral2.jpg');
             background-size: cover;          
@@ -77,8 +77,93 @@
             border-bottom: 2px solid var(--red-accent); 
             padding-bottom: 0.4rem; 
         }
+        .content-box h3 {
+            font-size: 1.4rem;
+            color: var(--text-heading);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--red-accent);
+            padding-bottom: 0.3rem;
+        }
         .content-box p.subtitle { color: #000000; margin-bottom: 1.5rem; font-weight: 600; font-size: 1rem; }
-        .content-box p { color: var(--text-dark); line-height: 1.6; }
+        .content-box p { color: var(--text-dark); line-height: 1.6; margin-bottom: 1rem; }
+
+        /* ESTILOS DEL CARRUSEL DE FOTOS */
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 1.5rem 0 1rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #94a3b8;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            background-color: #1e293b;
+        }
+        .carousel-slide {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 420px;
+        }
+        .carousel-slide.active {
+            display: block;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(27, 42, 74, 0.85);
+            color: #ffffff;
+            padding: 0.8rem 1rem;
+            font-size: 0.88rem;
+            text-align: center;
+            font-style: italic;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(27, 42, 74, 0.75);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+        .carousel-btn:hover {
+            background-color: var(--red-accent);
+        }
+        .carousel-btn.prev { left: 12px; }
+        .carousel-btn.next { right: 12px; }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #cbd5e1;
+            border: 1px solid #94a3b8;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .dot.active {
+            background-color: var(--navy-main);
+        }
 
         /* FOOTER (PC) */
         footer {
@@ -137,6 +222,8 @@
             #navMenuMobile.active { display: flex; opacity: 1; visibility: visible; transform: translateY(0); }
             #navMenuMobile a { padding: 0.8rem 1.5rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.95rem; color: var(--text-light); text-decoration: none; }
             #navMenuMobile a:hover { background-color: var(--red-accent); }
+
+            .carousel-slide { height: 260px; }
 
             /* Footer Móvil */
             footer {
@@ -201,8 +288,46 @@
     <section id="inicio">
         <div class="content-box">
             <h2>Inicio</h2>
-            <p class="subtitle">Bienvenido al portal del proyecto.</p>
-            <p>Página en construcción</p>
+            <p class="subtitle">Bienvenidos al portal del proyecto.</p>
+
+            <!-- CARRUSEL DE 5 FOTOS -->
+            <div class="carousel-container">
+                <div class="carousel-slide active">
+                    <img src="foto1.jpg" alt="Foto 1 del proyecto" loading="lazy" onerror="this.src='foto1.png'; this.onerror=null;">
+                    <div class="carousel-caption">Vista general del sitio arqueológico Vuelta de Obligado.</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="foto2.jpg" alt="Foto 2 del proyecto" loading="lazy" onerror="this.style.display='none'">
+                    <div class="carousel-caption">Campañas arqueológicas de campo.</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="foto3.jpg" alt="Foto 3 del proyecto" loading="lazy" onerror="this.style.display='none'">
+                    <div class="carousel-caption">Recuperación de patrimonio histórico.</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="foto4.jpg" alt="Foto 4 del proyecto" loading="lazy" onerror="this.style.display='none'">
+                    <div class="carousel-caption">Trabajos de investigación y laboratorio.</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="foto5.jpg" alt="Foto 5 del proyecto" loading="lazy" onerror="this.style.display='none'">
+                    <div class="carousel-caption">Monumento a la Soberanía Nacional.</div>
+                </div>
+
+                <button class="carousel-btn prev" aria-label="Anterior">&#10094;</button>
+                <button class="carousel-btn next" aria-label="Siguiente">&#10095;</button>
+            </div>
+            
+            <div class="carousel-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+
+            <h3>Presentación del portal</h3>
+            <p>Este espacio está destinado a difundir las investigaciones arqueológicas, históricas y pluridisciplinarias llevadas adelante por el programa ProArHEP en el histórico campo de batalla de la Vuelta de Obligado.</p>
+            <p>Aquí podrás recorrer el desarrollo de las campañas, explorar modelos 3D de los materiales recuperados, conocer más sobre nuestro equipo y consultar toda la información útil sobre el sitio y su ubicación.</p>
         </div>
     </section>
 
@@ -249,6 +374,60 @@
                 navMenuMobile.classList.remove('active');
             }
         });
+
+        /* SCRIPT DEL CARRUSEL DE FOTOS */
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+            currentSlide = (index + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+            nextSlide();
+            resetInterval();
+        });
+
+        document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+            prevSlide();
+            resetInterval();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                resetInterval();
+            });
+        });
+
+        // Cambio automático cada 15 segundos (15000 ms)
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 15000);
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+
+        startInterval();
     </script>
 </body>
 </html>
