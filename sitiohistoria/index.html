@@ -156,6 +156,61 @@
             color: var(--text-heading);
         }
 
+        /* ESTILOS PARA LAS PALABRAS INTERACTIVAS Y EL RECUADRO BLANCO (POPOVER) */
+        .interactive-word {
+            color: var(--red-accent);
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .interactive-word:hover {
+            opacity: 0.8;
+        }
+
+        .custom-popover {
+            display: none;
+            position: absolute;
+            background: #ffffff;
+            color: #0f172a;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid #cbd5e1;
+            width: 260px;
+            z-index: 3000;
+            text-align: left;
+        }
+        .custom-popover.active {
+            display: block;
+        }
+        .popover-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0 0 0.2rem 0;
+            color: var(--navy-main);
+        }
+        .popover-subtitle {
+            font-size: 0.82rem;
+            color: #475569;
+            margin: 0 0 0.8rem 0;
+            line-height: 1.4;
+        }
+        .popover-btn {
+            display: inline-block;
+            background-color: var(--red-accent);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .popover-btn:hover {
+            background-color: #b91c1c;
+        }
+
         /* FOOTER (PC) */
         footer {
             background: linear-gradient(rgba(27, 42, 74, 0.85), rgba(27, 42, 74, 0.85)), url('../fondopie.jpg');
@@ -315,8 +370,8 @@
                 </div>
                 <p>A lo largo de las campañas se han recuperado más de 11.600 objetos y fragmentos. Entre los hallazgos más destacados se encuentran:</p>
                 <ul>
-                    <li><strong>Materiales militares y de la vida en campaña:</strong> Proyectiles de artillería, fragmentos de bombas explosivas anglo-francesas, plomo fundido, piedras de chispa para fusil, botones de uniformes y clavos cuadrangulares.</li>
-                    <li><strong>Restos cotidianos:</strong> Fragmentos de botellas de vidrio y gres: de vino y ginebra, cerámicas y restos de maderas quemadas.</li>
+                    <li><strong>Materiales militares y de la vida en campaña:</strong> <span class="interactive-word" data-title="Proyectiles de artillería" data-subtitle="Información detallada sobre los proyectiles recuperados." data-link="#">Proyectiles de artillería</span>, <span class="interactive-word" data-title="Bombas Anglo-Francesas" data-subtitle="Detalles de los fragmentos explosivos." data-link="#">fragmentos de bombas explosivas anglo-francesas</span>, plomo fundido, piedras de chispa para fusil, <span class="interactive-word" data-title="Botones de uniformes" data-subtitle="Registro de indumentaria militar." data-link="#">botones de uniformes</span> y <span class="interactive-word" data-title="Clavos cuadrangulares" data-subtitle="Elementos de construcción de la época." data-link="#">clavos cuadrangulares</span>.</li>
+                    <li><strong>Restos cotidianos:</strong> Fragmentos de <span class="interactive-word" data-title="Botellas de vidrio" data-subtitle="Envases de vino y ginebra recuperados." data-link="#">botellas</span> de vidrio y gres: de vino y ginebra, <span class="interactive-word" data-title="Cerámicas y maderas" data-subtitle="Restos arqueológicos orgánicos e inorgánicos." data-link="#">cerámicas y restos de maderas quemadas</span>.</li>
                     <li><strong>Estructuras exhumadas:</strong> Marcas de los postes de madera que sostenían las empalizadas defensivas y bases donde se apoyaban los cañones.</li>
                     <li><strong>El hallazgo de las Cadenas (2020):</strong> Durante la bajante histórica del río Paraná en 2020, se rescató en la playa un tramo original de cadena de 46 eslabones de hierro, aún atado a un grueso tronco de madera de 30 cm, que servía como sistema de anclaje de la barrera náutica de 1845.</li>
                 </ul>
@@ -325,7 +380,7 @@
             <blockquote>
                 <p>"A más de un metro de profundidad, la hipótesis arqueológica se transformó en revelación histórica: descubrimos un imponente durmiente de madera de 30 centímetros de sección rodeado por la cadena en un nudo de amarre perfecto conocido como 'boca de lobo o presilla de alondra'. Era el sistema de anclaje original de las defensas náuticas de 1845, intacto tras 175 años de olvido."</p>
                 <p>"Mientras colaborábamos codo a codo con los operarios municipales y la retroexcavadora para liberar el madero, un grupo numeroso de vecinos y prefectos comenzó a agolparse alrededor de la cinta de peligro. Cuando la pala mecánica finalmente elevó la cadena liberada, el silencio de la playa se rompió con un aplauso cerrado, vitoreos espontáneos de emoción y un grito unánime de «¡Viva la Patria!» que retumbó en las barrancas."</p>
-                <p>"Mirar hoy la cadena de 46 eslabones resguardada en el Museo de Sitio é una experiencia que nos sigue emocionando... Recuperar las cadenas de la Vuelta de Obligado no fue una intervención arqueológica convencional; fue una experiencia profundamente movilizadora que nos marcó a fuego..."</p>
+                <p>"Mirar hoy la cadena de 46 eslabones resguardada en el Museo de Sitio es una experiencia que nos sigue emocionando... Recuperar las cadenas de la Vuelta de Obligado no fue una intervención arqueológica convencional; fue una experiencia profundamente movilizadora que nos marcó a fuego..."</p>
                 <p>— Marcelo Gómez</p>
             </blockquote>
 
@@ -372,6 +427,13 @@
         </div>
     </section>
 
+    <!-- RECUADRO FLOTANTE (POPOVER) ÚNICO -->
+    <div id="globalPopover" class="custom-popover">
+        <h4 id="popoverTitle" class="popover-title">Título</h4>
+        <p id="popoverSubtitle" class="popover-subtitle">Subtítulo explicativo aquí.</p>
+        <a id="popoverLink" href="#" class="popover-btn" target="_blank">Ver más</a>
+    </div>
+
     <footer>
         <div class="footer-left-block">
             <a href="https://www.unlu.edu.ar" class="footer-unlu-link" target="_blank" rel="noopener noreferrer" title="Universidad Nacional de Luján">
@@ -413,6 +475,40 @@
         document.addEventListener('click', (e) => {
             if (!navMenuMobile.contains(e.target) && !menuToggle.contains(e.target)) {
                 navMenuMobile.classList.remove('active');
+            }
+        });
+
+        /* SCRIPT PARA EL RECUADRO FLOTANTE (POPOVER) */
+        const popover = document.getElementById('globalPopover');
+        const popTitle = document.getElementById('popoverTitle');
+        const popSub = document.getElementById('popoverSubtitle');
+        const popLink = document.getElementById('popoverLink');
+        const interactiveWords = document.querySelectorAll('.interactive-word');
+
+        interactiveWords.forEach(word => {
+            word.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const title = word.getAttribute('data-title');
+                const subtitle = word.getAttribute('data-subtitle');
+                const link = word.getAttribute('data-link');
+
+                popTitle.textContent = title;
+                popSub.textContent = subtitle;
+                popLink.href = link;
+
+                // Posicionar el recuadro cerquita de la palabra clickeada
+                const rect = word.getBoundingClientRect();
+                popover.style.top = (window.scrollY + rect.bottom + 6) + 'px';
+                popover.style.left = (window.scrollX + rect.left) + 'px';
+
+                popover.classList.toggle('active');
+            });
+        });
+
+        // Ocultar el recuadro si se hace clic en cualquier otra parte de la pantalla
+        document.addEventListener('click', (e) => {
+            if (!popover.contains(e.target) && !e.target.classList.contains('interactive-word')) {
+                popover.classList.remove('active');
             }
         });
     </script>
