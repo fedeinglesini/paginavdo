@@ -61,18 +61,21 @@
         .content-box p.subtitle { color: #000; margin-bottom: 1.5rem; font-weight: 600; font-size: 1rem; }
         .content-box p { color: var(--text-dark); line-height: 1.6; margin-bottom: 1rem; }
 
-        /* CARRUSEL */
+        /* CARRUSEL CON TRANSICIÓN FLUIDA */
         .carousel-container {
             position: relative; max-width: 100%; margin: 1.5rem 0 1rem 0; border-radius: 8px;
             overflow: hidden; border: 1px solid #94a3b8; box-shadow: 0 4px 10px rgba(0,0,0,0.15); background-color: #1e293b;
         }
-        .carousel-slide { display: none; position: relative; width: 100%; height: 420px; cursor: pointer; }
-        .carousel-slide.active { display: block; }
-        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
-        .carousel-slide:hover img { transform: scale(1.01); }
+        .carousel-track { position: relative; width: 100%; height: 420px; }
+        .carousel-slide {
+            position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease; cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+        .carousel-slide.active { opacity: 1; visibility: visible; z-index: 2; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .carousel-caption {
             position: absolute; bottom: 0; left: 0; right: 0; background: rgba(27, 42, 74, 0.85);
-            color: #fff; padding: 0.8rem 1rem; font-size: 0.88rem; text-align: center; font-style: italic; pointer-events: none;
+            color: #fff; padding: 0.8rem 1rem; font-size: 0.88rem; text-align: center; font-style: italic; pointer-events: none; z-index: 5;
         }
         .carousel-btn {
             position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(27, 42, 74, 0.75);
@@ -86,7 +89,7 @@
         .dot { width: 12px; height: 12px; border-radius: 50%; background-color: #cbd5e1; border: 1px solid #94a3b8; cursor: pointer; transition: background 0.3s; }
         .dot.active { background-color: var(--navy-main); }
 
-        /* VISOR MODAL 2026 (OPTIMIZADO & SEGURO CONTRA SOLAPAMIENTO) */
+        /* VISOR MODAL 2026 CON MODO ZOOM INTELIGENTE (AUTO-HIDE INTERFACE) */
         .image-modal {
             position: fixed; inset: 0; z-index: 9999; background: rgba(8, 12, 20, 0.96);
             backdrop-filter: blur(20px) saturate(180%); display: flex; align-items: center; justify-content: center;
@@ -99,14 +102,15 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3.8rem 1rem 1.5rem 1rem; box-sizing: border-box;
         }
 
-        /* Barra superior con Z-index alto para que nunca sea tapada por la imagen */
         .modal-top-bar {
             position: absolute; top: 1rem; left: 1.5rem; right: 1.5rem;
             display: flex; justify-content: space-between; align-items: center; z-index: 20000; pointer-events: auto;
+            transition: opacity 0.25s ease;
         }
         .modal-counter {
             background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12);
             color: #f8fafc; padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.85rem; font-weight: 500; backdrop-filter: blur(10px);
+            transition: opacity 0.25s ease, visibility 0.25s ease;
         }
         .modal-zoom-controls {
             display: flex; align-items: center; gap: 0.3rem; background: rgba(255, 255, 255, 0.08);
@@ -128,7 +132,6 @@
         .modal-close-btn:hover { background: var(--red-accent); border-color: var(--red-accent); transform: scale(1.08); }
         .modal-close-btn svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 
-        /* Stage de la imagen con z-index menor y overflow controlado */
         .modal-stage {
             position: relative; flex-grow: 1; width: 100%; display: flex; align-items: center; justify-content: center;
             overflow: hidden; margin: 0.5rem 0; cursor: grab; z-index: 10000;
@@ -138,20 +141,20 @@
         .modal-img {
             max-width: 100%; max-height: 68vh; object-fit: contain; border-radius: 10px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8); user-select: none; -webkit-user-drag: none;
-            transition: transform 0.1s ease-out, opacity 0.2s ease; transform-origin: center center;
+            transition: transform 0.1s ease-out, opacity 0.25s ease; transform-origin: center center;
         }
 
         .modal-nav-btn {
             position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15, 23, 42, 0.75);
             border: 1px solid rgba(255, 255, 255, 0.15); color: #fff; width: 50px; height: 50px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); z-index: 20000; transition: all 0.25s ease;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); z-index: 20000; transition: all 0.25s ease, opacity 0.25s ease;
         }
         .modal-nav-btn:hover { background: var(--red-accent); border-color: var(--red-accent); transform: translateY(-50%) scale(1.08); }
         .modal-nav-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
         .modal-prev { left: 0.5rem; }
         .modal-next { right: 0.5rem; }
 
-        .modal-thumbs { display: flex; gap: 0.5rem; margin-top: 0.75rem; overflow-x: auto; max-width: 100%; padding: 0.3rem; scrollbar-width: none; z-index: 20000; }
+        .modal-thumbs { display: flex; gap: 0.5rem; margin-top: 0.75rem; overflow-x: auto; max-width: 100%; padding: 0.3rem; scrollbar-width: none; z-index: 20000; transition: opacity 0.25s ease, visibility 0.25s ease; }
         .modal-thumbs::-webkit-scrollbar { display: none; }
         .modal-thumb { width: 56px; height: 40px; border-radius: 6px; overflow: hidden; opacity: 0.45; cursor: pointer; border: 2px solid transparent; transition: all 0.25s ease; flex-shrink: 0; }
         .modal-thumb img { width: 100%; height: 100%; object-fit: cover; }
@@ -160,7 +163,20 @@
         .modal-caption-pill {
             background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(12px);
             color: #f1f5f9; padding: 0.65rem 1.1rem; border-radius: 12px; font-size: 0.9rem; text-align: center; max-width: 750px; width: 92%;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); margin-top: 0.6rem; font-style: italic; z-index: 20000;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); margin-top: 0.6rem; font-style: italic; z-index: 20000; transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        /* ESTADO ZOOM ACTIVO: ESCONDE ELEMENTOS SECUNDARIOS Y DEJA FLOTANDO CONTROLES */
+        .image-modal.is-zoomed .modal-thumbs,
+        .image-modal.is-zoomed .modal-caption-pill,
+        .image-modal.is-zoomed .modal-nav-btn,
+        .image-modal.is-zoomed .modal-counter {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .image-modal.is-zoomed .modal-top-bar {
+            justify-content: flex-end;
         }
 
         footer {
@@ -185,6 +201,7 @@
         .footer-logo-item a:hover { opacity: 0.8; }
         .footer-logo-item img { width: 26px; height: 26px; object-fit: contain; border-radius: 4px; border: 1px solid rgba(255,255,255,0.4); }
 
+        /* OPTIMIZACIÓN MÓVIL Y MODO HORIZONTAL (LANDSCAPE) */
         @media (max-width: 768px) {
             header { padding: 1.2rem 0.8rem; text-align: center; display: grid; grid-template-columns: 62px 1fr 62px; grid-template-areas: "title title title" "left middle right" "def def def"; align-items: center; justify-items: center; gap: 0.6rem; }
             .header-title { grid-area: title; font-size: 1.3rem; font-weight: 700; color: var(--text-light); margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
@@ -225,6 +242,15 @@
             .footer-logo-item img { width: 20px; height: 20px; }
             .footer-logo-item span { font-size: 0.75rem; }
             .footer-bottom-text { grid-area: copyright; text-align: center; margin: 0; font-size: 0.70rem; }
+        }
+
+        /* MODO HORIZONTAL (LANDSCAPE) EN MÓVILES PARA EL VISOR */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .modal-container { padding: 3rem 0.5rem 0.5rem 0.5rem; }
+            .modal-thumbs { display: none; }
+            .modal-caption-pill { display: none; }
+            .modal-img { max-height: 82vh; }
+            .modal-nav-btn { width: 38px; height: 38px; }
         }
     </style>
 </head>
@@ -268,25 +294,27 @@
 
             <!-- CARRUSEL DE 5 FOTOS -->
             <div class="carousel-container">
-                <div class="carousel-slide active" onclick="openModal(0)">
-                    <img src="foto11.jpg" alt="Foto 1 del proyecto" loading="lazy" onerror="this.src='foto1.png'; this.onerror=null;">
-                    <div class="carousel-caption">Cartel del sitio arqueológico Vuelta de Obligado</div>
-                </div>
-                <div class="carousel-slide" onclick="openModal(1)">
-                    <img src="foto14.jpg" alt="Foto 2 del proyecto" loading="lazy" onerror="this.style.display='none'">
-                    <div class="carousel-caption">Vista del paraje Vuelta de Obligado</div>
-                </div>
-                <div class="carousel-slide" onclick="openModal(2)">
-                    <img src="foto13.jpg" alt="Foto 3 del proyecto" loading="lazy" onerror="this.style.display='none'">
-                    <div class="carousel-caption">Cuadrícula arqueológica</div>
-                </div>
-                <div class="carousel-slide" onclick="openModal(3)">
-                    <img src="foto15.jpg" alt="Foto 4 del proyecto" loading="lazy" onerror="this.style.display='none'">
-                    <div class="carousel-caption">Trabajos en cuadrícula en el sector monte</div>
-                </div>
-                <div class="carousel-slide" onclick="openModal(4)">
-                    <img src="foto12.jpg" alt="Foto 5 del proyecto" loading="lazy" onerror="this.style.display='none'">
-                    <div class="carousel-caption">Trabajos con cucharín en cuadrícula</div>
+                <div class="carousel-track">
+                    <div class="carousel-slide active" onclick="openModal(0)">
+                        <img src="foto11.jpg" alt="Foto 1 del proyecto" loading="lazy" onerror="this.src='foto1.png'; this.onerror=null;">
+                        <div class="carousel-caption">Cartel del sitio arqueológico Vuelta de Obligado</div>
+                    </div>
+                    <div class="carousel-slide" onclick="openModal(1)">
+                        <img src="foto14.jpg" alt="Foto 2 del proyecto" loading="lazy" onerror="this.style.display='none'">
+                        <div class="carousel-caption">Vista del paraje Vuelta de Obligado</div>
+                    </div>
+                    <div class="carousel-slide" onclick="openModal(2)">
+                        <img src="foto13.jpg" alt="Foto 3 del proyecto" loading="lazy" onerror="this.style.display='none'">
+                        <div class="carousel-caption">Cuadrícula arqueológica</div>
+                    </div>
+                    <div class="carousel-slide" onclick="openModal(3)">
+                        <img src="foto15.jpg" alt="Foto 4 del proyecto" loading="lazy" onerror="this.style.display='none'">
+                        <div class="carousel-caption">Trabajos en cuadrícula en el sector monte</div>
+                    </div>
+                    <div class="carousel-slide" onclick="openModal(4)">
+                        <img src="foto12.jpg" alt="Foto 5 del proyecto" loading="lazy" onerror="this.style.display='none'">
+                        <div class="carousel-caption">Trabajos con cucharín en cuadrícula</div>
+                    </div>
                 </div>
 
                 <button class="carousel-btn prev" aria-label="Anterior" onclick="event.stopPropagation(); goToSlide(currentSlide - 1); resetInterval();">&#10094;</button>
@@ -416,7 +444,7 @@
         }
         startInterval();
 
-        /* VISOR MODAL Y ZOOM OPTIMIZADO */
+        /* VISOR MODAL, ZOOM INTELIGENTE & AUTO-HIDE */
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const modalCaption = document.getElementById('modalCaption');
@@ -439,6 +467,13 @@
         function updateTransform() {
             modalImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
             document.getElementById('zoomResetBtn').textContent = `${Math.round(scale * 100)}%`;
+            
+            // Activa o desactiva la clase is-zoomed para ocultar la interfaz secundaria
+            if (scale > 1) {
+                modal.classList.add('is-zoomed');
+            } else {
+                modal.classList.remove('is-zoomed');
+            }
         }
 
         function initModalThumbs() {
@@ -468,6 +503,7 @@
 
         function closeModal() {
             modal.classList.remove('active');
+            modal.classList.remove('is-zoomed');
             document.body.style.overflow = '';
             resetZoom();
             startInterval();
@@ -518,7 +554,7 @@
         });
         window.addEventListener('mouseup', () => { isDragging = false; });
 
-        /* SOPORTE TÁCTIL MÓVIL OPTIMIZADO (PINCH ZOOM RÁPIDO) */
+        /* SOPORTE TÁCTIL MÓVIL (PINCH ZOOM RÁPIDO & FLUIDO) */
         let initialPinchDistance = null, baseScale = 1;
 
         stage.addEventListener('touchstart', (e) => {
@@ -535,7 +571,9 @@
         stage.addEventListener('touchmove', (e) => {
             if (e.touches.length === 2 && initialPinchDistance !== null) {
                 const currentDistance = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-                scale = Math.min(Math.max(baseScale * (currentDistance / initialPinchDistance), 1), 5);
+                // Multiplicador de sensibilidad optimizado para respuesta inmediata al pellizcar
+                const factor = currentDistance / initialPinchDistance;
+                scale = Math.min(Math.max(baseScale * factor, 1), 5);
                 updateTransform();
             } else if (e.touches.length === 1 && isDragging && scale > 1) {
                 pointX = e.touches[0].clientX - startX;
@@ -580,6 +618,7 @@
     </script>
 </body>
 </html>
+
 
 
 
