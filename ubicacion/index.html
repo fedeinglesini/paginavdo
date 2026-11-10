@@ -152,7 +152,7 @@
         .map-container iframe { width: 100%; height: 100%; border: 0; filter: saturate(80%) contrast(95%); }
         .map-description { font-size: 0.85rem; color: var(--text-dark); font-style: italic; text-align: center; margin: 0; }
         
-        /* BOTÓN SMN */
+        /* BOTÓN SMN Y ACLARACIÓN */
         .btn-smn-container { margin-top: 1.2rem; display: flex; justify-content: center; }
         .btn-smn {
             display: inline-flex; 
@@ -175,6 +175,15 @@
         .btn-smn:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
         .btn-smn img { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; transition: transform 0.3s ease; }
         .btn-smn:hover img { transform: scale(1.1); }
+        
+        .smn-note {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            font-style: italic;
+            text-align: center;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+        }
 
         /* FOOTER */
         footer {
@@ -329,10 +338,9 @@
                             <a href="https://www.smn.gob.ar/" target="_blank" rel="noopener noreferrer" class="btn-smn">
                                 <img src="../logosmn.png" alt="Logo SMN" loading="lazy" onerror="this.style.display='none'">
                                 <span>Consultar pronóstico en el SMN</span>
-                                </a>
-                            
-                        
+                            </a>
                         </div>
+                        <p class="smn-note">Buscá la localidad como San Pedro (San Pedro).</p>
                     </div>
 
                 </div>
@@ -390,8 +398,6 @@
     </script>
 </body>
 </html>
-
-
 
 
 
