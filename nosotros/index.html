@@ -52,9 +52,8 @@
         /* SECCIÓN CENTRAL (FONDO FIJO / PARALLAX) */
         section {
             background: linear-gradient(rgba(51, 65, 85, 0.82), rgba(51, 65, 85, 0.82)), url('../fondocentral.jpg');
-            background-size: cover;          
-            background-position: center;     
-            background-attachment: fixed;    
+            background-size: cover; background-position: 50% 50%;
+            background-attachment: fixed;
             padding: 3rem 1rem; min-height: 65vh; display: flex; flex-direction: column; align-items: center;
             box-shadow: inset 0 10px 15px -10px rgba(0,0,0,0.3);
         }
@@ -76,8 +75,17 @@
             border-bottom: 2px solid var(--red-accent); 
             padding-bottom: 0.4rem; 
         }
-        .content-box p.subtitle { color: #000000; margin-bottom: 1.5rem; font-weight: 600; font-size: 1rem; }
-        .content-box p { color: var(--text-dark); line-height: 1.6; }
+        .content-box h3 {
+            font-size: 1.4rem;
+            color: var(--text-heading);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--red-accent);
+            padding-bottom: 0.3rem;
+        }
+        .content-box p { color: var(--text-dark); line-height: 1.6; margin-bottom: 1rem; }
+        .content-box ul { margin-bottom: 1rem; padding-left: 1.5rem; }
+        .content-box li { color: var(--text-dark); line-height: 1.6; margin-bottom: 0.5rem; }
 
         /* FOOTER (PC) */
         footer {
@@ -200,8 +208,22 @@
     <section id="nosotros">
         <div class="content-box">
             <h2>Nosotros</h2>
-            <p class="subtitle">Conocé al equipo y los objetivos de este proyecto.</p>
-            <p>Página en construcción</p>
+
+            <h3>Quiénes somos</h3>
+            <p>Somos el equipo de investigación del ProArHEP (Programa de Arqueología Histórica y Estudios Pluridisciplinarios), perteneciente al Departamento de Ciencias Sociales de la Universidad Nacional de Luján (UNLu), bajo la dirección del Dr. Mariano Ramos.</p>
+            <p>Desde el año 2000, llevamos adelante de manera ininterrumpida el proyecto de investigación arqueológica sobre la Batalla de la Vuelta de Obligado (1845) y la Guerra del Paraná, constituyendo la primera experiencia en la Argentina de Arqueología Histórica aplicada sistemáticamente a un campo de batalla de mediados del siglo XIX.</p>
+
+            <h3>Nuestro enfoque de trabajo</h3>
+            <p>Abordamos el pasado desde una perspectiva pluridisciplinaria, integrando la Arqueología Histórica, la Arqueología del Conflicto y la Arqueología de la Violencia.</p>
+            <p>Creemos que el conocimiento profundo de los acontecimientos históricos requiere cruzar de forma crítica distintas líneas de evidencia:</p>
+            <ul>
+                <li><strong>El registro arqueológico:</strong> El análisis material de los objetos, estructuras y modificaciones del terreno que permanecen en el sitio.</li>
+                <li><strong>Las fuentes documentales:</strong> Cartografía histórica, inventarios militares, partes de batalla y diarios de época hallados en archivos nacionales e internacionales.</li>
+                <li><strong>La historia oral y la memoria local:</strong> Los testimonios y relatos aportados por los vecinos y pobladores de la región de San Pedro, fundamentales para reconstruir la historia reciente y los procesos de transformación del lugar.</li>
+            </ul>
+
+            <h3>Nuestro objetivo</h3>
+            <p>Nuestro objetivo es aportar nuevas miradas científicas que complementen, revisen o amplíen las versiones tradicionales, contribuyendo a la puesta en valor y preservación del patrimonio histórico, arqueológico y ambiental de la Reserva Natural Vuelta de Obligado para toda la comunidad.</p>
         </div>
     </section>
 
