@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sitio Vuelta de Obligado - Sitio e historia</title>
+    <!-- Descripción optimizada para Google -->
+    <meta name="description" content="Conocé la historia de la Batalla de la Vuelta de Obligado (1845), las campañas arqueológicas, el museo y los hallazgos en el sitio.">
+
     <link rel="icon" type="image/png" href="../logoizq.png?v=2">
     <style>
         :root {
@@ -72,7 +75,7 @@
             font-size: 1.8rem; 
             margin: 0 0 0.75rem 0; 
             color: var(--text-heading); 
-            border-bottom: 2px solid var(--red-accent); /* Título principal original (rojo) */
+            border-bottom: 2px solid var(--red-accent); 
             padding-bottom: 0.4rem; 
         }
         .content-box h3 {
@@ -80,7 +83,7 @@
             color: var(--text-heading);
             margin-top: 2rem;
             margin-bottom: 1rem;
-            border-bottom: 1px solid var(--red-accent); /* Subtítulos "Sitio" e "Historia" en rojo punzó */
+            border-bottom: 1px solid var(--red-accent); 
             padding-bottom: 0.3rem;
         }
         .content-box h4 {
@@ -177,7 +180,7 @@
             border-radius: 8px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             border: 1px solid #cbd5e1;
-            width: 200px; /* Tamaño compacto acorde al texto */
+            width: 200px;
             z-index: 3000;
             text-align: center;
         }
@@ -243,7 +246,7 @@
 
         /* RESPONSIVE MÓVIL */
         @media (max-width: 768px) {
-            header { padding: 1.2rem 0.8rem; text-align: center; display: grid; grid-template-columns: 62px 1fr 62px; grid-template-areas: "title title title" "left middle right" "def def def"; align-items: center; justify-items: center; gap: 0.6rem; }
+            header { padding: 1.2rem 0.8rem; text-align: center; display: grid; grid-template-columns: 62px 1fr 62px; grid-template-areas: "title title title" "left middle right" "def def def"; align-items: center; justify-items: center; gap: 0.6rem; cursor: pointer; }
             .header-title { grid-area: title; font-size: 1.3rem; font-weight: 700; color: var(--text-light); margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
             .header-logo-left { grid-area: left; width: 62px; height: 62px; }
             .header-subtitle-main { grid-area: middle; font-size: 1.25rem; font-weight: 600; color: var(--text-light); margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.75); }
@@ -259,7 +262,7 @@
                 background-color: var(--navy-main); color: var(--text-light); display: flex; justify-content: space-between; align-items: center;
                 padding: 0.4rem 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); width: 100%;
             }
-            .mobile-menu-title { font-size: 0.9rem; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+            .mobile-menu-title { font-size: 0.9rem; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.4); cursor: pointer; }
             .menu-toggle { background: transparent; color: var(--text-light); border: none; font-size: 1.2rem; cursor: pointer; padding: 0.1rem; }
 
             #navMenuMobile {
@@ -303,7 +306,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <header id="siteHeader">
         <div class="header-logo-left"><img src="../logoizq.png" alt="Logo Izquierda" loading="lazy" onerror="this.style.display='none'"></div>
         <div class="header-titles">
             <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
@@ -315,7 +318,7 @@
 
     <div class="mobile-nav-container">
         <div class="mobile-menu-bar">
-            <span class="mobile-menu-title">Menú del Sitio</span>
+            <span class="mobile-menu-title" id="mobileMenuTitle">Menú del Sitio</span>
             <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">&#9776;</button>
         </div>
         <nav id="navMenuMobile">
@@ -469,17 +472,31 @@
     </footer>
 
     <script>
+        const mobileMenuTitle = document.getElementById('mobileMenuTitle');
         const menuToggle = document.getElementById('menuToggle');
         const navMenuMobile = document.getElementById('navMenuMobile');
+        const siteHeader = document.getElementById('siteHeader');
 
-        menuToggle.addEventListener('click', (e) => {
+        // Función para alternar el menú móvil
+        function toggleMenu(e) {
             e.stopPropagation();
             navMenuMobile.classList.toggle('active');
-        });
+        }
+
+        if (mobileMenuTitle) mobileMenuTitle.addEventListener('click', toggleMenu);
+        if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
 
         document.addEventListener('click', (e) => {
-            if (!navMenuMobile.contains(e.target) && !menuToggle.contains(e.target)) {
+            const mobileBar = document.querySelector('.mobile-menu-bar');
+            if (!navMenuMobile.contains(e.target) && mobileBar && !mobileBar.contains(e.target)) {
                 navMenuMobile.classList.remove('active');
+            }
+        });
+
+        // Header redirige a inicio solo en dispositivos móviles (ancho <= 768px)
+        siteHeader.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                window.location.href = '../index.html';
             }
         });
 
