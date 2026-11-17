@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubicación - Sitio Vuelta de Obligado</title>
+    <!-- Descripción optimizada para Google -->
+    <meta name="description" content="¿Dónde queda y cómo llego a Vuelta de Obligado? En esta sección vas a conocer eso y más...">
+
     <link rel="icon" type="image/png" href="../logoizq.png?v=2">
     <style>
         :root {
@@ -227,7 +230,7 @@
 
         /* RESPONSIVE MÓVIL */
         @media (max-width: 768px) {
-            header { padding: 1.2rem 0.8rem; display: grid; grid-template-columns: 62px 1fr 62px; grid-template-areas: "title title title" "left middle right" "def def def"; gap: 0.6rem; justify-items: center; }
+            header { padding: 1.2rem 0.8rem; display: grid; grid-template-columns: 62px 1fr 62px; grid-template-areas: "title title title" "left middle right" "def def def"; gap: 0.6rem; justify-items: center; cursor: pointer; }
             .header-title { grid-area: title; font-size: 1.3rem; margin: 0; }
             .header-logo-left { grid-area: left; width: 62px; height: 62px; }
             .header-subtitle-main { grid-area: middle; font-size: 1.25rem; margin: 0; }
@@ -239,7 +242,7 @@
             .mobile-nav-container { display: block; position: sticky; top: 0; z-index: 2000; width: 100%; }
             
             .mobile-menu-bar { background-color: var(--navy-main); color: var(--text-light); display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-            .mobile-menu-title { font-size: 0.9rem; font-weight: 600; }
+            .mobile-menu-title { font-size: 0.9rem; font-weight: 600; cursor: pointer; }
             .menu-toggle { background: transparent; color: var(--text-light); border: none; font-size: 1.2rem; cursor: pointer; padding: 0.1rem; }
 
             #navMenuMobile {
@@ -274,7 +277,7 @@
 </head>
 <body>
 
-    <header>
+    <header id="siteHeader">
         <div class="header-logo-left"><img src="../logoizq.png" alt="Logo ProArHEP Izquierda" loading="lazy" onerror="this.style.display='none'"></div>
         <div class="header-titles">
             <h1 class="header-title">Sitio arqueológico Vuelta de Obligado</h1>
@@ -286,7 +289,7 @@
 
     <div class="mobile-nav-container">
         <div class="mobile-menu-bar">
-            <span class="mobile-menu-title">Menú del Sitio</span>
+            <span class="mobile-menu-title" id="mobileMenuTitle">Menú del Sitio</span>
             <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenuMobile">&#9776;</button>
         </div>
         <nav id="navMenuMobile" aria-label="Navegación Móvil">
@@ -379,21 +382,36 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuTitle = document.getElementById('mobileMenuTitle');
             const menuToggle = document.getElementById('menuToggle');
             const navMenuMobile = document.getElementById('navMenuMobile');
+            const siteHeader = document.getElementById('siteHeader');
 
-            menuToggle.addEventListener('click', function (e) {
+            // Función para alternar el menú móvil
+            function toggleMenu(e) {
                 e.stopPropagation();
                 const isActive = navMenuMobile.classList.toggle('active');
                 menuToggle.setAttribute('aria-expanded', isActive);
-            });
+            }
+
+            if (mobileMenuTitle) mobileMenuTitle.addEventListener('click', toggleMenu);
+            if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
 
             document.addEventListener('click', function (e) {
                 if (!navMenuMobile.contains(e.target) && !menuToggle.contains(e.target)) {
                     navMenuMobile.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
+                    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
                 }
             });
+
+            // Header redirige a inicio solo en dispositivos móviles (ancho <= 768px)
+            if (siteHeader) {
+                siteHeader.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        window.location.href = '../index.html';
+                    }
+                });
+            }
         });
     </script>
 </body>
